@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Checkbox from './components/Checkbox';
+import Switch from './components/Switch';
 
 import logo from './logo.svg';
 import './App.css';
@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Checkbox />
+      <Switch />
     );
   }
 }
