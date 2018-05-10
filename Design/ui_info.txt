@@ -1,0 +1,7 @@
+Background Gradient:
+	https://uigradients.com/#Lizard
+	
+Fonts:
+	* Open Sans
+	* Playfair Display
+	
