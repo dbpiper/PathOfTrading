@@ -1,24 +1,31 @@
 .labeledSwitch {
   position: relative;
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+
+  display: grid;
+
+  grid-template-areas:
+    "label switch";
+
+  grid-gap: 10% 10%;
   align-items: center;
+
+  grid-template-columns: auto 13%;
+
   justify-content: center;
-  flex-basis: auto;
-
-  margin-top: 2%;
-
-  flex-wrap: nowrap;
 }
 
 .switchLabel {
-  margin-right: 200px;
-  display: inline-block;
 
-  flex-wrap: nowrap;
+  grid-area: label;
 
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 30px;
   color: #FEFDFF;
+
+}
+
+.switchActual {
+  grid-area: switch;
 }

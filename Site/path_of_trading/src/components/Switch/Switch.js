@@ -79,7 +79,6 @@ class Switch extends React.Component {
   render() {
       const { width, height } = this.state.dimensions;
       return (
-
         <Measure
           bounds
           onResize={(contentRect)=> {
