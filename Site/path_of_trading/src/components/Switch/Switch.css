@@ -16,15 +16,17 @@
   display: inline;
 } */
 
+.hidden {
+  display: none;
+}
+
 .middle {
 }
 
 .on {
-  display: none;
 }
 
 .off {
-  display: none;
 }
 
 .frame {
@@ -46,8 +48,21 @@
 .switch-button {
   position: absolute;
   top: 9.85px;
-  left: 76.82px;
+}
 
+.button-2 {
+  left: 76.82px;
+}
+
+.button-1 {
+  left: 115.23px;
+}
+
+.button-0 {
+  left: 0;
+}
+
+.two-to-1-animation {
   animation: slideRight 3s linear 1;
 }
 

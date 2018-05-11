@@ -18,16 +18,41 @@ class Switch extends React.Component {
         width: -1,
         height: -1,
       },
-      switchValue: 3,
     }
+
+    this.handleClick = this.handleClick.bind(this);
+    this.transition2to1 = this.transition2to1.bind(this);
+    this.transition1to0 = this.transition1to0.bind(this);
+    this.transition0to2 = this.transition0to2.bind(this);
+  }
+
+  transition2to1() {
+  }
+
+  transition1to0() {
+
+  }
+
+  transition0to2() {
+
   }
 
   handleClick() {
-    this.props.value = newValue(this.props.value);
+
+    // switch(this.props.value) {
+    //   case 2:
+    //     this.transition2to1();
+    //     break;
+    //   case 1:
+    //     this.transition1to0();
+    //     break;
+    //   case 0:
+    //     this.transition0to2();
+    //     break;
+    // }
 
 
-
-    this.props.onClick();
+    this.props.onClick(newValue(this.props.value));
   }
 
 
@@ -48,12 +73,34 @@ class Switch extends React.Component {
           {({ measureRef }) =>
             <div className="frame"
               ref={measureRef}
-              onClick={() => this.handleClick.bind(this)}
+              onClick={() => this.handleClick()}
             >
-              <img className="switch switch-background middle" src={SwitchMiddle} />
-              <img className="switch switch-background on" src={SwitchOn} />
-              <img className="switch switch-background off" src={SwitchOff} />
-              <img className="switch switch-button" src={SwitchButton} />
+              <img
+                className="switch switch-background middle"
+                src={SwitchMiddle}
+                ref={(middleEle) => this.middleEle = middleEle}
+              />
+              <img
+                className="switch switch-background hidden"
+                src={SwitchOn}
+                ref={(onEle) => this.onEle = onEle}
+              />
+              <img
+                className="switch switch-background hidden"
+                src={SwitchOff}
+                ref={(offEle) => this.offEle = offEle}
+              />
+              <img
+                className={classNames({
+                  "switch": true,
+                  "switch-button": true,
+                  "button-2": this.props.value === 2,
+                  "button-1": this.props.value === 1,
+                  "button-0": this.props.value === 0,
+                })}
+                src={SwitchButton}
+                ref={(buttonEle) => this.buttonEle = buttonEle}
+              />
             </div>
           }
         </Measure>
@@ -64,8 +111,10 @@ class Switch extends React.Component {
 
 function newValue(value) {
   if (value >= 0 && value <= 2) {
+    alert(value);
     return (value + 1) % 3;
   } else {
+    alert(value);
     alert('error: switch value outside valid range');
   }
 }

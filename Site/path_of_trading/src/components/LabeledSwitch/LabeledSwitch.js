@@ -12,7 +12,7 @@ class LabeledSwitch extends React.Component {
     this.handleResize = this.handleResize.bind(this);
   }
 
-  handleClick(switchValue) {
+  handleClick(value) {
     // this.setState({value: event.target.value});
 
     /*
@@ -22,6 +22,9 @@ class LabeledSwitch extends React.Component {
         2. play transition (button moving) animation
         3. change background image
     */
+    this.setState({
+      value: value,
+    });
   }
 
   handleResize(dimensions) {
@@ -41,7 +44,7 @@ class LabeledSwitch extends React.Component {
           <Switch
             name="switch"
             value={this.state.value}
-            onClick={() => this.handleClick()}
+            onClick={this.handleClick.bind(this)}
             onResize={this.handleResize.bind(this)}
           />
       </div>

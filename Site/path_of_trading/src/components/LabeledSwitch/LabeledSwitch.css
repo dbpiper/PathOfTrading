@@ -16,4 +16,7 @@
   display: inline-block;
 
   flex-wrap: nowrap;
+
+  font-family: 'Open Sans', sans-serif;
+  color: #FEFDFF;
 }
