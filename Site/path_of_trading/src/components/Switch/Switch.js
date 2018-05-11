@@ -93,45 +93,55 @@ class Switch extends React.Component {
             <div className="frame noselect"
               ref={measureRef}
               onClick={() => this.handleClick()}
+
+              unselectable="on"
             >
               <img
                 className={classNames({
+                    "noselect": true,
                     "switch": true,
                     "switch-background": true,
                     "middle": true,
                     "hidden": this.props.value !== 2,
                 })}
+                unselectable="on"
                 src={SwitchMiddle}
                 ref={(middleEle) => this.middleEle = middleEle}
               />
               <img
                 className={classNames({
+                    "noselect": true,
                     "switch": true,
                     "switch-background": true,
                     "on": true,
                     "hidden": this.props.value !== 1,
                 })}
+                unselectable="on"
                 src={SwitchOn}
                 ref={(onEle) => this.onEle = onEle}
               />
               <img
                 className={classNames({
+                    "noselect": true,
                     "switch": true,
                     "switch-background": true,
                     "off": true,
                     "hidden": this.props.value !== 0,
                 })}
+                unselectable="on"
                 src={SwitchOff}
                 ref={(offEle) => this.offEle = offEle}
               />
               <img
                 className={classNames({
+                  "noselect": true,
                   "switch": true,
                   "switch-button": true,
                   "button-2": this.props.value === 2,
                   "button-1": this.props.value === 1,
                   "button-0": this.props.value === 0,
                 })}
+                unselectable="on"
                 src={SwitchButton}
                 ref={(buttonEle) => this.buttonEle = buttonEle}
               />
