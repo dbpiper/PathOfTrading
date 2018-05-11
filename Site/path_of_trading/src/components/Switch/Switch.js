@@ -95,6 +95,7 @@ class Switch extends React.Component {
               onClick={() => this.handleClick()}
 
               unselectable="on"
+              onselectstart="return false;"
             >
               <img
                 className={classNames({
@@ -105,6 +106,7 @@ class Switch extends React.Component {
                     "hidden": this.props.value !== 2,
                 })}
                 unselectable="on"
+                onselectstart="return false;"
                 src={SwitchMiddle}
                 ref={(middleEle) => this.middleEle = middleEle}
               />
@@ -117,6 +119,7 @@ class Switch extends React.Component {
                     "hidden": this.props.value !== 1,
                 })}
                 unselectable="on"
+                onselectstart="return false;"
                 src={SwitchOn}
                 ref={(onEle) => this.onEle = onEle}
               />
@@ -129,6 +132,7 @@ class Switch extends React.Component {
                     "hidden": this.props.value !== 0,
                 })}
                 unselectable="on"
+                onselectstart="return false;"
                 src={SwitchOff}
                 ref={(offEle) => this.offEle = offEle}
               />
@@ -142,6 +146,7 @@ class Switch extends React.Component {
                   "button-0": this.props.value === 0,
                 })}
                 unselectable="on"
+                onselectstart="return false;"
                 src={SwitchButton}
                 ref={(buttonEle) => this.buttonEle = buttonEle}
               />
