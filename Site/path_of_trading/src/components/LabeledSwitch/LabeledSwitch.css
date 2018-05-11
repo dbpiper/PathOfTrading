@@ -5,9 +5,15 @@
   align-items: center;
   justify-content: center;
   flex-basis: auto;
+
+  margin-top: 2%;
+
+  flex-wrap: nowrap;
 }
 
 .switchLabel {
   margin-right: 200px;
-  margin-left: 1000px;
+  display: inline-block;
+
+  flex-wrap: nowrap;
 }

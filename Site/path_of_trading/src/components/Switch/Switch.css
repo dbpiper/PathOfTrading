@@ -16,12 +16,25 @@
   display: inline;
 } */
 
+.middle {
+}
+
+.on {
+  display: none;
+}
+
+.off {
+  display: none;
+}
+
 .frame {
   width: 280px;
   height: 146.06px;
   position: relative;
   top: 0;
   left: 0;
+
+  transform: scale(0.140625);
 }
 
 .switch-background {
