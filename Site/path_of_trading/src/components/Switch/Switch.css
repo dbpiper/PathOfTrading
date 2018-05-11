@@ -1,3 +1,79 @@
-.switch {
-  
+/* .frame {
+  position: absolute;
+
+  width: 275.32px;
+  height: 142.66px;
+
+  background-size: 100%;
+  background-image: url('../../public/svg/Switch_Middle.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  margin: 0;
+  padding: 0;
+
+  display: inline;
+} */
+
+.frame {
+  width: 280px;
+  height: 146.06px;
+  position: relative;
+  top: 0;
+  left: 0;
 }
+
+.switch-background {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.switch-button {
+  position: absolute;
+  top: 9.85px;
+  left: 76.82px;
+
+  animation: slideRight 3s linear 1;
+}
+
+@keyframes slideRight {
+  from {
+    left: 27%;
+  }
+  to {
+    left: 54%;
+  }
+}
+
+/* .frame {
+  width: 280px;
+  height: 146.06px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.switch-background {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.switch-button {
+  position: absolute;
+  top: 9.85px;
+  left: 76.82px;
+
+  animation: slideRight 3s linear 1;
+}
+
+@keyframes slideRight {
+  from {
+    left: 27%;
+  }
+  to {
+    left: 54%;
+  }
+} */
