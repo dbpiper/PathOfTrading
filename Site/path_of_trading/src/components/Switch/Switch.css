@@ -36,7 +36,7 @@
   top: 0;
   left: 0;
 
-  transform: scale(0.140625);
+  transform: scale(0.2109375);
 }
 
 .switch-background {
@@ -55,23 +55,49 @@
 }
 
 .button-1 {
-  left: 115.23px;
+  left: 147.23px;
 }
 
 .button-0 {
-  left: 0;
+  left: 7px;
 }
 
-.two-to-1-animation {
-  animation: slideRight 3s linear 1;
+.two-to-one-animation {
+  animation: slideRightFromMid 166.667ms linear 1;
 }
 
-@keyframes slideRight {
+@keyframes slideRightFromMid {
   from {
     left: 27%;
   }
   to {
     left: 54%;
+  }
+}
+
+.one-to-zero-animation {
+  animation: slideLeftFromRight 333.333ms linear 1;
+}
+
+@keyframes slideLeftFromRight {
+  from {
+    left: 54%;
+  }
+  to {
+    left: 7%;
+  }
+}
+
+.zero-to-two-animation {
+  animation: slideMidFromLeft 166.667ms linear 1;
+}
+
+@keyframes slideMidFromLeft {
+  from {
+    left: 7%;
+  }
+  to {
+    left: 27%;
   }
 }
 
