@@ -39,6 +39,8 @@
   transform: scale(0.2109375);
 
   transform-origin: left center;
+
+  cursor: pointer;
 }
 
 .switch-background {
