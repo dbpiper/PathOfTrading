@@ -90,7 +90,7 @@ class Switch extends React.Component {
           }}
         >
           {({ measureRef }) =>
-            <div className="frame"
+            <div className="frame noselect"
               ref={measureRef}
               onClick={() => this.handleClick()}
             >
