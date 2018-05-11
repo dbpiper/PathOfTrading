@@ -110,6 +110,8 @@ class LabeledSwitch extends React.Component {
                     className="switchActual"
                     name="switch"
                     value={this.state.value}
+                    unselectable="on"
+                    onselectstart="return false;"
                     onClick={this.handleClick.bind(this)}
                     onResize={this.handleResize.bind(this)}
                   />
