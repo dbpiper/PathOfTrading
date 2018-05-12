@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <LabeledSwitch label="Normalize&nbsp;Quality" />
+      <LabeledSwitch label="Crafted" />
       // <Switch onResize={() => {}} />
     );
   }
