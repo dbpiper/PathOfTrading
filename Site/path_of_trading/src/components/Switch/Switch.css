@@ -40,15 +40,11 @@
 }
 
 .frame {
-  width: 280px;
-  height: 146.06px;
+  width: 59.06px;
+  height: 30.81px;
   position: relative;
   top: 0;
   left: 0;
-
-  transform: scale(0.2109375);
-
-  transform-origin: left center;
 
   cursor: pointer;
 }
@@ -61,19 +57,19 @@
 
 .switch-button {
   position: absolute;
-  top: 9.85px;
+  top: 7%;
 }
 
 .button-2 {
-  left: 76.82px;
+  left: 27%;
 }
 
 .button-1 {
-  left: 147.23px;
+  left: 52%;
 }
 
 .button-0 {
-  left: 7px;
+  left: 3%;
 }
 
 .two-to-one-animation {

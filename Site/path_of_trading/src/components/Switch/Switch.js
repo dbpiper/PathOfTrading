@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import React from 'react';
 import s from './Switch.css';
 
-import SwitchMiddle from '../../public/svg/Switch_Middle.svg';
-import SwitchOn from '../../public/svg/Switch_On.svg';
-import SwitchOff from '../../public/svg/Switch_Off.svg';
-import SwitchButton from '../../public/svg/Switch_Button.svg';
+import SwitchMiddle from '../../public/svg/Switch_Middle_59.06x30.81.svg';
+import SwitchOn from '../../public/svg/Switch_On_59.06x30.81.svg';
+import SwitchOff from '../../public/svg/Switch_Off_59.06x30.81.svg';
+import SwitchButton from '../../public/svg/Switch_Button_26.667x26.667.svg';
 
 class Switch extends React.Component {
   constructor(props) {
