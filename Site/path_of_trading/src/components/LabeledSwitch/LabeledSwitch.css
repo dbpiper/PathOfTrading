@@ -1,4 +1,4 @@
-.labeledSwitch {
+.labeledSwitchContainer {
   position: relative;
   display: flex;
 
@@ -16,12 +16,11 @@
   font-size: 30px;
   color: #FEFDFF;
 
+  margin-right: 2%;
+
 }
 
-.switchActual {
-  grid-area: switch;
-
-
+.switch {
    -webkit-tap-highlight-color: rgba(0,0,0,0);
    -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

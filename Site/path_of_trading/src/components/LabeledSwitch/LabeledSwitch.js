@@ -42,15 +42,6 @@ class LabeledSwitch extends React.Component {
   }
 
   handleClick(value) {
-    // this.setState({value: event.target.value});
-
-    /*
-      TODO:
-        1. set state in labeled switch to the state value
-            of switch (0 - off,1 - on,2 - middle/neither/either)
-        2. play transition (button moving) animation
-        3. change background image
-    */
     this.setState({
       value: value,
     });
@@ -62,26 +53,12 @@ class LabeledSwitch extends React.Component {
       switchWidth: dimensions.width,
       switchHeight: dimensions.height,
     });
-    // this.divElement.style.background = '#FF0000';
-
-    // this.divElement.style.width =
-    //             this.state.labelWidth +
-    //             // this.state.windowDim.width*0.1 +
-    //             this.state.switchWidth + 'px';
-
-
-
-    // if (this.state.labelHeight > this.state.switchHeight) {
-    //   this.divElement.style.height = this.state.labelHeight + 'px';
-    // } else {
-    //   this.divElement.style.height = this.state.switchHeight + 'px';
-    // }
   }
 
 
   render() {
     return (
-              <div className="labeledSwitch"
+              <div className="labeledSwitchContainer"
 
                 ref={(divElement) => this.divElement = divElement}
               >
@@ -89,11 +66,6 @@ class LabeledSwitch extends React.Component {
         <Measure
           bounds
           onResize={(contentRect)=> {
-            // this.setState({ dimensions: {
-            //   width: contentRect.bounds.width,
-            //   height: contentRect.bounds.height,
-            // }});
-            // this.props.onResize(this.state.dimensions);
             this.setState({...this.state,
               labelWidth: contentRect.bounds.width,
               labelHeight: contentRect.bounds.height,
@@ -107,7 +79,7 @@ class LabeledSwitch extends React.Component {
           }
         </Measure>
                   <Switch
-                    className="switchActual"
+                    className="switch"
                     name="switch"
                     value={this.state.value}
                     unselectable="on"
