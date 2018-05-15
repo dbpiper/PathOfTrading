@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import LabeledSwitch from './components/LabeledSwitch';
-import Switch from './components/Switch';
+import Textbox from './components/Textbox';
 
 import logo from './logo.svg';
 import './App.css';
@@ -9,8 +9,10 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <LabeledSwitch label="Crafted" />
-      // <Switch onResize={() => {}} />
+      <div>
+        <LabeledSwitch label="Crafted" />
+        <Textbox />
+      </div>
     );
   }
 }
