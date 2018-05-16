@@ -7,6 +7,8 @@ import Switch from './Switch';
 import Textbox from './Textbox';
 import Range from './Range';
 import ColorsField from './ColorsField';
+import Autocomplete from './Autocomplete';
+import DropdownButton from './DropdownButton';
 
 const Grid = styled.div`
   display: grid;
@@ -27,6 +29,7 @@ const Grid = styled.div`
     "twoOne twoOne ."
     "threeOne threeTwo ."
     "fourOne fourTwo fourTwo"
+    "fiveOne fiveOne ."
 `;
 
 const GridArea = styled.span`
@@ -59,6 +62,15 @@ class TestBody extends Component {
         <GridArea area="fourTwo">
           <ColorsField
           />
+        </GridArea>
+        <GridArea area="fiveOne">
+          {/* <Autocomplete
+            items={['apple', 'orange', 'carrot']}
+            onChange={selectedItem => console.log(selectedItem)}
+          /> */}
+
+          <Autocomplete />
+          {/* <DropdownButton /> */}
         </GridArea>
       </Grid>
     );
