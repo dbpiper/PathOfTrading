@@ -1,6 +1,7 @@
 .containerGrid {
   display: grid;
 
+  /* grid-auto-flow: column dense; */
 
   margin-top: 20px;
   margin-bottom: 20px;
@@ -12,9 +13,9 @@
   grid-template-columns: 15%;
 
   grid-template-areas:
-    "one"
-    "two"
-    "three"
+    "one one one"
+    "two two two"
+    "three three three"
 }
 
 .one {

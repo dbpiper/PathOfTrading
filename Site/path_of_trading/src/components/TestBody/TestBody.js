@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import LabeledSwitch from '../LabeledSwitch';
 import Textbox from '../Textbox';
-import Range from '../Range';
+import LabeledRange from '../LabeledRange';
 
 import styles from './TestBody.css';
 
@@ -17,7 +17,7 @@ class TestBody extends Component {
           <Textbox placeholder="Seller"/>
         </span>
         <span className={styles.three}>
-          <Range />
+          <LabeledRange label="Links" />
         </span>
       </div>
     );

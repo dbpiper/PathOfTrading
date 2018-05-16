@@ -1,6 +1,6 @@
 {
     "name": "Textbox",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "private": true,
     "main": "./Textbox.js"
 }

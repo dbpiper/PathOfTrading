@@ -1,0 +1,6 @@
+{
+    "name": "LabeledRange",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./LabeledRange.js"
+}
