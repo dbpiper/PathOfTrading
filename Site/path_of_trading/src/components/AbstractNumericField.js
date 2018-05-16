@@ -3,15 +3,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AbstractNumericFieldContainer = styled.span`
-    position: relative;
+    ${'' /* position: relative;
     display: flex;
 
     align-items: center;
 
+    width: 100%; */}
     width: 100%;
 `;
 
 
+const boxWidth = (props) => {
+  return props.placeholder.length * 1.25;
+};
 
 const AbstractNumericInput = styled.input.attrs({
   type: 'number',
@@ -30,11 +34,11 @@ const AbstractNumericInput = styled.input.attrs({
       font-weight: 300;
       font-size: 20px;
 
-      width: 60px;
+      width: ${props => boxWidth(props)}rem;
+      margin-right: 20px;
 
       padding-top: 10px;
       padding-right: 10px;
-      padding-left: 10px;
       padding-bottom: 5px;
 
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -63,6 +67,7 @@ const AbstractNumericInput = styled.input.attrs({
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
       font-size: 20px;
+      padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 
     /* Microsoft Edge */
@@ -72,6 +77,7 @@ const AbstractNumericInput = styled.input.attrs({
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
       font-size: 20px;
+      padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 
     /* Internet Explorer 10-11 */
@@ -81,6 +87,7 @@ const AbstractNumericInput = styled.input.attrs({
       font-family: 'Open Sans', sans-serif;
       font-weight: 300;
       font-size: 20px;
+      padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 `;
 

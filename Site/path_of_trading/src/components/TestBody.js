@@ -6,6 +6,7 @@ import Label from './Label';
 import Switch from './Switch';
 import Textbox from './Textbox';
 import Range from './Range';
+import ColorsField from './ColorsField';
 
 const Grid = styled.div`
   display: grid;
@@ -16,15 +17,16 @@ const Grid = styled.div`
   align-items: center;
   justify-content: center;
 
-  grid-template-rows: 50px 50px 50px;
-  grid-template-columns: 230px 186px;
+  grid-template-rows: 50px 50px 50px 50px;
+  grid-template-columns: 230px 186px 400px;
 
   grid-row-gap: 25px;
 
   grid-template-areas:
-    "oneOne oneTwo"
-    "twoOne twoOne"
-    "threeOne threeTwo"
+    "oneOne oneTwo ."
+    "twoOne twoOne ."
+    "threeOne threeTwo ."
+    "fourOne fourTwo fourTwo"
 `;
 
 const GridArea = styled.span`
@@ -49,7 +51,14 @@ class TestBody extends Component {
           <Label value="Links" />
         </GridArea>
         <GridArea area="threeTwo">
-          <Range label="Links" />
+          <Range />
+        </GridArea>
+        <GridArea area="fourOne">
+          <Label value="Linked Colors" />
+        </GridArea>
+        <GridArea area="fourTwo">
+          <ColorsField
+          />
         </GridArea>
       </Grid>
     );

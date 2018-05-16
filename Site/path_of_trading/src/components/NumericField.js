@@ -5,7 +5,7 @@ import AbstractNumericField from './AbstractNumericField';
 function NumericField(props) {
   return (
     <AbstractNumericField
-      underlineColor="#000000"
+      underlineColor="#0D0106"
       focusedUnderlineColor="#FEFDFF"
       placeholder={props.placeholder}
     />
