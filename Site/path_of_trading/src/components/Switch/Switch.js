@@ -1,13 +1,102 @@
-import Measure from 'react-measure';
 import classNames from 'classnames';
 
 import React from 'react';
 import styles from './Switch.css';
 
+import styled, { css, keyframes } from 'styled-components';
+
 import SwitchMiddle from '../../public/svg/Switch_Middle_59.06x30.81.svg';
 import SwitchOn from '../../public/svg/Switch_On_59.06x30.81.svg';
 import SwitchOff from '../../public/svg/Switch_Off_59.06x30.81.svg';
 import SwitchButton from '../../public/svg/Switch_Button_26.667x26.667.svg';
+
+const noselect = css`
+   -webkit-tap-highlight-color: rgba(0,0,0,0);
+   -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+`;
+
+const hidden = css`
+  display: none;
+`;
+
+const switchBackground = css`
+  position: relative;
+  top: 0;
+  left: 0;
+`;
+
+const switchButton = css`
+  position: absolute;
+  top: 7%;
+`;
+
+const Frame = styled.div`
+  width: 59.06px;
+  height: 30.81px;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  cursor: pointer;
+`;
+
+
+const hide = (hidden) => {
+  if (hidden) {
+    return 'none';
+  }
+}
+
+const Background = styled.img.attrs({
+  alt: "",
+})`
+  ${noselect}
+  ${switchBackground}
+  display: ${props => hide(props.hidden)};
+`;
+
+const buttonPos = (value) => {
+  if (value === 2) {
+    return 27;
+  } else if (value === 1) {
+    return 52;
+  } else {
+    return 3;
+  }
+};
+
+// const slideRightFromMid = keyframes`
+//   ${'' /* from {
+//     left: ${props => buttonPos(props.value)}%;
+//   }
+//   to {
+//     left: ${props => buttonPos(newValue(props.value))}%;
+//   } */}
+//
+//   from {
+//     left: 0%;
+//   }
+//
+//   to {
+//     left: 100%;
+//   }
+// `;
+
+
+const Button = styled.img.attrs({
+  alt: "",
+})`
+  ${noselect}
+  ${switchButton}
+  left: ${props => buttonPos(props.value)}%;
+  ${'' /* animation: ${slideRightFromMid} 166.667ms linear infinte; */}
+`;
 
 class Switch extends React.Component {
   constructor(props) {
@@ -76,64 +165,16 @@ class Switch extends React.Component {
 
   render() {
       return (
-        <div className={[styles.frame, styles.noselect].join(' ')}
-          onClick={() => this.handleClick()}
-          unselectable="on"
-        >
-          <img
-            className={classNames({
-                [styles.noselect]: true,
-                [styles.switch]: true,
-                [styles.switchBackground]: true,
-                [styles.middle]: true,
-                [styles.hidden]: this.state.value !== 2,
-            })}
-            unselectable="on"
-            src={SwitchMiddle}
-            ref={(middleEle) => this.middleEle = middleEle}
-            alt=""
-          />
-          <img
-            className={classNames({
-                [styles.noselect]: true,
-                [styles.switch]: true,
-                [styles.switchBackground]: true,
-                [styles.on]: true,
-                [styles.hidden]: this.state.value !== 1,
-            })}
-            unselectable="on"
-            src={SwitchOn}
-            ref={(onEle) => this.onEle = onEle}
-            alt=""
-          />
-          <img
-            className={classNames({
-                [styles.noselect]: true,
-                [styles.switch]: true,
-                [styles.switchBackground]: true,
-                [styles.off]: true,
-                [styles.hidden]: this.state.value !== 0,
-            })}
-            unselectable="on"
-            src={SwitchOff}
-            ref={(offEle) => this.offEle = offEle}
-            alt=""
-          />
-          <img
-            className={classNames({
-              [styles.noselect]: true,
-              [styles.switch]: true,
-              [styles.switchButton]: true,
-              [styles.button2]: this.state.value === 2,
-              [styles.button1]: this.state.value === 1,
-              [styles.button0]: this.state.value === 0,
-            })}
-            unselectable="on"
+        <Frame onClick={() => this.handleClick()}>
+          <Background src={SwitchMiddle} hidden={this.state.value !== 2}/>
+          <Background src={SwitchOn} hidden={this.state.value !== 1}/>
+          <Background src={SwitchOff} hidden={this.state.value !== 0}/>
+          <Button
+            value={this.state.value}
             src={SwitchButton}
-            ref={(buttonEle) => this.buttonEle = buttonEle}
-            alt=""
+            innerRef={(buttonEle) => this.buttonEle = buttonEle}
           />
-        </div>
+        </Frame>
       );
   }
 }

@@ -1,6 +1,0 @@
-{
-    "name": "NumericField",
-    "version": "0.0.0",
-    "private": true,
-    "main": "./NumericField.js"
-}

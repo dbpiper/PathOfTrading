@@ -3,17 +3,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AbstractNumericFieldContainer = styled.span`
-  & {
     position: relative;
     display: flex;
 
     align-items: center;
 
     width: 100%;
-  }
 `;
 
-const AbstractNumericInput = styled.input`
+
+
+const AbstractNumericInput = styled.input.attrs({
+  type: 'number',
+})`
     & {
       border: 0px solid ${props => props.underlineColor};
       border-bottom-width: 1px;
@@ -50,7 +52,8 @@ const AbstractNumericInput = styled.input`
     &:focus {
       border: 0px solid ${props => props.focusedUnderlineColor};
       border-bottom-width: 1px;
-      background-color: transparent;
+      background-color: transparent
+      outline: none;
     }
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -87,7 +90,6 @@ function AbstractNumericField(props) {
       <AbstractNumericInput
         underlineColor={props.underlineColor}
         focusedUnderlineColor={props.focusedUnderlineColor}
-        type="number"
         placeholder={props.placeholder}
         min={props.min}
         max={props.max}
