@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import React from 'react';
 
+// import NumericField from '../NumericField';
 import NumericField from '../NumericField';
 import styles from './Range.css';
 
