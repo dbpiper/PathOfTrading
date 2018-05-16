@@ -1,0 +1,21 @@
+
+.numericField {
+      border: 0px solid #000000;
+      border-bottom-width: 1px;
+      background-color: transparent;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input:focus.numericField {
+      border: 0px solid #000000;
+      border-bottom-width: 1px;
+      background-color: transparent;
+
+}

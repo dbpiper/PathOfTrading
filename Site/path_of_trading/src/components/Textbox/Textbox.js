@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import React from 'react';
-import s from './Textbox.css';
+import styles from './Textbox.css';
 
 class Textbox extends React.Component {
   constructor(props) {
@@ -10,8 +10,8 @@ class Textbox extends React.Component {
 
   render() {
     return (
-      <span className="textboxContainer">
-        <input type="text" className="textbox" placeholder={this.props.placeholder} />
+      <span className={styles.textboxContainer}>
+        <input type="text" className={styles.textbox} placeholder={this.props.placeholder} />
       </span>
     );
   }

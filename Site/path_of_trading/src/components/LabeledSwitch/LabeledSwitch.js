@@ -2,7 +2,7 @@ import Measure from 'react-measure';
 
 import React from 'react';
 import Switch from '../Switch';
-import s from './LabeledSwitch.css';
+import styles from './LabeledSwitch.css';
 
 
 class LabeledSwitch extends React.Component {
@@ -58,7 +58,7 @@ class LabeledSwitch extends React.Component {
 
   render() {
     return (
-              <div className="labeledSwitchContainer"
+              <div className={styles.labeledSwitchContainer}
 
                 ref={(divElement) => this.divElement = divElement}
               >
@@ -73,13 +73,13 @@ class LabeledSwitch extends React.Component {
           }}
         >
           {({ measureRef }) =>
-                <label ref={measureRef} className="switchLabel">
+                <label ref={measureRef} className={styles.switchLabel}>
                   {this.props.label}
                 </label>
           }
         </Measure>
                   <Switch
-                    className="switch"
+                    className={styles.switch}
                     name="switch"
                     value={this.state.value}
                     unselectable="on"

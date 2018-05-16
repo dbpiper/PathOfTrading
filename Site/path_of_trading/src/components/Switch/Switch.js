@@ -2,7 +2,7 @@ import Measure from 'react-measure';
 import classNames from 'classnames';
 
 import React from 'react';
-import s from './Switch.css';
+import styles from './Switch.css';
 
 import SwitchMiddle from '../../public/svg/Switch_Middle_59.06x30.81.svg';
 import SwitchOn from '../../public/svg/Switch_On_59.06x30.81.svg';
@@ -46,16 +46,16 @@ class Switch extends React.Component {
   }
 
   transition2to1(finishFunc) {
-    this.transition('two-to-one-animation', finishFunc, 166.667);
+    this.transition([styles.twoToOneAnimation], finishFunc, 166.667);
   }
 
   transition1to0(finishFunc) {
-    this.transition('one-to-zero-animation', finishFunc, 333.333);
+    this.transition([styles.oneToZeroAnimation], finishFunc, 333.333);
     // this.transition('', finishFunc, 333.333);
   }
 
   transition0to2(finishFunc) {
-    this.transition('zero-to-two-animation', finishFunc, 166.667);
+    this.transition([styles.zeroToTwoAnimation], finishFunc, 166.667);
   }
 
   handleClick() {
@@ -71,6 +71,8 @@ class Switch extends React.Component {
       case 0:
         this.transition0to2(finishFunc);
         break;
+      default:
+        alert("Error: invalid transition state!");
     }
 
   }
@@ -90,7 +92,7 @@ class Switch extends React.Component {
           }}
         >
           {({ measureRef }) =>
-            <div className="frame noselect"
+            <div className={[styles.frame, styles.noselect].join(' ')}
               ref={measureRef}
               onClick={() => this.handleClick()}
 
@@ -98,52 +100,56 @@ class Switch extends React.Component {
             >
               <img
                 className={classNames({
-                    "noselect": true,
-                    "switch": true,
-                    "switch-background": true,
-                    "middle": true,
-                    "hidden": this.props.value !== 2,
+                    [styles.noselect]: true,
+                    [styles.switch]: true,
+                    [styles.switchBackground]: true,
+                    [styles.middle]: true,
+                    [styles.hidden]: this.props.value !== 2,
                 })}
                 unselectable="on"
                 src={SwitchMiddle}
                 ref={(middleEle) => this.middleEle = middleEle}
+                alt=""
               />
               <img
                 className={classNames({
-                    "noselect": true,
-                    "switch": true,
-                    "switch-background": true,
-                    "on": true,
-                    "hidden": this.props.value !== 1,
+                    [styles.noselect]: true,
+                    [styles.switch]: true,
+                    [styles.switchBackground]: true,
+                    [styles.on]: true,
+                    [styles.hidden]: this.props.value !== 1,
                 })}
                 unselectable="on"
                 src={SwitchOn}
                 ref={(onEle) => this.onEle = onEle}
+                alt=""
               />
               <img
                 className={classNames({
-                    "noselect": true,
-                    "switch": true,
-                    "switch-background": true,
-                    "off": true,
-                    "hidden": this.props.value !== 0,
+                    [styles.noselect]: true,
+                    [styles.switch]: true,
+                    [styles.switchBackground]: true,
+                    [styles.off]: true,
+                    [styles.hidden]: this.props.value !== 0,
                 })}
                 unselectable="on"
                 src={SwitchOff}
                 ref={(offEle) => this.offEle = offEle}
+                alt=""
               />
               <img
                 className={classNames({
-                  "noselect": true,
-                  "switch": true,
-                  "switch-button": true,
-                  "button-2": this.props.value === 2,
-                  "button-1": this.props.value === 1,
-                  "button-0": this.props.value === 0,
+                  [styles.noselect]: true,
+                  [styles.switch]: true,
+                  [styles.switchButton]: true,
+                  [styles.button2]: this.props.value === 2,
+                  [styles.button1]: this.props.value === 1,
+                  [styles.button0]: this.props.value === 0,
                 })}
                 unselectable="on"
                 src={SwitchButton}
                 ref={(buttonEle) => this.buttonEle = buttonEle}
+                alt=""
               />
             </div>
           }
