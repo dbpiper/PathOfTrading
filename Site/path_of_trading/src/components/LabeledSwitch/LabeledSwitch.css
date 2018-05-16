@@ -3,8 +3,6 @@
   display: flex;
 
   align-items: center;
-
-  justify-content: center;
 }
 
 .switchLabel {
@@ -13,10 +11,10 @@
 
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 30px;
+  font-size: 20px;
   color: #FEFDFF;
 
-  margin-right: 2%;
+  margin-right: 20%;
 
 }
 

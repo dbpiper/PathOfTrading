@@ -11,10 +11,10 @@ class Textbox extends React.Component {
   render() {
     return (
       <span className="textboxContainer">
-        <input type="text" className="textbox" />
+        <input type="text" className="textbox" placeholder={this.props.placeholder} />
       </span>
     );
   }
 }
 
-export default(Textbox)
+export default Textbox

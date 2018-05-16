@@ -1,0 +1,25 @@
+.container-grid {
+  display: grid;
+
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  align-items: start;
+  justify-content: center;
+
+  grid-template-rows: 50px;
+  grid-template-columns: 15%;
+
+  grid-template-areas:
+    "one"
+    "two"
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
