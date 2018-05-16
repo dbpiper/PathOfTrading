@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import noselect from './noselect';
+import noselect from '../styles/noselect';
 
 import Arrow from '../public/svg/Arrow_23.198x15.468.svg';
 
@@ -18,6 +18,13 @@ const Button = styled.button`
       highlight: none;
       outline-width: 0;
       cursor: pointer;
+
+      width: 50px;
+      height: 45px;
+
+      -webkit-border-radius: 0 3px 3px 0;
+         -moz-border-radius: 0 3px 3px 0;
+              border-radius: 0 3px 3px 0;
 `;
 
 const Img = styled.img`

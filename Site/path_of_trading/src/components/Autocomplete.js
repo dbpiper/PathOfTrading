@@ -6,7 +6,11 @@ import Downshift from 'downshift';
 
 import styled, { css } from 'styled-components';
 
+import textbox from '../styles/textbox';
+
 import DropdownButton from './DropdownButton';
+
+
 
 const items = ['Red', 'Black', 'White', 'Blue', 'Green', 'Purple'];
 
@@ -39,30 +43,9 @@ const Item = styled.div`
     word-wrap: normal;
     color: #fff;
 
-    ${'' /* ${activeStyle}, */}
-
     ${(props) => props.isActive === true ? activeStyle : {}}
     ${(props) => props.isSelected === true ? selectedStyle : ''}
-  ${'' /* ({isActive, isSelected}) => {
-    const styles = []
-    if (isActive) {
-      styles.push({
-        color: 'rgba(0,0,0,.95)',
-        background: 'rgba(0,0,0,.03)',
-      })
-    }
-    if (isSelected) {
-      styles.push({
-        color: 'rgba(0,0,0,.95)',
-        fontWeight: '700',
-      })
-    }
-    return styles
-  } */}
 `;
-
-
-// const onAttention = '&:hover, &:focus'
 
 const Menu = styled.div`
   max-height: 20rem;
@@ -80,14 +63,18 @@ const Menu = styled.div`
   border-style: solid;
 `;
 
-const BoxDiv = styled.div`
+const Textbox = styled.div`
+  ${textbox}
+
+  &&& {
+    -webkit-border-radius: 3px 0 0 3px;
+       -moz-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
+  }
+`;
+
+const BoxButtonWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background-color: transparent;
-  border: 1px solid #ccc;
-  ${'' /* cursor: 'pointer', */}
 `;
 
 function advancedFilter(theItems, value) {
@@ -125,12 +112,20 @@ class Dropdown extends React.Component {
             <div
               style={{width: 500, margin: 'auto'}}
             >
-              <BoxDiv>
+              <BoxButtonWrapper>
+              <Textbox>
                 <div>
-                  {selectedItem}
+                  {(() => {
+                    if (selectedItem) {
+                      return selectedItem;
+                    } else {
+                      return this.props.placeholder;
+                    }
+                  })()}
                 </div>
+              </Textbox>
                 <DropdownButton {...getButtonProps()}/>
-              </BoxDiv>
+              </BoxButtonWrapper>
               {!isOpen ? null : (
                 <Menu>
                   {items.map((item, index) => (

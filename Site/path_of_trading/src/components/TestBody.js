@@ -69,7 +69,7 @@ class TestBody extends Component {
             onChange={selectedItem => console.log(selectedItem)}
           /> */}
 
-          <Autocomplete />
+          <Autocomplete placeholder="Mod"/>
           {/* <DropdownButton /> */}
         </GridArea>
       </Grid>
