@@ -13,17 +13,14 @@ class Switch extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dimensions: {
-        width: -1,
-        height: -1,
-      },
-    }
-
     this.handleClick = this.handleClick.bind(this);
     this.transition2to1 = this.transition2to1.bind(this);
     this.transition1to0 = this.transition1to0.bind(this);
     this.transition0to2 = this.transition0to2.bind(this);
+
+    this.state = {
+      value: 2,
+    }
 
     this.transition = this.transition.bind(this);
   }
@@ -51,7 +48,6 @@ class Switch extends React.Component {
 
   transition1to0(finishFunc) {
     this.transition([styles.oneToZeroAnimation], finishFunc, 333.333);
-    // this.transition('', finishFunc, 333.333);
   }
 
   transition0to2(finishFunc) {
@@ -60,8 +56,8 @@ class Switch extends React.Component {
 
   handleClick() {
 
-    const finishFunc = () => this.props.onClick(newValue(this.props.value));
-    switch(this.props.value) {
+    const finishFunc = () => this.setState({value: newValue(this.state.value)});
+    switch(this.state.value) {
       case 2:
         this.transition2to1(finishFunc);
         break;
@@ -79,81 +75,65 @@ class Switch extends React.Component {
 
 
   render() {
-      const { width, height } = this.state.dimensions;
       return (
-        <Measure
-          bounds
-          onResize={(contentRect)=> {
-            this.setState({ dimensions: {
-              width: contentRect.bounds.width,
-              height: contentRect.bounds.height,
-            }});
-            this.props.onResize(this.state.dimensions);
-          }}
+        <div className={[styles.frame, styles.noselect].join(' ')}
+          onClick={() => this.handleClick()}
+          unselectable="on"
         >
-          {({ measureRef }) =>
-            <div className={[styles.frame, styles.noselect].join(' ')}
-              ref={measureRef}
-              onClick={() => this.handleClick()}
-
-              unselectable="on"
-            >
-              <img
-                className={classNames({
-                    [styles.noselect]: true,
-                    [styles.switch]: true,
-                    [styles.switchBackground]: true,
-                    [styles.middle]: true,
-                    [styles.hidden]: this.props.value !== 2,
-                })}
-                unselectable="on"
-                src={SwitchMiddle}
-                ref={(middleEle) => this.middleEle = middleEle}
-                alt=""
-              />
-              <img
-                className={classNames({
-                    [styles.noselect]: true,
-                    [styles.switch]: true,
-                    [styles.switchBackground]: true,
-                    [styles.on]: true,
-                    [styles.hidden]: this.props.value !== 1,
-                })}
-                unselectable="on"
-                src={SwitchOn}
-                ref={(onEle) => this.onEle = onEle}
-                alt=""
-              />
-              <img
-                className={classNames({
-                    [styles.noselect]: true,
-                    [styles.switch]: true,
-                    [styles.switchBackground]: true,
-                    [styles.off]: true,
-                    [styles.hidden]: this.props.value !== 0,
-                })}
-                unselectable="on"
-                src={SwitchOff}
-                ref={(offEle) => this.offEle = offEle}
-                alt=""
-              />
-              <img
-                className={classNames({
-                  [styles.noselect]: true,
-                  [styles.switch]: true,
-                  [styles.switchButton]: true,
-                  [styles.button2]: this.props.value === 2,
-                  [styles.button1]: this.props.value === 1,
-                  [styles.button0]: this.props.value === 0,
-                })}
-                unselectable="on"
-                src={SwitchButton}
-                ref={(buttonEle) => this.buttonEle = buttonEle}
-                alt=""
-              />
-            </div>
-          }
-        </Measure>
+          <img
+            className={classNames({
+                [styles.noselect]: true,
+                [styles.switch]: true,
+                [styles.switchBackground]: true,
+                [styles.middle]: true,
+                [styles.hidden]: this.state.value !== 2,
+            })}
+            unselectable="on"
+            src={SwitchMiddle}
+            ref={(middleEle) => this.middleEle = middleEle}
+            alt=""
+          />
+          <img
+            className={classNames({
+                [styles.noselect]: true,
+                [styles.switch]: true,
+                [styles.switchBackground]: true,
+                [styles.on]: true,
+                [styles.hidden]: this.state.value !== 1,
+            })}
+            unselectable="on"
+            src={SwitchOn}
+            ref={(onEle) => this.onEle = onEle}
+            alt=""
+          />
+          <img
+            className={classNames({
+                [styles.noselect]: true,
+                [styles.switch]: true,
+                [styles.switchBackground]: true,
+                [styles.off]: true,
+                [styles.hidden]: this.state.value !== 0,
+            })}
+            unselectable="on"
+            src={SwitchOff}
+            ref={(offEle) => this.offEle = offEle}
+            alt=""
+          />
+          <img
+            className={classNames({
+              [styles.noselect]: true,
+              [styles.switch]: true,
+              [styles.switchButton]: true,
+              [styles.button2]: this.state.value === 2,
+              [styles.button1]: this.state.value === 1,
+              [styles.button0]: this.state.value === 0,
+            })}
+            unselectable="on"
+            src={SwitchButton}
+            ref={(buttonEle) => this.buttonEle = buttonEle}
+            alt=""
+          />
+        </div>
       );
   }
 }
@@ -169,7 +149,7 @@ function newValue(value) {
       return 2;
     }
   } else {
-    alert('error: switch value outside valid range');
+    alert('Error: switch value outside valid range');
   }
 }
 

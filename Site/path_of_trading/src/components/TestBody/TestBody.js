@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import LabeledSwitch from '../LabeledSwitch';
+import Label from '../Label';
+import Switch from '../Switch';
 import Textbox from '../Textbox';
-import LabeledRange from '../LabeledRange';
+import Range from '../Range';
 
 import styles from './TestBody.css';
 
@@ -10,14 +11,20 @@ class TestBody extends Component {
   render() {
     return (
       <div className={styles.containerGrid}>
-        <span className={styles.one}>
-          <LabeledSwitch label="Crafted" />
+        <span className={styles.oneOne}>
+          <Label value="Crafted" />
         </span>
-        <span className={styles.two}>
+        <span className={styles.oneTwo}>
+          <Switch label="Crafted" />
+        </span>
+        <span className={styles.twoOne}>
           <Textbox placeholder="Seller"/>
         </span>
-        <span className={styles.three}>
-          <LabeledRange label="Links" />
+        <span className={styles.threeOne}>
+          <Label value="Links" />
+        </span>
+        <span className={styles.threeTwo}>
+          <Range label="Links" />
         </span>
       </div>
     );

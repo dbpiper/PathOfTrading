@@ -1,31 +1,39 @@
 .containerGrid {
   display: grid;
 
-  /* grid-auto-flow: column dense; */
-
   margin-top: 20px;
   margin-bottom: 20px;
 
-  align-items: start;
+  align-items: center;
   justify-content: center;
 
   grid-template-rows: 50px 50px 50px;
-  grid-template-columns: 15%;
+  grid-template-columns: 230px 186px;
+
+  grid-row-gap: 25px;
 
   grid-template-areas:
-    "one one one"
-    "two two two"
-    "three three three"
+    "oneOne oneTwo"
+    "twoOne twoOne"
+    "threeOne threeTwo"
 }
 
-.one {
-  grid-area: one;
+.oneOne {
+  grid-area: oneOne;
 }
 
-.two {
-  grid-area: two;
+.oneTwo {
+  grid-area: oneTwo;
 }
 
-.three {
-  grid-area: three;
+.twoOne {
+  grid-area: twoOne;
+}
+
+.threeOne {
+  grid-area: threeOne;
+}
+
+.threeTwo {
+  grid-area: threeTwo;
 }
