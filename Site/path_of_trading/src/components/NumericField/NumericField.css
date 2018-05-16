@@ -1,8 +1,36 @@
 
+.numericFieldContainer {
+  position: relative;
+  display: flex;
+
+  align-items: center;
+
+}
+
 .numericField {
       border: 0px solid #000000;
       border-bottom-width: 1px;
       background-color: transparent;
+
+      padding-bottom: 0;
+
+      caret-color: #FEFDFF;
+      color: #FEFDFF;
+
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+
+      width: 25%;
+
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 5px;
+
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+         -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+              box-sizing: border-box;         /* Opera/IE 8+ */
 
 }
 
@@ -18,4 +46,31 @@ input::-webkit-inner-spin-button {
       border-bottom-width: 1px;
       background-color: transparent;
 
+}
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+.numericField::placeholder {
+  color: #FEFDFF;
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* Microsoft Edge */
+.numericField::-ms-input-placeholder {
+  color: #FEFDFF;
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+/* Internet Explorer 10-11 */
+.numericField:-ms-input-placeholder {
+  color: #FEFDFF;
+
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
 }

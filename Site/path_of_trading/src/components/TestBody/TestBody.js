@@ -10,10 +10,10 @@ class TestBody extends Component {
   render() {
     return (
       <div className={styles.containerGrid}>
-        <span className="one">
+        <span className={styles.one}>
           <LabeledSwitch label="Crafted" />
         </span>
-        <span className="two">
+        <span className={styles.two}>
           <Textbox placeholder="Seller"/>
         </span>
         <span className={styles.three}>
