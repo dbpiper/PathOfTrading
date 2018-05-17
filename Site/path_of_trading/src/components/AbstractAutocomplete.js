@@ -1,14 +1,14 @@
 import React from 'react'
-import matchSorter from 'match-sorter'
 import Downshift from 'downshift';
 import styled, { css } from 'styled-components';
-import { longestCommonSubstring } from 'string-algorithms';
 
 import textbox from '../styles/textbox';
 import standardFont from '../styles/standardFont';
 import textboxBackground from '../styles/textboxBackground';
+
 import DropdownButton from './DropdownButton';
-import Textbox from './Textbox';
+import HighlighedSubstringText from './HighlightedSubstringText';
+// import Textbox from './Textbox';
 
 import Constants from '../Constants';
 
@@ -21,18 +21,6 @@ const borderRadius = () => {
   return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
 };
 
-
-const items = [
-    {name: 'Red'},
-    {name: 'Black'},
-    {name: 'White'},
-    {name: 'Blue'},
-    {name: 'Green'},
-    {name: 'Purple'},
-    {name: 'Roy'},
-    {name: 'Alexander'},
-];
-
 const findLongestSubstring = (items: [string], value: string) => {
       let valueAndItems = items.slice();
       valueAndItems.push({name: value});
@@ -41,8 +29,6 @@ const findLongestSubstring = (items: [string], value: string) => {
       const valueAndItemsLower = valueAndItems.map(item => {
         return item.name.toLowerCase();
       });
-
-      console.log(valueAndItemsLower);
 
       let trie = new SuffixTrie({
         minLength: 2,
@@ -84,7 +70,7 @@ const suggest = (items, value) => {
       return {
         name: item.name,
         distance: dist,
-        longestSubstring: longestSubstring,
+        substring: longestSubstring,
       };
     });
 
@@ -184,33 +170,79 @@ const InnerItem = styled.div`
 //   }
 // `;
 
+const Textbox = styled.input.attrs({
+    type: "text",
+})`
+  ${textbox}
+`;
+
 const BoxButtonWrapper = styled.div`
   display: flex;
 `;
 
-// function advancedFilter(theItems, value) {
-//   return matchSorter(theItems, value, {
-//     keys: ['name'],
-//   })
-// }
+class AbstractAutocomplete extends React.Component {
+  constructor(props) {
+    super(props);
 
-class Dropdown extends React.Component {
-  // itemToString = item => (item ? item.name : '')
-  // handleChange = selectedItems => {
-  //   console.log({selectedItems})
-  // }
+    const items = [
+        Object.freeze({
+          name: 'Red',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Black',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'White',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Blue',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Green',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Purple',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Roy',
+          substring: '',
+        }),
+        Object.freeze({
+          name: 'Alexander',
+          substring: '',
+        }),
+    ];
+
+    this.state = {
+      items,
+      selectedItem: null,
+    }
+  }
+
+  itemToString = item => (item ? item.name : '')
+
+  handleChange = item => {
+    this.setState({
+      selectedItem: item,
+    });
+  }
   render() {
+    const { highlightedIndex, selectedItem, items } = this.state;
     return (
       <div
-        // style={{
-        //   display: 'flex',
-        //   justifyContent: 'center',
-        //   flexDirection: 'column',
-        //   textAlign: 'center',
-        // }}
       >
         <Downshift
           onChange={this.handleChange}
+          itemToString={this.itemToString}
+          selectedItem={selectedItem}
+          defaultHighlightedIndex={0}
+          items={items}
         >
           {({
             getButtonProps,
@@ -229,49 +261,20 @@ class Dropdown extends React.Component {
               }}
             >
               <BoxButtonWrapper>
-              {/* <Textbox */}
-              <input type="text"
+              <Textbox
                 {
                   ...getInputProps({
                     placeholder: this.props.placeholder,
                   })
                 }
               >
-              </input>
-              {/* </Textbox> */}
+              </Textbox>
                 <DropdownButton {...getButtonProps()}/>
               </BoxButtonWrapper>
-               {isOpen && (
-            <div
-              style={{
-                border: '1px solid rgba(34,36,38,.15)',
-                maxHeight: 100,
-                overflowY: 'scroll',
-              }}
-            >
-              {(inputValue ? suggest(items, inputValue) : items).map(
-                (item, index) => (
-                  <Item
-                    key={item.name}
-                    {...getItemProps({
-                      'data-test': `downshift-item-${index}`,
-                      item,
-                      isActive: highlightedIndex === index,
-                      isSelected: selectedItem === item.name,
-                    })}
-                  >
-                    {item.name + ' ' + item.longestSubstring}
-                  </Item>
-                ),
-              )}
-            </div>
-          )}
-              {/* {!isOpen ? null : (
+              {isOpen && (
                 <Menu>
-                  {(inputValue ? matchSorter(items, inputValue) : items
-                    .map((item, index) => (
-
-                    // items.map((item, index) => (
+                  {(inputValue ? suggest(items, inputValue) : items).map(
+                    (item, index) => (
                       <Item
                         key={index}
                         {
@@ -279,7 +282,7 @@ class Dropdown extends React.Component {
                             item,
                             index,
                             isActive: highlightedIndex === index,
-                            isSelected: selectedItem === item
+                            isSelected: (!selectedItem ? false : selectedItem.name === item.name),
                           })
                         }
                       >
@@ -290,18 +293,18 @@ class Dropdown extends React.Component {
                               item,
                               index,
                               isActive: highlightedIndex === index,
-                              isSelected: selectedItem === item
+                              isSelected: (!selectedItem ? false : selectedItem.name === item.name),
                             })
                           }
                         >
-                          {item}
+                          <HighlighedSubstringText item={item} />
                         </InnerItem>
                       </Item>
                     ),
-                  ))}
+                  )}
 
                 </Menu>
-              )} */}
+              )}
             </div>
           )}
         </Downshift>
@@ -310,4 +313,4 @@ class Dropdown extends React.Component {
   }
 }
 
-export default Dropdown;
+export default AbstractAutocomplete;
