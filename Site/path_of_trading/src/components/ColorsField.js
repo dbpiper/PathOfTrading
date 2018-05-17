@@ -4,44 +4,36 @@ import ColorField from './ColorField';
 
 import styled from 'styled-components';
 
-const ColorsContainer = styled.span`
-    ${'' /* & {
-      position: relative;
-      display: flex;
+import Constants from '../Constants';
 
-      align-items: center;
+const ColorsContainer = styled.span``;
 
-
-      width: 100%;
-    } */}
-`;
-
-function Range(props) {
+function ColorsField(props) {
   return (
     <ColorsContainer>
           <ColorField
-            underlineColor="#831929"
-            focusedUnderlineColor="#ea8f9d"
-            placeholder="Red"
+            placeholder={Constants.ColorComponents.Red.placeholder}
+            underlineColor={Constants.ColorComponents.Red.underlineColor}
+            focusedUnderlineColor={Constants.ColorComponents.Red.focusedUnderlineColor}
           />
           <ColorField
-            underlineColor="#5d9e0e"
-            focusedUnderlineColor="#82dd13"
-            placeholder="Green"
+            placeholder={Constants.ColorComponents.Green.placeholder}
+            underlineColor={Constants.ColorComponents.Green.underlineColor}
+            focusedUnderlineColor={Constants.ColorComponents.Green.focusedUnderlineColor}
           />
           <ColorField
-            underlineColor="#1031A7"
-            focusedUnderlineColor="#8fa5f4"
-            placeholder="Blue"
+            placeholder={Constants.ColorComponents.Blue.placeholder}
+            underlineColor={Constants.ColorComponents.Blue.underlineColor}
+            focusedUnderlineColor={Constants.ColorComponents.Blue.focusedUnderlineColor}
           />
           <ColorField
-            underlineColor="#dad3c1"
-            focusedUnderlineColor="#ffffff"
-            placeholder="White"
+            placeholder={Constants.ColorComponents.White.placeholder}
+            underlineColor={Constants.ColorComponents.White.underlineColor}
+            focusedUnderlineColor={Constants.ColorComponents.White.focusedUnderlineColor}
           />
 
     </ColorsContainer>
   );
 }
 
-export default Range
+export default ColorsField

@@ -1,15 +1,11 @@
 import React from 'react';
-
 import styled from 'styled-components';
+import standardFont from '../styles/standardFont';
+import Constants from '../Constants';
 
 const LabelEle = styled.label`
     & {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
-      color: #FEFDFF;
-
-      margin-right: 20%;
+      ${standardFont}
     }
 `;
 

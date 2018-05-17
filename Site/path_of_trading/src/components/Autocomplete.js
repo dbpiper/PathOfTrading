@@ -1,31 +1,94 @@
 import React, {Component} from 'react'
-// import glamorous, {Div} from 'glamorous'
-// import {css} from 'glamor'
 import matchSorter from 'match-sorter'
 import Downshift from 'downshift';
-
 import styled, { css } from 'styled-components';
-
 import textbox from '../styles/textbox';
-
+import standardFont from '../styles/standardFont';
+import textboxBackground from '../styles/textboxBackground';
 import DropdownButton from './DropdownButton';
+import Constants from '../Constants';
 
+const borderRadius = () => {
+  return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
+};
 
 
 const items = ['Red', 'Black', 'White', 'Blue', 'Green', 'Purple'];
 
 const activeStyle = css`
-    color: rgba(0,0,0,.95);
-    background: rgba(0,0,0,.03);
+    color: ${Constants.Colors.dropdownSelectedColor};
+    background: ${Constants.Colors.dropdownSelectedBackground};
 `;
 
 const selectedStyle = css`
-    color: rgba(0,0,0,.95);
-    fontWeight: 700;
+    border-left: ${Constants.Dropdown.Item.selectedAccent}${Constants.Dropdown.Item.selectedAccentUnit}
+    solid ${Constants.Colors.buttonPrimaryLight};
+    border-top: 0;
+    border-bottom: 0;
+`;
+
+const activeStyleInner = css`
+    color: ${Constants.Colors.dropdownSelectedColor};
+    background: ${Constants.Colors.dropdownSelectedBackground};
+`;
+
+const selectedStyleInner = css`
+    border-top: ${Constants.Dropdown.Item.selectedBorder}${Constants.Dropdown.Item.selectedBorderUnit}
+     solid ${Constants.Colors.offBorder}
+    border-bottom: ${Constants.Dropdown.Item.selectedBorder}${Constants.Dropdown.Item.selectedBorderUnit}
+     solid ${Constants.Colors.offBorder}
+`;
+
+const Menu = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 1;
+  max-height: 20rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-top-width: 0;
+  outline: 0;
+  transition: opacity .1s ease;
+  box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+
+  width: ${Constants.Textbox.width}${Constants.Textbox.widthUnit};
+
+  ${standardFont}
+  ${textboxBackground}
+
+  padding: 0;
+
+  margin-top: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
+
+  ${(props) => props.isOpen} {
+    display: block;
+  }
 `;
 
 const Item = styled.div`
-    position: relative;
+    ${'' /* cursor: pointer;
+    display: block;
+    border: none;
+    height: auto;
+    text-align: left;
+    border-top: none;
+    line-height: 1em;
+    text-transform: none;
+    box-shadow: none;
+    white-space: normal;
+    word-wrap: normal;
+
+    ${standardFont}
+
+    padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit}; */}
+
+    ${(props) => props.isActive === true ? activeStyle : {}}
+    ${(props) => props.isSelected === true ? selectedStyle : ''}
+
+
+`;
+
+const InnerItem = styled.div`
     cursor: pointer;
     display: block;
     border: none;
@@ -33,43 +96,28 @@ const Item = styled.div`
     text-align: left;
     border-top: none;
     line-height: 1em;
-    color: rgba(0,0,0,.87);
-    font-size: 1rem;
     text-transform: none;
-    font-weight: 400;
     box-shadow: none;
-    padding: .8rem 1.1rem;
     white-space: normal;
     word-wrap: normal;
-    color: #fff;
 
-    ${(props) => props.isActive === true ? activeStyle : {}}
-    ${(props) => props.isSelected === true ? selectedStyle : ''}
-`;
+    ${standardFont}
 
-const Menu = styled.div`
-  max-height: 20rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-top-width: 0;
-  outline: 0;
-  border-radius: 0 0 .28571429rem .28571429rem;
-  transition: opacity .1s ease;
-  box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
-  border-color: #96c8da;
-  border-right-width: 1;
-  border-bottom-width: 1;
-  border-left-width: 1;
-  border-style: solid;
+    padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit};
+
+    ${(props) => props.isActive === true ? activeStyleInner : {}}
+    ${(props) => props.isSelected === true ? selectedStyleInner : ''}
+
 `;
 
 const Textbox = styled.div`
   ${textbox}
 
   &&& {
-    -webkit-border-radius: 3px 0 0 3px;
-       -moz-border-radius: 3px 0 0 3px;
-            border-radius: 3px 0 0 3px;
+    padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit};
+    -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+       -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+            border-radius: ${borderRadius()} 0 0 ${borderRadius()};
   }
 `;
 
@@ -110,7 +158,10 @@ class Dropdown extends React.Component {
             highlightedIndex,
           }) => (
             <div
-              style={{width: 500, margin: 'auto'}}
+              style={{
+                position: 'relative',
+                display: 'inline-block',
+              }}
             >
               <BoxButtonWrapper>
               <Textbox>
@@ -140,7 +191,19 @@ class Dropdown extends React.Component {
                           })
                         }
                       >
-                        {item}
+                        <InnerItem
+                          key={index}
+                          {
+                            ...getItemProps({
+                              item,
+                              index,
+                              isActive: highlightedIndex === index,
+                              isSelected: selectedItem === item
+                            })
+                          }
+                        >
+                          {item}
+                        </InnerItem>
                       </Item>
                   ))}
 
@@ -150,7 +213,7 @@ class Dropdown extends React.Component {
           )}
         </Downshift>
       </div>
-    )
+    );
   }
 }
 

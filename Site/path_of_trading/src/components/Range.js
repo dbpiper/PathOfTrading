@@ -5,15 +5,6 @@ import NumericField from './NumericField';
 import styled from 'styled-components';
 
 const RangeContainer = styled.span`
-    ${'' /* & {
-      position: relative;
-      display: flex;
-
-      align-items: center;
-
-
-      width: 100%;
-    } */}
 `;
 
 function Range(props) {

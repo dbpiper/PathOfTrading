@@ -30,6 +30,7 @@ const Grid = styled.div`
     "threeOne threeTwo ."
     "fourOne fourTwo fourTwo"
     "fiveOne fiveOne ."
+    "sixOne sixOne ."
 `;
 
 const GridArea = styled.span`
@@ -64,13 +65,10 @@ class TestBody extends Component {
           />
         </GridArea>
         <GridArea area="fiveOne">
-          {/* <Autocomplete
-            items={['apple', 'orange', 'carrot']}
-            onChange={selectedItem => console.log(selectedItem)}
-          /> */}
-
           <Autocomplete placeholder="Mod"/>
-          {/* <DropdownButton /> */}
+        </GridArea>
+        <GridArea area="sixOne">
+          <Textbox placeholder="Mod"/>
         </GridArea>
       </Grid>
     );

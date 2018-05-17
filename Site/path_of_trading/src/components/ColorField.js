@@ -1,6 +1,6 @@
 import React from 'react';
-
 import AbstractNumericField from './AbstractNumericField';
+import Constants from '../Constants';
 
 function ColorField(props) {
   return (
@@ -8,8 +8,8 @@ function ColorField(props) {
       underlineColor={props.underlineColor}
       focusedUnderlineColor={props.focusedUnderlineColor}
       placeholder={props.placeholder}
-      min="0"
-      max="6"
+      min={Constants.ColorComponents.Shared.min}
+      max={Constants.ColorComponents.Shared.max}
     />
   );
 }

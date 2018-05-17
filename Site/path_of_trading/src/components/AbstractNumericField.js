@@ -1,14 +1,10 @@
 import React from 'react';
-
 import styled from 'styled-components';
+import standardFont from '../styles/standardFont';
+import Constants from '../Constants';
+
 
 const AbstractNumericFieldContainer = styled.span`
-    ${'' /* position: relative;
-    display: flex;
-
-    align-items: center;
-
-    width: 100%; */}
     width: 100%;
 `;
 
@@ -22,24 +18,22 @@ const AbstractNumericInput = styled.input.attrs({
 })`
     & {
       border: 0px solid ${props => props.underlineColor};
-      border-bottom-width: 1px;
+      border-bottom-width: ${Constants.AbstractNumericField.borderBottomWidth}${Constants.AbstractNumericField.borderBottomWidthUnit};
       background-color: transparent;
 
       padding-bottom: 0;
 
-      caret-color: #FEFDFF;
-      color: #FEFDFF;
+      caret-color: ${Constants.Colors.standardFont};
 
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
+      ${standardFont}
 
       width: ${props => boxWidth(props)}rem;
-      margin-right: 20px;
 
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 5px;
+      margin-right: ${Constants.AbstractNumericField.marginRight}${Constants.AbstractNumericField.marginRightUnit};
+
+      padding-top: ${Constants.AbstractNumericField.paddingTop}${Constants.AbstractNumericField.paddingTopUnit};
+      padding-right: ${Constants.AbstractNumericField.paddingRight}${Constants.AbstractNumericField.paddingRightUnit};
+      padding-bottom: ${Constants.AbstractNumericField.paddingBottom}${Constants.AbstractNumericField.paddingBottomUnit};
 
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
          -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -55,38 +49,26 @@ const AbstractNumericInput = styled.input.attrs({
 
     &:focus {
       border: 0px solid ${props => props.focusedUnderlineColor};
-      border-bottom-width: 1px;
+      border-bottom-width: ${Constants.AbstractNumericField.borderBottomWidth}${Constants.AbstractNumericField.borderBottomWidthUnit};
       background-color: transparent
       outline: none;
     }
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
-      color: #FEFDFF;
-
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
+      ${standardFont}
       padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
-      color: #FEFDFF;
-
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
+      ${standardFont}
       padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
-      color: #FEFDFF;
-
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      font-size: 20px;
+      ${standardFont}
       padding-left: ${props => boxWidth(props)*0.15625}rem;
     }
 `;
