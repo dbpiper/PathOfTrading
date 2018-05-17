@@ -267,9 +267,12 @@ class AbstractAutocomplete extends React.Component {
                     placeholder: this.props.placeholder,
                   })
                 }
+                innerRef={box => this.boxEle = box}
               >
               </Textbox>
-                <DropdownButton {...getButtonProps()}/>
+                <DropdownButton {...getButtonProps({
+                    onClick: () => {this.boxEle.focus();}
+                })}/>
               </BoxButtonWrapper>
               {isOpen && (
                 <Menu>
