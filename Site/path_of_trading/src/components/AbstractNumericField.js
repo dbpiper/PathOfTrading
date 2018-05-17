@@ -47,29 +47,36 @@ const AbstractNumericInput = styled.input.attrs({
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
 
+    & {
+      -moz-appearance:textfield;
+    }
+
     &:focus {
-      border: 0px solid ${props => props.focusedUnderlineColor};
       border-bottom-width: ${Constants.AbstractNumericField.borderBottomWidth}${Constants.AbstractNumericField.borderBottomWidthUnit};
       background-color: transparent
       outline: none;
+      border-bottom-color: ${props => props.focusedUnderlineColor};
+      transition-duration 250ms;
+      ${'' /* transition: all 0.3s ease-in-out 0s;
+      transform: scaleX(1); */}
     }
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
       ${standardFont}
-      padding-left: ${props => boxWidth(props)*0.15625}rem;
+      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
       ${standardFont}
-      padding-left: ${props => boxWidth(props)*0.15625}rem;
+      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
       ${standardFont}
-      padding-left: ${props => boxWidth(props)*0.15625}rem;
+      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
     }
 `;
 
