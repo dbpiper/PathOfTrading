@@ -4,10 +4,6 @@ import textbox from '../styles/textbox';
 
 
 const TextboxContainer = styled.span`
-  position: relative;
-  display: flex;
-
-  align-items: center;
 `;
 
 const TextboxInput = styled.input.attrs({
@@ -19,9 +15,7 @@ const TextboxInput = styled.input.attrs({
 
 function Textbox(props) {
     return (
-      <TextboxContainer>
         <TextboxInput placeholder={props.placeholder} />
-      </TextboxContainer>
     );
 }
 
