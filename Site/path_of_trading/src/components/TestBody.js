@@ -8,8 +8,7 @@ import Textbox from './Textbox';
 import Range from './Range';
 import ColorsField from './ColorsField';
 import Autocomplete from './Autocomplete';
-import Autosuggest from './Autosuggest';
-import AbstractAutocomplete from './AbstractAutocomplete';
+import Dropdown from './Dropdown';
 
 const Grid = styled.div`
   display: grid;
@@ -73,9 +72,11 @@ class TestBody extends Component {
           <Textbox placeholder="Mod"/>
         </GridArea>
         <GridArea area="sevenOne">
-          <AbstractAutocomplete placeholder="Mod"/>
-          {/* <Autosuggest /> */}
+          <Dropdown placeholder="Mod"/>
         </GridArea>
+        {/* <GridArea area="sevenOne">
+          <Autocomplete placeholder="Mod"/>
+        </GridArea> */}
       </Grid>
     );
   }

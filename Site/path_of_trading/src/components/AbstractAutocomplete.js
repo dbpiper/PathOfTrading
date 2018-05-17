@@ -159,22 +159,26 @@ const InnerItem = styled.div`
 
 `;
 
-// const Textbox = styled.div`
-//   ${textbox}
-//
-//   &&& {
-//     padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit};
-//     -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//        -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//             border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//   }
-// `;
-
 const Textbox = styled.input.attrs({
     type: "text",
 })`
   ${textbox}
 `;
+
+// if (!this.editable) {
+//
+//   Textbox = styled.div`
+//     ${textbox}
+//
+//     &&& {
+//       padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit};
+//       -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+//          -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+//               border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+//     }
+//   `;
+// }
+
 
 const BoxButtonWrapper = styled.div`
   display: flex;
@@ -233,7 +237,7 @@ class AbstractAutocomplete extends React.Component {
     });
   }
   render() {
-    const { highlightedIndex, selectedItem, items } = this.state;
+    const { selectedItem, items } = this.state;
     return (
       <div
       >
@@ -268,6 +272,7 @@ class AbstractAutocomplete extends React.Component {
                   })
                 }
                 innerRef={box => this.boxEle = box}
+                disabled={!this.props.editable}
               >
               </Textbox>
                 <DropdownButton {...getButtonProps({
