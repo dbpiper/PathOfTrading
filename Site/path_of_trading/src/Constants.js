@@ -89,6 +89,7 @@ const Constants = Object.freeze({
     },
     AbstractNumericField: {
       marginRight: 20,
+      smallMarginRight: 10,
       marginRightUnit: 'px',
 
       paddingTop: 10,
@@ -110,8 +111,10 @@ const Constants = Object.freeze({
       Standard: {
         fontFamily: "'Open Sans', sans-serif",
         fontWeight: 300,
-        fontSize: 20,
-        fontSizeUnit: 'px',
+        fontWeightSemiBold: 600,
+        fontSize: 1.25,
+        fontSizeSmall: 1,
+        fontSizeUnit: 'rem',
       }
     }
 });

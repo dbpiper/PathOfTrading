@@ -10,7 +10,8 @@ const AbstractNumericFieldContainer = styled.span`
 
 
 const boxWidth = (props) => {
-  return props.placeholder.length * 1.25;
+  return props.placeholder.length * 
+  (props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize);
 };
 
 const AbstractNumericInput = styled.input.attrs({
@@ -29,7 +30,7 @@ const AbstractNumericInput = styled.input.attrs({
 
       width: ${props => boxWidth(props)}rem;
 
-      margin-right: ${Constants.AbstractNumericField.marginRight}${Constants.AbstractNumericField.marginRightUnit};
+      margin-right: ${(props) => (props.small ? Constants.AbstractNumericField.smallMarginRight : Constants.AbstractNumericField.marginRight)}${Constants.AbstractNumericField.marginRightUnit};
 
       padding-top: ${Constants.AbstractNumericField.paddingTop}${Constants.AbstractNumericField.paddingTopUnit};
       padding-right: ${Constants.AbstractNumericField.paddingRight}${Constants.AbstractNumericField.paddingRightUnit};
@@ -64,19 +65,24 @@ const AbstractNumericInput = styled.input.attrs({
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
       ${standardFont}
-      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
+      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
       ${standardFont}
-      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
+      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
       ${standardFont}
-      ${'' /* padding-left: ${props => boxWidth(props)*0.15625}rem; */}
+      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+    }
+
+    &&& {
+
+      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 `;
 
@@ -84,11 +90,7 @@ function AbstractNumericField(props) {
   return (
     <AbstractNumericFieldContainer>
       <AbstractNumericInput
-        underlineColor={props.underlineColor}
-        focusedUnderlineColor={props.focusedUnderlineColor}
-        placeholder={props.placeholder}
-        min={props.min}
-        max={props.max}
+        {...props}
       />
     </AbstractNumericFieldContainer>
   );

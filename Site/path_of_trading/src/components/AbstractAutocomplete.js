@@ -8,18 +8,13 @@ import textboxBackground from '../styles/textboxBackground';
 
 import DropdownButton from './DropdownButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
-// import Textbox from './Textbox';
+import Textbox from './Textbox';
 
 import Constants from '../Constants';
 
 /* Old-school npm packages */
 const jaroWinkler = require('jaro-winkler');
 const SuffixTrie  = require('common-substrings').trie;
-
-
-const borderRadius = () => {
-  return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
-};
 
 const findLongestSubstring = (items: [string], value: string) => {
       let valueAndItems = items.slice();
@@ -118,7 +113,7 @@ const Menu = styled.div`
   box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
   max-height: 200px; //TODO: make into constant
 
-  width: ${Constants.Textbox.width}${Constants.Textbox.widthUnit};
+  width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
 
   ${standardFont}
   ${textboxBackground}
@@ -159,11 +154,16 @@ const InnerItem = styled.div`
 
 `;
 
-const Textbox = styled.input.attrs({
-    type: "text",
-})`
-  ${textbox}
-`;
+// const Textbox = styled.input.attrs({
+//     type: "text",
+// })`
+//   ${textbox}
+//
+//   &&& {
+//     width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
+//   }
+//   ${'' /* width: ${Constants.Textbox.width * 5}${Constants.Textbox.widthUnit} */}
+// `;
 
 // if (!this.editable) {
 //
@@ -196,6 +196,7 @@ class AbstractAutocomplete extends React.Component {
         Object.freeze({
           name: 'Black',
           substring: '',
+          ranged: true,
         }),
         Object.freeze({
           name: 'White',
@@ -273,6 +274,8 @@ class AbstractAutocomplete extends React.Component {
                 }
                 innerRef={box => this.boxEle = box}
                 disabled={!this.props.editable}
+                canBeRanged={this.props.canBeRanged}
+                isRanged={(!selectedItem ? false : selectedItem.ranged)}
               >
               </Textbox>
                 <DropdownButton {...getButtonProps({
@@ -280,7 +283,9 @@ class AbstractAutocomplete extends React.Component {
                 })}/>
               </BoxButtonWrapper>
               {isOpen && (
-                <Menu>
+                <Menu
+                  canBeRanged={this.props.canBeRanged}
+                >
                   {(inputValue ? suggest(items, inputValue) : items).map(
                     (item, index) => (
                       <Item

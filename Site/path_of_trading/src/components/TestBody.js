@@ -66,10 +66,10 @@ class TestBody extends Component {
           />
         </GridArea>
         <GridArea area="fiveOne">
-          <Autocomplete placeholder="Mod"/>
+          <Autocomplete placeholder="Mod" canBeRanged/>
         </GridArea>
         <GridArea area="sixOne">
-          <Textbox placeholder="Mod"/>
+          <Textbox placeholder="Mod" />
         </GridArea>
         <GridArea area="sevenOne">
           <Dropdown placeholder="Mod"/>

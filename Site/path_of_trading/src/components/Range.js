@@ -10,8 +10,8 @@ const RangeContainer = styled.span`
 function Range(props) {
   return (
     <RangeContainer>
-        <NumericField placeholder="Min" />
-        <NumericField placeholder="Max" />
+        <NumericField placeholder="Min" small={props.small}/>
+        <NumericField placeholder="Max" small={props.small}/>
     </RangeContainer>
   );
 }
