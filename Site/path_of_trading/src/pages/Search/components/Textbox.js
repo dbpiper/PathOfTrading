@@ -7,23 +7,43 @@ import Range from './Range';
 import Constants from '../../../constants/Constants';
 
 const borderRadius = (props) => {
-  return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
+  if (!props.search) {
+    return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
+  } else {
+    return Constants.SearchBox.borderRadus + Constants.SearchBox.borderRadiusUnit;
+  }
 };
 
-const textboxRadiusWithButton = css`
-   -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-      -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-           border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-`;
+const width = (props) => {
+  if (!props.search) {
+    return (Constants.Textbox.width * (props.canBeRanged ? 2 : 1)) + Constants.Textbox.widthUnit;
+  } else {
+    return (Constants.SearchBox.width * (props.canBeRanged ? 2 : 1)) + Constants.SearchBox.widthUnit;
+  }
+};
+
+const height = (props) => {
+  if (!props.search) {
+    return Constants.Textbox.height + Constants.Textbox.heightUnit;
+  } else {
+    return Constants.SearchBox.height + Constants.SearchBox.heightUnit;
+  }
+};
 
 const TextboxInput = styled.input.attrs({
   type: "text",
 })`
-  ${textbox}
+   ${textbox}
+
    &&& {
-     width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
-     ${props => props.hasButton && textboxRadiusWithButton}
-   }
+     width: ${props => width(props)};
+     height: ${props => height(props)};
+
+    ${props => props.hasButton && css`
+       -webkit-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+          -moz-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+               border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+    `}
 `;
 
 
@@ -36,8 +56,9 @@ const TextboxDiv = styled.div`
 const TextboxSibling = styled.div`
   ${TextboxDiv} > & {
     position: absolute;
-    display: ${props => props.canBeRanged && props.isRanged ? 'inline-block' : 'none'};
-    right: 0;
+    display: ${props => props.canBeRanged && props.isRanged ? 'flex' : 'none'};
+    right: ${Constants.Textbox.Ranged.rightOffset}${Constants.Textbox.Ranged.rightOffsetUnit};
+    bottom: ${Constants.Textbox.Ranged.bottomOffset}${Constants.Textbox.Ranged.bottomOffsetUnit};
   }
 `;
 
@@ -49,7 +70,7 @@ function Textbox(props) {
           {...props}
         />
         <TextboxSibling canBeRanged={props.canBeRanged} isRanged={props.isRanged}>
-          <Range small/>
+          <Range small={true}/>
         </TextboxSibling>
       </TextboxDiv>
     );
