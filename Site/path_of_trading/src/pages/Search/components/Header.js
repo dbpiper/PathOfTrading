@@ -16,7 +16,7 @@ function Heading(props) {
     <Div>
       {props.title}
 
-          <Dropdown placeholder="Hello"/>
+          <Dropdown placeholder="League"/>
 
     </Div>
   );
