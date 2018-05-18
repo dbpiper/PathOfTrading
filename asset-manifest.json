@@ -1,12 +1,11 @@
 {
-  "main.css": "static/css/main.3e11ef85.css",
-  "main.css.map": "static/css/main.3e11ef85.css.map",
-  "main.js": "static/js/main.d91eb36d.js",
-  "main.js.map": "static/js/main.d91eb36d.js.map",
+  "main.css": "static/css/main.2a4b40ca.css",
+  "main.css.map": "static/css/main.2a4b40ca.css.map",
+  "main.js": "static/js/main.7f907ae2.js",
+  "main.js.map": "static/js/main.7f907ae2.js.map",
   "static\\media\\Arrow_23.198x15.468.svg": "static/media/Arrow_23.198x15.468.b99f72df.svg",
   "static\\media\\Switch_Button_26.667x26.667.svg": "static/media/Switch_Button_26.667x26.667.aae21eb4.svg",
   "static\\media\\Switch_Middle_59.06x30.81.svg": "static/media/Switch_Middle_59.06x30.81.51024fcd.svg",
   "static\\media\\Switch_Off_59.06x30.81.svg": "static/media/Switch_Off_59.06x30.81.b93087b2.svg",
-  "static\\media\\Switch_On_59.06x30.81.svg": "static/media/Switch_On_59.06x30.81.54d9bb8a.svg",
-  "static\\media\\logo.svg": "static/media/logo.5d5d9eef.svg"
+  "static\\media\\Switch_On_59.06x30.81.svg": "static/media/Switch_On_59.06x30.81.54d9bb8a.svg"
 }
