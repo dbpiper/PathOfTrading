@@ -20,12 +20,27 @@ const splitText = (item) => {
   ];
 };
 
+const charCodeSum = (str) => {
+  let result = 0;
+  let len = str.length;
+
+  for (let i = 0; i < len; i++) {
+    result += str.charCodeAt(i);
+  }
+
+  if (result <= 0) {
+    result = Math.floor((Math.random()+1)*(1000+(Math.random()+1)));
+  }
+
+  return result;
+}
+
 function HighlighedSubstringText(props) {
   return (
     <div>
       {(splitText(props.item)).map(
         (textItem) => (
-        <HighlightableText key={textItem} textItem={textItem}/>
+        <HighlightableText key={charCodeSum(textItem)} textItem={textItem}/>
       ),
     )}
     </div>
