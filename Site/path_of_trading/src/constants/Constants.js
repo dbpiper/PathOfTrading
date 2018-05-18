@@ -161,6 +161,28 @@ const Constants = Object.freeze({
         fontSizeSmall: 1,
         fontSizeUnit: 'rem',
       }
+    },
+    Layout: {
+      Page: {
+        Search: {
+          Header: {
+              gridRows: [
+                  50,
+                  50,
+              ],
+              gridRowUnit: '%',
+              gridColumns: [
+                31.25,
+                13.0208333333333,
+              ],
+              gridColumnUnit: '%',
+          },
+          Body: {
+            Combat: {
+            }
+          }
+        }
+      }
     }
 });
 

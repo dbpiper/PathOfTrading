@@ -3,38 +3,41 @@ import styled from 'styled-components';
 
 import headingFont from '../../../shared/styles/headingFont';
 
+import Constants from '../../../constants/Constants';
+
 import Dropdown from './Dropdown';
 import SearchBox from './SearchBox';
 
-const Div = styled.div`
-    & {
-      ${headingFont}
-    }
+const gridRow = (rowNum) => {
+    return Constants.Layout.Page.Search.Header.gridRows[rowNum] +
+      Constants.Layout.Page.Search.Header.gridRowUnit;
+};
+
+const gridColumn = (colNum) => {
+    return Constants.Layout.Page.Search.Header.gridColumns[colNum] +
+      Constants.Layout.Page.Search.Header.gridColumnUnit;
+};
+
+const DivTest = styled.div`
+    ${headingFont}
+
+    display: block;
+    height: 25.0925925926%;
+    width: 100%;
 `;
 
 const Grid = styled.div`
   display: grid;
 
-  ${'' /* margin-top: 20px; */}
-
-  ${'' /* padding-top: 20px;
-  padding-bottom: 20px; */}
-
-  ${'' /* margin-bottom: 20px; */}
+  height: 100%;
+  width: 100%;
 
   align-items: center;
   justify-content: center;
 
-  grid-template-rows: 135.5px 135.5px;
+  grid-template-rows: ${gridRow(0)} ${gridRow(1)};
 
-  ${'' /* grid-template-rows: 50px 50px 50px 50px; */}
-  ${'' /* grid-template-columne: 230px 186px 400px; */}
-
-  ${'' /* grid-template-columns: 15.13955% 186px 400px; */}
-
-  ${'' /* grid-row-gap: 25px; */}
-
-  grid-template-columns: 600px 250px;
+  grid-template-columns: ${gridColumn(0)} ${gridColumn(1)};
 
   grid-template-areas:
     "title ."
@@ -50,9 +53,9 @@ const GridArea = styled.span`
   justify-content: center;
 `;
 
-function Heading(props) {
+function Header(props) {
   return (
-    <Div>
+    <DivTest>
       <Grid>
         <GridArea area="title">
           {props.title}
@@ -64,8 +67,8 @@ function Heading(props) {
           <Dropdown placeholder="League"/>
         </GridArea>
       </Grid>
-    </Div>
+    </DivTest>
   );
 }
 
-export default Heading;
+export default Header;
