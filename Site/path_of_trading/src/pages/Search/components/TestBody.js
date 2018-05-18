@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import styled from 'styled-components';
 
 import Label from './Label';
@@ -13,14 +12,17 @@ import Dropdown from './Dropdown';
 const Grid = styled.div`
   display: grid;
 
-  margin-top: 20px;
-  margin-bottom: 20px;
+  ${'' /* margin-top: 20px; */}
+  padding-top: 20px;
+  padding-bottom: 20px;
+  ${'' /* margin-bottom: 20px; */}
 
   align-items: center;
   justify-content: center;
 
   grid-template-rows: 50px 50px 50px 50px;
-  grid-template-columns: 230px 186px 400px;
+  ${'' /* grid-template-columne: 230px 186px 400px; */}
+  grid-template-columns: 15.13955% 186px 400px;
 
   grid-row-gap: 25px;
 

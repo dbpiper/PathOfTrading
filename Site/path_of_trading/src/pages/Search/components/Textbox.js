@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import textbox from '../styles/textbox';
+import textbox from '../../../shared/styles/textbox';
 
 import Range from './Range';
 
-import Constants from '../Constants';
+import Constants from '../../../constants/Constants';
 
 const TextboxInput = styled.input.attrs({
   type: "text",

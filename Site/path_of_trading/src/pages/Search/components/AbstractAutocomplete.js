@@ -2,15 +2,14 @@ import React from 'react'
 import Downshift from 'downshift';
 import styled, { css } from 'styled-components';
 
-import textbox from '../styles/textbox';
-import standardFont from '../styles/standardFont';
-import textboxBackground from '../styles/textboxBackground';
+import standardFont from '../../../shared/styles/standardFont';
+import textboxBackground from '../../../shared/styles/textboxBackground';
 
 import DropdownButton from './DropdownButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
 import Textbox from './Textbox';
 
-import Constants from '../Constants';
+import Constants from '../../../constants/Constants';
 
 /* Old-school npm packages */
 const jaroWinkler = require('jaro-winkler');

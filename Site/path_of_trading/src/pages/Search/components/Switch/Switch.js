@@ -3,27 +3,14 @@ import classNames from 'classnames';
 import React from 'react';
 import styles from './Switch.css';
 
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import SwitchMiddle from '../../public/svg/Switch_Middle_59.06x30.81.svg';
-import SwitchOn from '../../public/svg/Switch_On_59.06x30.81.svg';
-import SwitchOff from '../../public/svg/Switch_Off_59.06x30.81.svg';
-import SwitchButton from '../../public/svg/Switch_Button_26.667x26.667.svg';
+import noselect from '../../../../shared/styles/noselect';
 
-const noselect = css`
-   -webkit-tap-highlight-color: rgba(0,0,0,0);
-   -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
-`;
-
-const hidden = css`
-  display: none;
-`;
+import SwitchMiddle from '../../../../public/svg/Switch_Middle_59.06x30.81.svg';
+import SwitchOn from '../../../../public/svg/Switch_On_59.06x30.81.svg';
+import SwitchOff from '../../../../public/svg/Switch_Off_59.06x30.81.svg';
+import SwitchButton from '../../../../public/svg/Switch_Button_26.667x26.667.svg';
 
 const switchBackground = css`
   position: relative;

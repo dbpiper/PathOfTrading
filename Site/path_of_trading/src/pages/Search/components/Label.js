@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import standardFont from '../styles/standardFont';
-import Constants from '../Constants';
+
+import standardFont from '../../../shared/styles/standardFont';
 
 const LabelEle = styled.label`
     & {

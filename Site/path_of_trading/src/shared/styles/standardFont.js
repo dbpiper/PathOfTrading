@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import Constants from '../Constants';
+import Constants from '../../constants/Constants';
 
 const standardFont = css`
     color: ${Constants.Colors.standardFont};

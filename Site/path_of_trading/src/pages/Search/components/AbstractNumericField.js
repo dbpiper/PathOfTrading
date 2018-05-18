@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import standardFont from '../styles/standardFont';
-import Constants from '../Constants';
+import standardFont from '../../../shared/styles/standardFont';
+import Constants from '../../../constants/Constants';
 
 
 const AbstractNumericFieldContainer = styled.span`
@@ -10,7 +10,7 @@ const AbstractNumericFieldContainer = styled.span`
 
 
 const boxWidth = (props) => {
-  return props.placeholder.length * 
+  return props.placeholder.length *
   (props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize);
 };
 

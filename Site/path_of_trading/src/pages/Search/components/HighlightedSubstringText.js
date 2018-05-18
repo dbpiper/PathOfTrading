@@ -2,11 +2,6 @@ import React from 'react';
 
 import HighlightableText from './HighlightableText';
 
-import styled from 'styled-components';
-import standardFont from '../styles/standardFont';
-
-import Constants from '../Constants';
-
 const splitText = (item) => {
   let startOfSubstring = item.name.toLowerCase().indexOf(item.substring);
   return [

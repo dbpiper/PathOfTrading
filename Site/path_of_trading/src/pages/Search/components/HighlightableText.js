@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import standardFont from '../styles/standardFont';
-import Constants from '../Constants';
 
 const LabelEle = styled.label`
     & {

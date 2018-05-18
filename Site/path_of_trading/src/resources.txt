@@ -1,0 +1,2 @@
+Project Directory Structure:
+  https://stackoverflow.com/questions/36199769/component-based-react-redux-project-directory-structure

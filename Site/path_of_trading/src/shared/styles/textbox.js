@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import Constants from '../Constants';
+import Constants from '../../constants/Constants';
 import standardFont from './standardFont';
 import textboxBackground from './textboxBackground';
 
