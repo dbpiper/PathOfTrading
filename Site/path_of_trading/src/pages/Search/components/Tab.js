@@ -17,4 +17,4 @@ function Tab(props) {
   );
 }
 
-export default Tab
+export default Tab;

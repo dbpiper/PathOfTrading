@@ -8,4 +8,4 @@ function Autocomplete(props) {
   );
 }
 
-export default Autocomplete
+export default Autocomplete;

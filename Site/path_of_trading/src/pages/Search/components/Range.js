@@ -16,4 +16,4 @@ function Range(props) {
   );
 }
 
-export default Range
+export default Range;

@@ -17,4 +17,4 @@ class HighlightableText extends React.Component {
   }
 }
 
-export default HighlightableText
+export default HighlightableText;

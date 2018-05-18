@@ -21,4 +21,4 @@ function TabBar(props) {
   );
 }
 
-export default TabBar
+export default TabBar;

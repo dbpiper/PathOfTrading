@@ -13,4 +13,4 @@ function NumericField(props) {
   );
 }
 
-export default NumericField
+export default NumericField;

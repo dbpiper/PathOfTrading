@@ -32,4 +32,4 @@ function HighlighedSubstringText(props) {
   );
 }
 
-export default HighlighedSubstringText
+export default HighlighedSubstringText;

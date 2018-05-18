@@ -14,4 +14,4 @@ function ColorField(props) {
   );
 }
 
-export default ColorField
+export default ColorField;

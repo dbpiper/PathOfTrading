@@ -97,4 +97,4 @@ function AbstractNumericField(props) {
 }
 
 
-export default AbstractNumericField
+export default AbstractNumericField;

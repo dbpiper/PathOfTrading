@@ -181,4 +181,4 @@ function newValue(value) {
   }
 }
 
-export default(Switch)
+export default Switch;

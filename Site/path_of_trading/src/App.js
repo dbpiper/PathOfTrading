@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import TestBody from './pages/Search/components/TestBody';
+import SearchPage from './pages/Search/SearchPage';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <TestBody />
+      <SearchPage />
     );
   }
 }
