@@ -22,7 +22,7 @@ const TextboxDiv = styled.div`
 const TextboxSibling = styled.div`
   ${TextboxDiv} > & {
     position: absolute;
-    display: ${props => props.isRanged ? 'inline-block' : 'none'};
+    display: ${props => props.canBeRanged && props.isRanged ? 'inline-block' : 'none'};
     ${'' /* top: 25%;
     bottom: 25%; */}
     right: 0;
@@ -38,7 +38,7 @@ function Textbox(props) {
         <TextboxInput
           {...props}
         />
-        <TextboxSibling isRanged={props.isRanged}>
+        <TextboxSibling canBeRanged={props.canBeRanged} isRanged={props.isRanged}>
           <Range small/>
         </TextboxSibling>
       </TextboxDiv>
