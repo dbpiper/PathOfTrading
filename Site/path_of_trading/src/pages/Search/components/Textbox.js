@@ -1,10 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import textbox from '../../../shared/styles/textbox';
 
 import Range from './Range';
 
 import Constants from '../../../constants/Constants';
+
+const borderRadius = (props) => {
+  return Constants.Textbox.borderRadus + Constants.Textbox.borderRadiusUnit;
+};
+
+const textboxRadiusWithButton = css`
+   -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+      -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+           border-radius: ${borderRadius()} 0 0 ${borderRadius()};
+`;
 
 const TextboxInput = styled.input.attrs({
   type: "text",
@@ -12,22 +22,22 @@ const TextboxInput = styled.input.attrs({
   ${textbox}
    &&& {
      width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
+     ${props => props.hasButton && textboxRadiusWithButton}
    }
 `;
 
+
 const TextboxDiv = styled.div`
   position: relative;
+  display: flex;
+
 `;
 
 const TextboxSibling = styled.div`
   ${TextboxDiv} > & {
     position: absolute;
     display: ${props => props.canBeRanged && props.isRanged ? 'inline-block' : 'none'};
-    ${'' /* top: 25%;
-    bottom: 25%; */}
     right: 0;
-
-
   }
 `;
 

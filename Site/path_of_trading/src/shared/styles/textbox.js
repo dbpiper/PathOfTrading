@@ -74,4 +74,4 @@ const textbox = css`
   }
 `;
 
-export default textbox
+export default textbox;

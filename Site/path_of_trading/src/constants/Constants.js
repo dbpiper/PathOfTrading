@@ -15,8 +15,8 @@ const Constants = Object.freeze({
       buttonPrimary: '#79ADDC',
       buttonPrimaryLight: '#94bde3',
       textboxBackground: '#95A2A8', //'rgba(188, 212, 222, 0.42)',
-      // textboxBackgroundNoOpacity: '#95A2A8',
       standardFont: '#FEFDFF',
+      headingFont: '#FEFDFF',
       dropdownSelectedColor: '#304352',
       dropdownSelectedBackground: '#FEFDFF',
       underlineColor: '#0D0106',
@@ -106,7 +106,11 @@ const Constants = Object.freeze({
     },
     Fonts: {
       Heading: {
-
+        fontFamily: "'Playfair Display', serif",
+        fontWeightStandard: 400,
+        fontWeightBold: 700,
+        fontSize: 2.5,
+        fontSizeUnit: 'rem',
       },
       Standard: {
         fontFamily: "'Open Sans', sans-serif",

@@ -12,4 +12,4 @@ const textboxBackground = css`
               box-sizing: border-box;         /* Opera/IE 8+ */
 `;
 
-export default textboxBackground
+export default textboxBackground;

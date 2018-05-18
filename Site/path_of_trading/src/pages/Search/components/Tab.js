@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import standardFont from '../../../shared/styles/standardFont';
 
-const Div = styled.label`
+const Div = styled.div`
     & {
       ${standardFont}
     }

@@ -10,4 +10,4 @@ const standardFont = css`
     font-size: ${Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
 `;
 
-export default standardFont
+export default standardFont;

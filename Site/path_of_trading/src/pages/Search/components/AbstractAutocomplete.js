@@ -153,34 +153,17 @@ const InnerItem = styled.div`
 
 `;
 
-// const Textbox = styled.input.attrs({
-//     type: "text",
-// })`
-//   ${textbox}
-//
-//   &&& {
-//     width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
-//   }
-//   ${'' /* width: ${Constants.Textbox.width * 5}${Constants.Textbox.widthUnit} */}
-// `;
-
-// if (!this.editable) {
-//
-//   Textbox = styled.div`
-//     ${textbox}
-//
-//     &&& {
-//       padding: ${Constants.Textbox.padding}${Constants.Textbox.paddingUnit};
-//       -webkit-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//          -moz-border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//               border-radius: ${borderRadius()} 0 0 ${borderRadius()};
-//     }
-//   `;
-// }
-
 
 const BoxButtonWrapper = styled.div`
   display: flex;
+  margin: 0;
+  padding: 0;
+  align-items: start;
+
+  ${'' /* align-items: center;
+  justify-content: center; */}
+
+  ${'' /* display: inline-block; */}
 `;
 
 class AbstractAutocomplete extends React.Component {
@@ -258,12 +241,7 @@ class AbstractAutocomplete extends React.Component {
             getInputProps,
             inputValue,
           }) => (
-            <div
-              style={{
-                position: 'relative',
-                display: 'inline-block',
-              }}
-            >
+            <span>
               <BoxButtonWrapper>
               <Textbox
                 {
@@ -275,6 +253,7 @@ class AbstractAutocomplete extends React.Component {
                 disabled={!this.props.editable}
                 canBeRanged={this.props.canBeRanged}
                 isRanged={(!selectedItem ? false : selectedItem.ranged)}
+                hasButton
               >
               </Textbox>
                 <DropdownButton {...getButtonProps({
@@ -317,7 +296,7 @@ class AbstractAutocomplete extends React.Component {
 
                 </Menu>
               )}
-            </div>
+            </span>
           )}
         </Downshift>
       </div>

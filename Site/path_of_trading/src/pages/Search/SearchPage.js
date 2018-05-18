@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 
+import styled from 'styled-components';
+
+import Header from './components/Header';
 import TestBody from './components/TestBody';
 
-// import logo from './logo.svg';
-// import './App.css';
+const Div = styled.label`
+    ${'' /* & {
+      ${headingFont}
+    } */}
+`;
 
 class SearchPage extends Component {
   render() {
     return (
-      <TestBody />
+      <Div>
+        <Header title="Path of Trading"/>
+        <TestBody />
+      </Div>
     );
   }
 }
