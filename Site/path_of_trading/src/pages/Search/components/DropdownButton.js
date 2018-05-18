@@ -1,11 +1,7 @@
 import React from 'react';
-
-import styled, { css } from 'styled-components';
-
+import styled from 'styled-components';
 import noselect from '../../../shared/styles/noselect';
-
 import Arrow from '../../../public/svg/Arrow_23.198x15.468.svg';
-
 import Constants from '../../../constants/Constants';
 
 const borderRadius = () => {
@@ -30,10 +26,6 @@ const Button = styled.button`
       -webkit-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
          -moz-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
               border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
-
-      ${props => props.search && css`
-          display: none;
-      `}
 `;
 
 const Img = styled.img`
@@ -43,7 +35,7 @@ const Img = styled.img`
 
 function DropdownButton(props) {
   return (
-      <Button {...props} onClick={props.onClick}>
+      <Button onClick={props.onClick}>
         <Img src={Arrow} />
       </Button>
   );

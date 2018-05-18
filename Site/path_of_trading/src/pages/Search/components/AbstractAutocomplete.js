@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import standardFont from '../../../shared/styles/standardFont';
 import textboxBackground from '../../../shared/styles/textboxBackground';
 
-import AutocompleteButton from './AutocompleteButton';
+import DropdownButton from './DropdownButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
 import Textbox from './Textbox';
 
@@ -209,8 +209,7 @@ class AbstractAutocomplete extends React.Component {
     this.state = {
       items,
       selectedItem: null,
-    };
-
+    }
   }
 
   itemToString = item => (item ? item.name : '')
@@ -222,23 +221,6 @@ class AbstractAutocomplete extends React.Component {
   }
   render() {
     const { selectedItem, items } = this.state;
-    const makeAutocompleteProps = (getButtonProps) => {
-      let buttonProps = {};
-      if (!this.props.search) {
-        buttonProps =
-        (getButtonProps({
-          onClick: () => {this.boxEle.focus();}
-        }));
-      } else {
-        buttonProps = {
-          onClick: () => {alert('search!');}
-        }
-      }
-      return ({
-        ...buttonProps,
-        search: this.props.search,
-      });
-    };
     return (
       <div
       >
@@ -272,10 +254,11 @@ class AbstractAutocomplete extends React.Component {
                 canBeRanged={this.props.canBeRanged}
                 isRanged={(!selectedItem ? false : selectedItem.ranged)}
                 hasButton
-                search={this.props.search}
               >
               </Textbox>
-                <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))} />
+                <DropdownButton {...getButtonProps({
+                    onClick: () => {this.boxEle.focus();}
+                })}/>
               </BoxButtonWrapper>
               {isOpen && (
                 <Menu
