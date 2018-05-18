@@ -25,6 +25,7 @@ const DivTest = styled.div`
     width: 100%;
 `;
 
+<<<<<<< HEAD
 const Grid = styled.div`
   display: grid;
 
@@ -67,6 +68,16 @@ function Header(props) {
         </GridArea>
       </Grid>
     </DivTest>
+=======
+function Heading(props) {
+  return (
+    <Div>
+      {props.title}
+
+          <Dropdown placeholder="League"/>
+
+    </Div>
+>>>>>>> parent of 1367e4c... Fix header layout. Add SearchBox and SearchButton components, and add support for them in AbstractAutocomplete and the components it uses.
   );
 }
 
