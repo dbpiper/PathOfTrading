@@ -4,7 +4,7 @@ import AbstractAutocomplete from './AbstractAutocomplete';
 
 function Dropdown(props) {
   return (
-    <AbstractAutocomplete {...props}/>
+    <AbstractAutocomplete {...props} canBeRanged={false}/>
   );
 }
 

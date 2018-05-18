@@ -1,7 +1,49 @@
 const Constants = Object.freeze({
 
+    Buttons: {
+      Dropdown: {
+        paddingTop: 10,
+        paddingBottom: 4,
+        paddingLeft: 8,
+        paddingRight: 8,
+
+        paddingTopUnit: 'px',
+        paddingBottomUnit: 'px',
+        paddingLeftUnit: 'px',
+        paddingRightUnit: 'px',
+
+        width: 64,
+        height: 53,
+
+        widthUnit: 'px',
+        heightUnit: 'px',
+
+        borderRadus: 3, //only on top right and bottom right
+        borderRadiusUnit: 'px',
+      },
+      Search: {
+        paddingTop: 10,
+        paddingBottom: 4,
+        paddingLeft: 8,
+        paddingRight: 8,
+
+        paddingTopUnit: 'px',
+        paddingBottomUnit: 'px',
+        paddingLeftUnit: 'px',
+        paddingRightUnit: 'px',
+
+        width: 100,
+        height: 63,
+
+        widthUnit: 'px',
+        heightUnit: 'px',
+
+        borderRadus: 3, //only on top right and bottom right
+        borderRadiusUnit: 'px',
+      },
+    },
     Textbox: {
-      height: 45,
+      height: 53,
       width: 180,
       heightUnit: 'px',
       widthUnit: 'px',
@@ -10,6 +52,27 @@ const Constants = Object.freeze({
 
       borderRadus: 3,
       borderRadiusUnit: 'px',
+
+      Ranged: {
+        rightOffset: 0,
+        bottomOffset: 17.3761946134,
+        rightOffsetUnit: '%',
+        bottomOffsetUnit: '%',
+      }
+    },
+    SearchBox: {
+      height: 63,
+      width: 430,
+      heightUnit: 'px',
+      widthUnit: 'px',
+      padding: '10',
+      paddingUnit: 'px',
+
+      borderRadus: 3,
+      borderRadiusUnit: 'px',
+    },
+    Strings: {
+      search: "Search",
     },
     Colors: {
       buttonPrimary: '#79ADDC',
@@ -37,28 +100,6 @@ const Constants = Object.freeze({
         selectedAccent: 5,
         selectedAccentUnit: 'px',
 
-      },
-    },
-    Buttons: {
-      Dropdown: {
-        paddingTop: 10,
-        paddingBottom: 4,
-        paddingLeft: 8,
-        paddingRight: 8,
-
-        paddingTopUnit: 'px',
-        paddingBottomUnit: 'px',
-        paddingLeftUnit: 'px',
-        paddingRightUnit: 'px',
-
-        width: 50,
-        height: 45,
-
-        widthUnit: 'px',
-        heightUnit: 'px',
-
-        borderRadus: 3, //only on top right and bottom right
-        borderRadiusUnit: 'px',
       },
     },
     ColorComponents: {
