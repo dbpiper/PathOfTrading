@@ -25,7 +25,7 @@ function HighlighedSubstringText(props) {
     <div>
       {(splitText(props.item)).map(
         (textItem) => (
-        <HighlightableText textItem={textItem}/>
+        <HighlightableText key={textItem} textItem={textItem}/>
       ),
     )}
     </div>
