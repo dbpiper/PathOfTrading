@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import standardFont from '../../../shared/styles/standardFont';
-import Constants from '../../../constants/Constants';
+import standardFont from 'shared/styles/standardFont';
+import Constants from 'constants/Constants';
 
 
 const AbstractNumericFieldContainer = styled.span`

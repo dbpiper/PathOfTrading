@@ -1,6 +1,6 @@
 import React from 'react';
 import AbstractNumericField from './AbstractNumericField';
-import Constants from '../../../constants/Constants';
+import Constants from 'constants/Constants';
 
 function ColorField(props) {
   return (

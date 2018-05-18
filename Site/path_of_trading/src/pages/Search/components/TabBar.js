@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import standardFont from '../../../shared/styles/standardFont';
+import standardFont from 'shared/styles/standardFont';
 
 import Tab from './Tab';
 

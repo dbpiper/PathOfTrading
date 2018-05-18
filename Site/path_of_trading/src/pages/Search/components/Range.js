@@ -1,8 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import NumericField from './NumericField';
 
-import styled from 'styled-components';
 
 const RangeContainer = styled.span`
 `;

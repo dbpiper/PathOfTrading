@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import headingFont from '../../../shared/styles/headingFont';
+import headingFont from 'shared/styles/headingFont';
 
-import Constants from '../../../constants/Constants';
+import Constants from 'constants/Constants';
 
 import Dropdown from './Dropdown';
 import SearchBox from './SearchBox';

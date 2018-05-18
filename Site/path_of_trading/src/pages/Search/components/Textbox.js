@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import textbox from '../../../shared/styles/textbox';
+
+import textbox from 'shared/styles/textbox';
+
+import Constants from 'constants/Constants';
 
 import Range from './Range';
-
-import Constants from '../../../constants/Constants';
 
 const borderRadius = (props) => {
   if (!props.search) {

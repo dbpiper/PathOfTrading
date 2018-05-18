@@ -107,6 +107,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-styled-components": "^1.5.1",
     "gh-pages": "^1.1.0",
     "glamor": "^2.20.40",

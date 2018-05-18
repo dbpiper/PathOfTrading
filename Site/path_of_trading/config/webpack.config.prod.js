@@ -151,6 +151,11 @@ module.exports = {
             options: {
 
               compact: true,
+              plugins: [
+                ['babel-plugin-module-resolver', {
+                  "root": "./src",
+                }],
+              ],
             },
           },
           // The notation here is somewhat confusing.

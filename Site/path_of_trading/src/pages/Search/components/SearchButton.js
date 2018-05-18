@@ -2,10 +2,11 @@ import React from 'react';
 
 import styled, { css } from 'styled-components';
 
-import standardFont from '../../../shared/styles/standardFont';
-import noselect from '../../../shared/styles/noselect';
+import Constants from 'constants/Constants';
 
-import Constants from '../../../constants/Constants';
+import standardFont from 'shared/styles/standardFont';
+import noselect from 'shared/styles/noselect';
+
 
 const borderRadius = () => {
   return Constants.Buttons.Search.borderRadus + Constants.Buttons.Search.borderRadiusUnit;

@@ -4,7 +4,7 @@ import ColorField from './ColorField';
 
 import styled from 'styled-components';
 
-import Constants from '../../../constants/Constants';
+import Constants from 'constants/Constants';
 
 const ColorsContainer = styled.span``;
 

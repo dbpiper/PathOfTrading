@@ -1,6 +1,8 @@
 import React from 'react';
+
+import Constants from 'constants/Constants';
+
 import AbstractNumericField from './AbstractNumericField';
-import Constants from '../../../constants/Constants';
 
 function NumericField(props) {
   return (

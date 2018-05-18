@@ -154,6 +154,11 @@ module.exports = {
               //     "displayName": true,
               //   }],
               // ],
+              plugins: [
+                ['babel-plugin-module-resolver', {
+                  "root": "./src",
+                }],
+              ],
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.

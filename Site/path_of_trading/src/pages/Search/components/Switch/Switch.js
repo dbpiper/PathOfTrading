@@ -5,12 +5,12 @@ import styles from './Switch.css';
 
 import styled, { css } from 'styled-components';
 
-import noselect from '../../../../shared/styles/noselect';
+import noselect from 'shared/styles/noselect';
 
-import SwitchMiddle from '../../../../public/svg/Switch_Middle_59.06x30.81.svg';
-import SwitchOn from '../../../../public/svg/Switch_On_59.06x30.81.svg';
-import SwitchOff from '../../../../public/svg/Switch_Off_59.06x30.81.svg';
-import SwitchButton from '../../../../public/svg/Switch_Button_26.667x26.667.svg';
+import SwitchMiddle from 'public/svg/Switch_Middle_59.06x30.81.svg';
+import SwitchOn from 'public/svg/Switch_On_59.06x30.81.svg';
+import SwitchOff from 'public/svg/Switch_Off_59.06x30.81.svg';
+import SwitchButton from 'public/svg/Switch_Button_26.667x26.667.svg';
 
 const switchBackground = css`
   position: relative;

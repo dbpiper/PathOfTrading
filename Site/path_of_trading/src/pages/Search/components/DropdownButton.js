@@ -2,11 +2,11 @@ import React from 'react';
 
 import styled, { css } from 'styled-components';
 
-import noselect from '../../../shared/styles/noselect';
+import noselect from 'shared/styles/noselect';
 
-import Arrow from '../../../public/svg/Arrow_23.198x15.468.svg';
+import Arrow from 'public/svg/Arrow_23.198x15.468.svg';
 
-import Constants from '../../../constants/Constants';
+import Constants from 'constants/Constants';
 
 const borderRadius = () => {
   return Constants.Buttons.Dropdown.borderRadus + Constants.Buttons.Dropdown.borderRadiusUnit;
