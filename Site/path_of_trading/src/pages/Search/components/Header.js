@@ -22,8 +22,8 @@ const DivTest = styled.div`
     ${headingFont}
 
     display: block;
-    height: 25.0925925926%;
-    width: 100%;
+    height: ${Constants.Layout.Page.Search.Header.height}${Constants.Layout.Page.Search.Header.heightUnit};
+    width: ${Constants.Layout.Page.Search.Header.width}${Constants.Layout.Page.Search.Header.widthUnit};
 `;
 
 const Grid = styled.div`

@@ -157,6 +157,7 @@ const Constants = Object.freeze({
         fontFamily: "'Open Sans', sans-serif",
         fontWeight: 300,
         fontWeightSemiBold: 600,
+        fontSizeHeading: 1.5625,
         fontSize: 1.25,
         fontSizeSmall: 1,
         fontSizeUnit: 'rem',
@@ -167,18 +168,47 @@ const Constants = Object.freeze({
         Search: {
           Header: {
               gridRows: [
-                  50,
-                  50,
+                  40,
+                  40,
               ],
               gridRowUnit: '%',
               gridColumns: [
-                31.25,
+                40,
                 13.0208333333333,
               ],
               gridColumnUnit: '%',
+              width: 100,
+              height: 30,
+              widthUnit: '%',
+              heightUnit: '%',
           },
           Body: {
             Combat: {
+              gridRows: [
+                  // 9.25925925926,
+                  15,
+                  9.25925925926,
+                  9.25925925926,
+                  9.25925925926,
+                  9.25925925926,
+                  9.25925925926,
+                  9.25925925926,
+              ],
+              gridRowUnit: '%',
+              gridColumns: [
+                9,
+                9,
+                5,
+                9,
+                9,
+              ],
+              gridColumnUnit: '%',
+              width: 100,
+              height: 70,
+              widthUnit: '%',
+              heightUnit: '%',
+              gridLeftMargin: 5,
+              gridLeftMarginUnit: '%',
             }
           }
         }
