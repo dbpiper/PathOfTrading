@@ -164,6 +164,15 @@ const Constants = Object.freeze({
       }
     },
     Layout: {
+      MediaQuery: {
+        PortraitPhone: 0,
+        LandscapePhone: 1,
+        PortraitTablet: 2,
+        LandscapeTablet: 3,
+        SmallDesktop: 4,
+        MediumDesktop: 5,
+        LargeDesktop: 6,
+      },
       Page: {
         Search: {
           Header: {
@@ -176,7 +185,23 @@ const Constants = Object.freeze({
                 40,
                 13.0208333333333,
               ],
-              gridColumnUnit: '%',
+
+              gridColumnsPortraitPhone:
+                [ 400, 150],
+              gridColumnsLandscapePhone:
+                [ 450, 175],
+              gridColumnsPortraitTablet:
+                [ 500, 200],
+              gridColumnsLanscapeTablet:
+                [ 550, 225], //TODO: fix the size of search box at this scale
+              gridColumnsSmallDesktop:
+                [ 600, 250],
+              gridColumnsMediumDesktop:
+                [ 650, 275],
+              gridColumnsLargeDesktop:
+                [ 700, 300],
+
+              gridColumnUnit: 'px',
               width: 100,
               height: 30,
               widthUnit: '%',
@@ -195,19 +220,29 @@ const Constants = Object.freeze({
                   9.25925925926,
               ],
               gridRowUnit: '%',
-              gridColumns: [
-                9,
-                9,
-                5,
-                9,
-                9,
-              ],
-              gridColumnUnit: '%',
+
+              gridColumns: [ 9, 9, 5, 9, 9, ],
+              gridColumnsPortraitPhone:
+                [ 200, 200, 100, 200, 200, ],
+              gridColumnsLandscapePhone:
+                [ 200, 200, 100, 200, 200, ],
+              gridColumnsPortraitTablet:
+                [ 200, 200, 100, 200, 200, ],
+              gridColumnsLanscapeTablet:
+                [ 200, 200, 1, 200, 200, ], //TODO: fix ui elements
+              gridColumnsSmallDesktop:
+                [ 200, 200, 1, 200, 200, ],
+              gridColumnsMediumDesktop:
+                [ 200, 200, 1, 200, 200, ],
+              gridColumnsLargeDesktop:
+                [ 200, 200, 1, 200, 200, ],
+
+              gridColumnUnit: 'px',
               width: 100,
               height: 70,
               widthUnit: '%',
               heightUnit: '%',
-              gridLeftMargin: 5,
+              gridLeftMargin: 2,
               gridLeftMarginUnit: '%',
             }
           }
