@@ -223,19 +223,19 @@ const Constants = Object.freeze({
 
               gridColumns: [ 9, 9, 5, 9, 9, ],
               gridColumnsPortraitPhone:
-                [ 200, 200, 100, 200, 200, ],
+                [ 150, 200, 1, 150, 200, ],
               gridColumnsLandscapePhone:
-                [ 200, 200, 100, 200, 200, ],
+                [ 150, 200, 1, 150, 200, ],
               gridColumnsPortraitTablet:
-                [ 200, 200, 100, 200, 200, ],
+                [ 150, 200, 1, 150, 200, ],
               gridColumnsLanscapeTablet:
-                [ 200, 200, 1, 200, 200, ], //TODO: fix ui elements
+                [ 150, 200, 10, 150, 200, ], // TODO: fix ui elements <= this level
               gridColumnsSmallDesktop:
-                [ 200, 200, 1, 200, 200, ],
+                [ 150, 200, 20, 150, 200, ],
               gridColumnsMediumDesktop:
-                [ 200, 200, 1, 200, 200, ],
+                [ 150, 200, 50, 150, 200, ],
               gridColumnsLargeDesktop:
-                [ 200, 200, 1, 200, 200, ],
+                [ 150, 200, 80, 150, 200, ],
 
               gridColumnUnit: 'px',
               width: 100,
