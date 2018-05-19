@@ -173,7 +173,6 @@ const GridArea = styled.span`
   display: flex;
 
   align-items: center;
-  justify-content: center;
 `;
 
 const HeadingGridArea = GridArea.extend`
