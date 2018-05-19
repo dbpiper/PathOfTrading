@@ -59,12 +59,10 @@ const Grid = styled.div`
   height: 100%;
   width: 100%;
 
-  align-items: center;
   justify-content: center;
 
   grid-template-rows: ${gridRow(0)} ${gridRow(1)} ${gridRow(2)} ${gridRow(3)}
   ${gridRow(4)} ${gridRow(5)} ${gridRow(6)};
-  ${'' /* grid-template-columns: ${gridColumn(0)} ${gridColumn(1)} ${gridColumn(2)} ${gridColumn(3)} ${gridColumn(4)}; */}
 
   grid-template-areas:
     "offenseLabel offenseLabel . defenseLabel defenseLabel"
@@ -80,8 +78,8 @@ const Grid = styled.div`
 
   /* Large Laptops / Medium Desktops */
   @media only screen
-    and (min-device-width: 1201px)
-    and (max-device-width: 1600px)
+    and (min-width: 1201px)
+    and (max-width: 1600px)
     {
 
     grid-template-columns:
@@ -94,8 +92,8 @@ const Grid = styled.div`
 
   /* Small Desktop/Laptop */
   @media only screen
-    and (min-device-width: 980px)
-    and (max-device-width: 1200px)
+    and (min-width: 980px)
+    and (max-width: 1200px)
     {
 
     grid-template-columns:
@@ -146,7 +144,8 @@ const Grid = styled.div`
   }
 
   /* Portrait phones */
-  @media only screen and (max-width: 320px) {
+  @media only screen
+  and (max-width: 320px) {
     grid-template-columns:
     ${gridColumn(0, Constants.Layout.MediaQuery.PortraitPhone)}
     ${gridColumn(1, Constants.Layout.MediaQuery.PortraitPhone)}
@@ -156,7 +155,8 @@ const Grid = styled.div`
   }
 
     /* Large desktop */
-  @media only screen and (min-width: 1601px) {
+  @media only screen
+  and (min-width: 1601px) {
 
     grid-template-columns:
     ${gridColumn(0, Constants.Layout.MediaQuery.LargeDesktop)}

@@ -78,7 +78,7 @@ const Grid = styled.div`
 
   /* Large desktop */
   @media only screen
-  (min-width: 1601px) {
+  and (min-width: 1601px) {
 
     grid-template-columns:
     ${gridColumn(0, Constants.Layout.MediaQuery.LargeDesktop)}
@@ -88,8 +88,8 @@ const Grid = styled.div`
 
   /* Large Laptops / Medium Desktops */
   @media only screen
-    and (min-device-width: 1201px)
-    and (max-device-width: 1600px)
+    and (min-width: 1201px)
+    and (max-width: 1600px)
     {
 
     grid-template-columns:
@@ -99,8 +99,8 @@ const Grid = styled.div`
 
   /* Small Desktop/Laptop */
   @media only screen
-    and (min-device-width: 980px)
-    and (max-device-width: 1200px)
+    and (min-width: 980px)
+    and (max-width: 1200px)
     {
 
     grid-template-columns:
