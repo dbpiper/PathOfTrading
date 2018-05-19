@@ -281,7 +281,7 @@ class AbstractAutocomplete extends React.Component {
                 <Menu
                   canBeRanged={this.props.canBeRanged}
                 >
-                  {(inputValue ? suggest(items, inputValue) : items).map(
+                  {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
                     (item, index) => (
                       <Item
                         key={index}
