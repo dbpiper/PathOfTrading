@@ -150,16 +150,16 @@ const Constants = Object.freeze({
         fontFamily: "'Playfair Display', serif",
         fontWeightStandard: 400,
         fontWeightBold: 700,
-        fontSize: 2.5,
+        fontSize: 2.125,
         fontSizeUnit: 'rem',
       },
       Standard: {
         fontFamily: "'Open Sans', sans-serif",
         fontWeight: 300,
         fontWeightSemiBold: 600,
-        fontSizeHeading: 1.5625,
-        fontSize: 1.25,
-        fontSizeSmall: 1,
+        fontSizeHeading: 1.375,
+        fontSize: 1.125,
+        fontSizeSmall: 0.875,
         fontSizeUnit: 'rem',
       }
     },
@@ -181,10 +181,31 @@ const Constants = Object.freeze({
                   40,
               ],
               gridRowUnit: '%',
-              gridColumns: [
-                40,
-                13.0208333333333,
-              ],
+              // gridColumns: [
+              //   40,
+              //   13.0208333333333,
+              // ],
+
+
+              gridColumns: {
+                sizes: {
+                  gridColumnsPortraitPhone:
+                    [ 400, 150],
+                  gridColumnsLandscapePhone:
+                    [ 450, 175],
+                  gridColumnsPortraitTablet:
+                    [ 500, 200],
+                  gridColumnsLanscapeTablet:
+                    [ 550, 225], //TODO: fix the size of search box at this scale
+                  gridColumnsSmallDesktop:
+                    [ 600, 250],
+                  gridColumnsMediumDesktop:
+                    [ 650, 275],
+                  gridColumnsLargeDesktop:
+                    [ 700, 300],
+                },
+                unit: 'px',
+              },
 
               gridColumnsPortraitPhone:
                 [ 400, 150],
