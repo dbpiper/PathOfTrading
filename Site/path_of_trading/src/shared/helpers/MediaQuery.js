@@ -10,8 +10,10 @@ MediaQuery shall be used in the following manner:
   is made up of media query recipes each of which is an
   object with the following properties:
     * property - the css property that the recipe is used to make
-    * function - the MediaQuery function which is called to make the recipe
-    * args - the args for ALL the media features for that recipe like {sizes: [400, 150], [300, 100], unit: 'px',}
+    * function - the MediaQuery function or user provided one which provides
+                 a suitable CSS attribute to be used for the media queries,
+                 which is called to make the recipe
+    * args - the args for ALL the media features for that recipe like {sizes: [[400, 150], [300, 100]], unit: 'px',}
              for the args for column widths for example, each of which corresponds to a media query feature
 
     * getMediaFeatureArgs - the function provided by the user which maps the args for the recipe to the args
@@ -51,7 +53,7 @@ MediaQuery shall be used in the following manner:
         return {
           sizes: args.sizes[index],
           unit: args.unit,
-        }
+        };
       },
     },
   ]);
@@ -78,10 +80,10 @@ class MediaQuery {
   };
 
 
+
   static create(mediaQueryRecipes) {
 
-      // "private" function of create, implemented as a closure. In other
-      // words, anested-function which is only accessible inside of create.
+      // "private" function of create
       function getMediaHeader(label) {
         switch(label) {
           case Constants.Layout.MediaQuery.LargeDesktop:

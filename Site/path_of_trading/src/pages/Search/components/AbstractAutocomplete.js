@@ -151,6 +151,9 @@ const InnerItem = styled.div`
     ${(props) => props.isActive === true ? activeStyleInner : {}}
     ${(props) => props.isSelected === true ? selectedStyleInner : ''}
 
+
+    cursor: pointer;
+
 `;
 
 

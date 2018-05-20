@@ -35,7 +35,7 @@ const gridRowMediaQueries = MediaQuery.create([
       return {
         sizes: args.sizes[index],
         unit: args.unit,
-      }
+      };
     },
   },
 ]);
