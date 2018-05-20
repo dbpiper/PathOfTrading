@@ -31,7 +31,7 @@ const gridRowMediaQueries = MediaQuery.create([
       sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
       unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
     },
-    getMediaFeatureArgs: (args, index) => {
+    recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
         unit: args.unit,

@@ -18,18 +18,18 @@ const Div = styled.div`
   width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
 `
 
+
 const gridRowMediaQueries = MediaQuery.create([
   {
     property: 'grid-template-columns',
     function: MediaQuery.gridColumnArrayToSizes,
     args: {
       sizes: Object.values(Constants.Layout.Page.Search.Body.Combat.gridColumns.sizes),
-      unit: Constants.Layout.Page.Search.Body.Combat.gridColumns.unit,
     },
-    getMediaFeatureArgs: (args, index) => {
+    recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: args.unit,
+        unit: Constants.Layout.Page.Search.Body.Combat.gridColumns.unit,
       };
     },
   },

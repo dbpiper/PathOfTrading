@@ -49,7 +49,7 @@ MediaQuery shall be used in the following manner:
         sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
         unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
       },
-      getMediaFeatureArgs: (args, index) => {
+      recipeArgsGetter: (args, index) => {
         return {
           sizes: args.sizes[index],
           unit: args.unit,
@@ -111,7 +111,9 @@ class MediaQuery {
         const mediaQueryHeader = getMediaHeader(label);
 
         const mediaQueryBody = mediaQueryRecipes.map(recipe => {
-            return recipe.property + ':' + recipe.function(recipe.getMediaFeatureArgs(recipe.args, label)) + ';';
+            return recipe.property + ':'
+              + recipe.function(recipe.recipeArgsGetter(recipe.args, label))
+              + ';';
         }).reduce((acc, property) => {
             return acc + property;
         });
