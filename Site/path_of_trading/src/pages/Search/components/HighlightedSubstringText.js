@@ -40,7 +40,7 @@ function HighlighedSubstringText(props) {
     <div>
       {(splitText(props.item)).map(
         (textItem) => (
-        <HighlightableText key={charCodeSum(textItem)} textItem={textItem}/>
+        <HighlightableText key={charCodeSum(textItem)} textItem={textItem} cursor={props.cursor} />
       ),
     )}
     </div>

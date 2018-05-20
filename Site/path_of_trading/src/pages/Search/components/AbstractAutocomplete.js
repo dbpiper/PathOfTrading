@@ -305,7 +305,7 @@ class AbstractAutocomplete extends React.Component {
                             })
                           }
                         >
-                          <HighlighedSubstringText item={item} />
+                          <HighlighedSubstringText item={item} cursor='pointer' />
                         </InnerItem>
                       </Item>
                     ),
