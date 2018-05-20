@@ -129,6 +129,8 @@ const Menu = styled.div`
 const Item = styled.div`
     ${(props) => props.isActive === true ? activeStyle : {}}
     ${(props) => props.isSelected === true ? selectedStyle : ''}
+
+    cursor: pointer;
 `;
 
 const InnerItem = styled.div`
@@ -153,7 +155,6 @@ const InnerItem = styled.div`
 
 
     cursor: pointer;
-
 `;
 
 
@@ -163,10 +164,6 @@ const BoxButtonWrapper = styled.div`
   padding: 0;
   align-items: start;
 
-  ${'' /* align-items: center;
-  justify-content: center; */}
-
-  ${'' /* display: inline-block; */}
 `;
 
 class AbstractAutocomplete extends React.Component {
