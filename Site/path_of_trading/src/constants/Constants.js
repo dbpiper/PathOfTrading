@@ -181,11 +181,6 @@ const Constants = Object.freeze({
                   40,
               ],
               gridRowUnit: '%',
-              // gridColumns: [
-              //   40,
-              //   13.0208333333333,
-              // ],
-
 
               gridColumns: {
                 sizes: {
@@ -207,21 +202,6 @@ const Constants = Object.freeze({
                 unit: 'px',
               },
 
-              gridColumnsPortraitPhone:
-                [ 400, 150],
-              gridColumnsLandscapePhone:
-                [ 450, 175],
-              gridColumnsPortraitTablet:
-                [ 500, 200],
-              gridColumnsLanscapeTablet:
-                [ 550, 225], //TODO: fix the size of search box at this scale
-              gridColumnsSmallDesktop:
-                [ 600, 250],
-              gridColumnsMediumDesktop:
-                [ 650, 275],
-              gridColumnsLargeDesktop:
-                [ 700, 300],
-
               gridColumnUnit: 'px',
               width: 100,
               height: 30,
@@ -242,23 +222,28 @@ const Constants = Object.freeze({
               ],
               gridRowUnit: '%',
 
-              gridColumns: [ 9, 9, 5, 9, 9, ],
-              gridColumnsPortraitPhone:
-                [ 150, 200, 1, 150, 200, ],
-              gridColumnsLandscapePhone:
-                [ 150, 200, 1, 150, 200, ],
-              gridColumnsPortraitTablet:
-                [ 150, 200, 1, 150, 200, ],
-              gridColumnsLanscapeTablet:
-                [ 150, 200, 10, 150, 200, ], // TODO: fix ui elements <= this level
-              gridColumnsSmallDesktop:
-                [ 150, 200, 20, 150, 200, ],
-              gridColumnsMediumDesktop:
-                [ 150, 200, 50, 150, 200, ],
-              gridColumnsLargeDesktop:
-                [ 150, 200, 80, 150, 200, ],
+              // gridColumns: [ 9, 9, 5, 9, 9, ],
 
-              gridColumnUnit: 'px',
+              gridColumns: {
+                sizes: {
+                  gridColumnsPortraitPhone:
+                    [ 150, 200, 1, 150, 200, ],
+                  gridColumnsLandscapePhone:
+                    [ 150, 200, 1, 150, 200, ],
+                  gridColumnsPortraitTablet:
+                    [ 150, 200, 1, 150, 200, ],
+                  gridColumnsLanscapeTablet:
+                    [ 150, 200, 10, 150, 200, ], // TODO: fix ui elements <= this level
+                  gridColumnsSmallDesktop:
+                    [ 150, 200, 20, 150, 200, ],
+                  gridColumnsMediumDesktop:
+                    [ 150, 200, 50, 150, 200, ],
+                  gridColumnsLargeDesktop:
+                    [ 150, 200, 80, 150, 200, ],
+                },
+                unit: 'px',
+              },
+
               width: 100,
               height: 70,
               widthUnit: '%',

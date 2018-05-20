@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import MediaQuery from 'shared/helpers/MediaQuery';
+
 import Constants from 'constants/Constants';
 
 import Label from './Label';
@@ -11,46 +13,27 @@ const gridRow = (rowNum) => {
       Constants.Layout.Page.Search.Body.Combat.gridRowUnit;
 };
 
-const gridColumn = (colNum, screenSize) => {
-  switch(screenSize) {
-    case Constants.Layout.MediaQuery.PortraitPhone:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsPortraitPhone[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.LandscapePhone:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsLandscapePhone[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.PortraitTablet:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsPortraitTablet[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.LandscapeTablet:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsLanscapeTablet[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.SmallDesktop:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsSmallDesktop[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.MediumDesktop:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsMediumDesktop[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    case Constants.Layout.MediaQuery.LargeDesktop:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumnsLargeDesktop[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-
-    default:
-      return Constants.Layout.Page.Search.Body.Combat.gridColumns[colNum] +
-        Constants.Layout.Page.Search.Body.Combat.gridColumnUnit;
-  }
-};
-
 const Div = styled.div`
   height: ${Constants.Layout.Page.Search.Body.Combat.height}${Constants.Layout.Page.Search.Body.Combat.heightUnit};
   width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
 `
+
+const gridRowMediaQueries = MediaQuery.create([
+  {
+    property: 'grid-template-columns',
+    function: MediaQuery.gridColumnArrayToSizes,
+    args: {
+      sizes: Object.values(Constants.Layout.Page.Search.Body.Combat.gridColumns.sizes),
+      unit: Constants.Layout.Page.Search.Body.Combat.gridColumns.unit,
+    },
+    getMediaFeatureArgs: (args, index) => {
+      return {
+        sizes: args.sizes[index],
+        unit: args.unit,
+      };
+    },
+  },
+]);
 
 const Grid = styled.div`
   display: grid;
@@ -73,101 +56,10 @@ const Grid = styled.div`
     "criticalStrike criticalStrikeRange . . ."
     "pdps pdpsRange . . .";
 
-
-
-
-  /* Large Laptops / Medium Desktops */
-  @media only screen
-    and (min-width: 1201px)
-    and (max-width: 1600px)
-    {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.MediumDesktop)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.MediumDesktop)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.MediumDesktop)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.MediumDesktop)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.MediumDesktop)};
-  }
-
-  /* Small Desktop/Laptop */
-  @media only screen
-    and (min-width: 980px)
-    and (max-width: 1200px)
-    {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.SmallDesktop)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.SmallDesktop)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.SmallDesktop)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.SmallDesktop)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.SmallDesktop)};
-  }
-
-  /* Landscape Tablet */
-  @media only screen
-  and (min-width: 768px)
-  and (max-width: 979px) {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.LandscapeTablet)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.LandscapeTablet)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.LandscapeTablet)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.LandscapeTablet)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.LandscapeTablet)};
-  }
-
-  /*  Portrait Tablet */
-  @media only screen
-  and (max-width: 767px)
-  and (min-width: 481px) {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.PortraitTablet)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.PortraitTablet)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.PortraitTablet)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.PortraitTablet)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.PortraitTablet)};
-  }
-
-  /* Landscape phones */
-  @media only screen
-    and (max-width: 480px)
-    and (min-width: 321px) {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.LandscapePhone)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.LandscapePhone)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.LandscapePhone)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.LandscapePhone)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.LandscapePhone)};
-  }
-
-  /* Portrait phones */
-  @media only screen
-  and (max-width: 320px) {
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.PortraitPhone)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.PortraitPhone)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.PortraitPhone)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.PortraitPhone)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.PortraitPhone)};
-  }
-
-    /* Large desktop */
-  @media only screen
-  and (min-width: 1601px) {
-
-    grid-template-columns:
-    ${gridColumn(0, Constants.Layout.MediaQuery.LargeDesktop)}
-    ${gridColumn(1, Constants.Layout.MediaQuery.LargeDesktop)}
-    ${gridColumn(2, Constants.Layout.MediaQuery.LargeDesktop)}
-    ${gridColumn(3, Constants.Layout.MediaQuery.LargeDesktop)}
-    ${gridColumn(4, Constants.Layout.MediaQuery.LargeDesktop)};
-  }
-
+    ${gridRowMediaQueries};
 
 `;
+
 const GridArea = styled.span`
   grid-area: ${props => props.area};
   display: flex;
@@ -247,7 +139,7 @@ class CombatBody extends Component {
               <Label value="Evasion" />
             </GridArea>
             <GridArea area="shield">
-              <Label value="shield" />
+              <Label value="Shield" />
             </GridArea>
 
             <GridArea area="armourRange">
