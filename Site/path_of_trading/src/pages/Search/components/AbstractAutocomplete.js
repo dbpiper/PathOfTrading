@@ -112,7 +112,8 @@ const Menu = styled.div`
   box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
   max-height: 200px; //TODO: make into constant
 
-  width: ${(props) => (Constants.Textbox.width * (props.canBeRanged ? 2 : 1))}${Constants.Textbox.widthUnit}
+
+  ${(props) => Textbox.makeWidthMediaQueries(props)}
 
   ${standardFont}
   ${textboxBackground}
@@ -280,6 +281,7 @@ class AbstractAutocomplete extends React.Component {
               {isOpen && (
                 <Menu
                   canBeRanged={this.props.canBeRanged}
+                  search={this.props.search}
                 >
                   {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
                     (item, index) => (

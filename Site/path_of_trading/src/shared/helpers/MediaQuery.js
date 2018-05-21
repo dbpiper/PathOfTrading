@@ -117,7 +117,7 @@ class MediaQuery {
         const mediaQueryHeader = getMediaHeader(label);
 
         const mediaQueryBody = mediaQueryRecipes.map(recipe => {
-            return recipe.property + ':'
+            return recipe.property + ': '
               + recipe.function(recipe.recipeArgsGetter(recipe.args, label))
               + ';';
         }).reduce((acc, property) => {
