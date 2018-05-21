@@ -32,11 +32,32 @@ const Constants = Object.freeze({
         paddingLeftUnit: 'px',
         paddingRightUnit: 'px',
 
-        width: 100,
-        height: 63,
+        // width: 100,
 
-        widthUnit: 'px',
-        heightUnit: 'px',
+        width: {
+            sizes: [
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+              100,
+            ],
+            unit: 'px',
+        },
+        height: {
+            sizes: [
+              63,
+              63,
+              63,
+              63,
+              63,
+              63,
+              63,
+            ],
+            unit: 'px',
+        },
 
         borderRadus: 3, //only on top right and bottom right
         borderRadiusUnit: 'px',
@@ -44,9 +65,28 @@ const Constants = Object.freeze({
     },
     Textbox: {
       height: 53,
-      width: 180,
+      width: {
+          sizes: [
+            180,
+            180,
+            180,
+            180,
+            180,
+            180,
+            180, //
+          ],
+          rangedSizes: [
+            360, // Portrait Phone
+            360, // Landscape Phone
+            360, // Portrait Tablet
+            360, // Landscape Tablet
+            360, // Small Desktop
+            360, // Medium Desktop
+            360, // Large Desktop
+          ],
+          unit: 'px',
+      },
       heightUnit: 'px',
-      widthUnit: 'px',
       padding: '10',
       paddingUnit: 'px',
 
@@ -62,9 +102,19 @@ const Constants = Object.freeze({
     },
     SearchBox: {
       height: 63,
-      width: 430,
+      width: {
+          sizes: [
+            430, // Portrait Tablet
+            430, // Landscape Tablet
+            430, // Portrait Tablet
+            430, // Landscape Tablet
+            430, // Small Desktop
+            430, // Medium Desktop
+            430, // Large Desktop
+          ],
+          unit: 'px',
+      },
       heightUnit: 'px',
-      widthUnit: 'px',
       padding: '10',
       paddingUnit: 'px',
 

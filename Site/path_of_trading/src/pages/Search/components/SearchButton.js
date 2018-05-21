@@ -2,11 +2,43 @@ import React from 'react';
 
 import styled, { css } from 'styled-components';
 
+import MediaQuery from 'shared/helpers/MediaQuery';
+
 import Constants from 'constants/Constants';
 
 import standardFont from 'shared/styles/standardFont';
 import noselect from 'shared/styles/noselect';
 
+
+const buttonSizeMediaQueries = MediaQuery.create([
+      {
+        property: 'width',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: Constants.Buttons.Search.width.sizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.Buttons.Search.width.unit,
+          };
+        },
+      },
+      {
+        property: 'height',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: Constants.Buttons.Search.height.sizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.Buttons.Search.height.unit,
+          };
+        },
+      },
+
+]);
 
 const borderRadius = () => {
   return Constants.Buttons.Search.borderRadus + Constants.Buttons.Search.borderRadiusUnit;
@@ -25,8 +57,7 @@ const Button = styled.button`
       outline-width: 0;
       cursor: pointer;
 
-      width: ${Constants.Buttons.Search.width}${Constants.Buttons.Search.widthUnit};
-      height: ${Constants.Buttons.Search.height}${Constants.Buttons.Search.heightUnit};
+      ${buttonSizeMediaQueries};
 
       -webkit-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
          -moz-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;

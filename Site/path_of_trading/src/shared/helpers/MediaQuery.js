@@ -63,6 +63,12 @@ MediaQuery shall be used in the following manner:
 
 class MediaQuery {
 
+  static numberToSize(argsObject) {
+    return MediaQuery.gridColumnArrayToSizes(
+      {...argsObject, sizes: [argsObject.size], }
+    );
+  }
+
   static gridColumnArrayToSizes(argsObject) {
     const sizes = argsObject.sizes;
     const unit = argsObject.unit;

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import standardFont from 'shared/styles/standardFont';
 import Constants from 'constants/Constants';
 
+import TextCursor from 'public/cur/beam_black.cur';
+
 
 const AbstractNumericFieldContainer = styled.span`
     width: 100%;
@@ -39,6 +41,8 @@ const AbstractNumericInput = styled.input.attrs({
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
          -moz-box-sizing: border-box;    /* Firefox, other Gecko */
               box-sizing: border-box;         /* Opera/IE 8+ */
+
+      cursor: url(${TextCursor}), text;
     }
 
     &::-webkit-outer-spin-button,
@@ -81,7 +85,6 @@ const AbstractNumericInput = styled.input.attrs({
     }
 
     &&& {
-
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 `;

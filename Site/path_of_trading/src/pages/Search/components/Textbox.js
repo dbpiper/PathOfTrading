@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 import textbox from 'shared/styles/textbox';
 
+import MediaQuery from 'shared/helpers/MediaQuery';
+
 import Constants from 'constants/Constants';
 
 import Range from './Range';
@@ -14,6 +16,46 @@ const borderRadius = (props) => {
     return Constants.SearchBox.borderRadus + Constants.SearchBox.borderRadiusUnit;
   }
 };
+
+function makeWidthMediaQueries(props) {
+
+  if (!props.search) {
+    const textboxSizes = props.canBeRanged ? Constants.Textbox.width.rangedSizes
+      : Constants.Textbox.width.sizes;
+
+    return MediaQuery.create([
+      {
+        property: 'width',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: textboxSizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.Textbox.width.unit,
+          };
+        },
+      },
+    ]);
+  } else {
+    return MediaQuery.create([
+      {
+        property: 'width',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: Constants.SearchBox.width.sizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.SearchBox.width.unit,
+          };
+        },
+      },
+    ]);
+  }
+}
 
 const width = (props) => {
   if (!props.search) {
@@ -37,7 +79,7 @@ const TextboxInput = styled.input.attrs({
    ${textbox}
 
    &&& {
-     width: ${props => width(props)};
+     ${props => makeWidthMediaQueries(props)};
      height: ${props => height(props)};
 
     ${props => props.hasButton && css`
