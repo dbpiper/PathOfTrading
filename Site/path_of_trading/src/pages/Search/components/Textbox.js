@@ -57,14 +57,6 @@ function makeWidthMediaQueries(props) {
   }
 }
 
-const width = (props) => {
-  if (!props.search) {
-    return (Constants.Textbox.width * (props.canBeRanged ? 2 : 1)) + Constants.Textbox.widthUnit;
-  } else {
-    return (Constants.SearchBox.width * (props.canBeRanged ? 2 : 1)) + Constants.SearchBox.widthUnit;
-  }
-};
-
 const height = (props) => {
   if (!props.search) {
     return Constants.Textbox.height + Constants.Textbox.heightUnit;

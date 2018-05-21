@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import standardFont from 'shared/styles/standardFont';
-import Constants from 'constants/Constants';
+import placeholder from 'shared/styles/placeholder';
 
 import TextCursor from 'public/cur/beam_black.cur';
 
+import Constants from 'constants/Constants';
 
 const AbstractNumericFieldContainer = styled.span`
     width: 100%;
@@ -42,6 +44,10 @@ const AbstractNumericInput = styled.input.attrs({
          -moz-box-sizing: border-box;    /* Firefox, other Gecko */
               box-sizing: border-box;         /* Opera/IE 8+ */
 
+      -moz-appearance:textfield;
+
+      ${placeholder}
+
       cursor: url(${TextCursor}), text;
     }
 
@@ -50,11 +56,9 @@ const AbstractNumericInput = styled.input.attrs({
         /* display: none; <- Crashes Chrome on hover */
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        color: ${Constants.Colors.standardFont};
     }
 
-    & {
-      -moz-appearance:textfield;
-    }
 
     &:focus {
       border-bottom-width: ${Constants.AbstractNumericField.borderBottomWidth}${Constants.AbstractNumericField.borderBottomWidthUnit};
@@ -68,19 +72,16 @@ const AbstractNumericInput = styled.input.attrs({
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
