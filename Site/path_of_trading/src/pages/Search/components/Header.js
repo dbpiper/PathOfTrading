@@ -23,10 +23,10 @@ const DivTest = styled.div`
     width: ${Constants.Layout.Page.Search.Header.width}${Constants.Layout.Page.Search.Header.widthUnit};
 `;
 
-const gridRowMediaQueries = MediaQuery.create([
+const gridColumnMediaQueries = MediaQuery.create([
   {
     property: 'grid-template-columns',
-    function: MediaQuery.gridColumnArrayToSizes,
+    function: MediaQuery.arrayAndUnitToSizes,
     args: {
       sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
       unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
@@ -54,12 +54,11 @@ const Grid = styled.div`
   ${'' /* grid-template-columns: ${gridColumn(0)} ${gridColumn(1)}; */}
 
   grid-template-areas:
-    "title ."
-    "search league";
+    "title title ."
+    "search search league";
 
 
-  ${gridRowMediaQueries};
-
+  ${gridColumnMediaQueries}
 
 `;
 
@@ -80,7 +79,7 @@ function Header(props) {
           {props.title}
         </GridArea>
         <GridArea area="search">
-          <SearchBox placeholder="Enter an Item's Name or partial Description" />
+          <SearchBox placeholder={Constants.Strings.searchPlaceholder} />
         </GridArea>
         <GridArea area="league">
           <Dropdown placeholder="League"/>

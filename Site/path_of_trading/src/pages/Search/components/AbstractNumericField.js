@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import standardFont from 'shared/styles/standardFont';
 import placeholder from 'shared/styles/placeholder';
 
-import TextCursor from 'public/cur/beam_black.cur';
+import TextCursor from 'media/images/cur/beam_black.cur';
 
 import Constants from 'constants/Constants';
 

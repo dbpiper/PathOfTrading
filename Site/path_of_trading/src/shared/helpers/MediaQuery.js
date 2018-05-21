@@ -64,12 +64,12 @@ MediaQuery shall be used in the following manner:
 class MediaQuery {
 
   static numberToSize(argsObject) {
-    return MediaQuery.gridColumnArrayToSizes(
+    return MediaQuery.arrayAndUnitToSizes(
       {...argsObject, sizes: [argsObject.size], }
     );
   }
 
-  static gridColumnArrayToSizes(argsObject) {
+  static arrayAndUnitToSizes(argsObject) {
     const sizes = argsObject.sizes;
     const unit = argsObject.unit;
 
@@ -81,7 +81,7 @@ class MediaQuery {
         return size + unit;
       }).reduce((acc, value) => {
         return acc + ' ' + value;
-      });
+      }, '');
    }
   };
 
@@ -89,47 +89,108 @@ class MediaQuery {
 
   static create(mediaQueryRecipes) {
 
-      // "private" function of create
-      function getMediaHeader(label) {
+      if (mediaQueryRecipes.length <= 0) {
+        return '';
+      }
+
+      function getMediaHeaderWidthBased(label) {
         switch(label) {
           case Constants.Layout.MediaQuery.LargeDesktop:
-            return '@media only screen and (min-width: 1601px) {';
+            return ' @media only screen and (min-width: 1601px) { ';
           case Constants.Layout.MediaQuery.MediumDesktop:
-            return '@media only screen and (min-width: 1201px) and (max-width: 1600px) {'
+            return ' @media only screen and (min-width: 1201px) and (max-width: 1600px) { ';
           case Constants.Layout.MediaQuery.SmallDesktop:
-            return '@media only screen and (min-width: 980px) and (max-width: 1200px) {'
+            return ' @media only screen and (min-width: 980px) and (max-width: 1200px) { ';
           case Constants.Layout.MediaQuery.LandscapeTablet:
-            return '@media only screen and (min-width: 768px) and (max-width: 979px) {'
+            return ' @media only screen and (min-width: 768px) and (max-width: 979px) { ';
           case Constants.Layout.MediaQuery.PortraitTablet:
-            return '@media only screen and (min-width: 481px) and (max-width: 767px) {'
+            return ' @media only screen and (min-width: 481px) and (max-width: 767px) { ';
           case Constants.Layout.MediaQuery.LandscapePhone:
-            return '@media only screen and (min-width: 321px) and (max-width: 480px) {'
+            return ' @media only screen and (min-width: 321px) and (max-width: 480px) { ';
           case Constants.Layout.MediaQuery.PortraitPhone:
-            return '@media only screen and (max-width: 320px) {'
+            return ' @media only screen and (max-width: 320px) { ';
           default:
             return '';
         }
       }
 
+      function getMediaHeaderHeightBased(label) {
+        switch(label) {
+          case Constants.Layout.MediaQuery.LargeDesktop:
+            return ' @media only screen and (min-height: 901px) { ';
+          case Constants.Layout.MediaQuery.MediumDesktop:
+            return ' @media only screen and (min-height: 676px) and (max-height: 900px) { ';
+          case Constants.Layout.MediaQuery.SmallDesktop:
+            return ' @media only screen and (min-height: 551px) and (max-height: 675px) { ';
+          case Constants.Layout.MediaQuery.LandscapeTablet:
+            return ' @media only screen and (min-height: 432px) and (max-height: 550px) { ';
+          case Constants.Layout.MediaQuery.PortraitTablet:
+            return ' @media only screen and (min-height: 271px) and (max-height: 431px) { ';
+          case Constants.Layout.MediaQuery.LandscapePhone:
+            return ' @media only screen and (min-height: 181px) and (max-height: 270px) { ';
+          case Constants.Layout.MediaQuery.PortraitPhone:
+            return ' @media only screen and (max-height: 180px) { ';
+          default:
+            return '';
+        }
+      }
 
-      return Object.values(Constants.Layout.MediaQuery).map(label => {
+      function getMediaHeader(label, heightBased) {
+        if (heightBased) {
+          return getMediaHeaderHeightBased(label);
+        } else {
+          return getMediaHeaderWidthBased(label);
+        }
+      }
 
-        const mediaQueryHeader = getMediaHeader(label);
+      const widthBasedMediaQueryRecipes = mediaQueryRecipes.filter((value) => {
+        return !value.heightBased;
+      });
 
-        const mediaQueryBody = mediaQueryRecipes.map(recipe => {
+      const heightBasedMediaQueryRecipes = mediaQueryRecipes.filter((value) => {
+        return value.heightBased;
+      });
+
+
+      const widthBasedMediaQueries = Object.values(Constants.Layout.MediaQuery).map(label => {
+
+        const mediaQueryHeader = getMediaHeader(label, false);
+
+        const mediaQueryBody = widthBasedMediaQueryRecipes.map(recipe => {
             return recipe.property + ': '
               + recipe.function(recipe.recipeArgsGetter(recipe.args, label))
               + ';';
         }).reduce((acc, property) => {
             return acc + property;
-        });
+        }, '');
 
         const mediaQueryFooter = ' } '
 
         return mediaQueryHeader + mediaQueryBody + mediaQueryFooter;
       }).reduce((acc, query) => {
         return acc + query;
-      });
+      }, '');
+
+      const heightBasedMediaQueries = Object.values(Constants.Layout.MediaQuery).map(label => {
+
+        const mediaQueryHeader = getMediaHeader(label, true);
+
+        const mediaQueryBody = heightBasedMediaQueryRecipes.map(recipe => {
+            return recipe.property + ': '
+              + recipe.function(recipe.recipeArgsGetter(recipe.args, label))
+              + ';';
+        }).reduce((acc, property) => {
+            return acc + property;
+        }, '');
+
+        const mediaQueryFooter = ' } '
+
+        return mediaQueryHeader + mediaQueryBody + mediaQueryFooter;
+      }).reduce((acc, query) => {
+        return acc + query;
+      }, '');
+
+      return widthBasedMediaQueries + heightBasedMediaQueries;
   }
 }
 

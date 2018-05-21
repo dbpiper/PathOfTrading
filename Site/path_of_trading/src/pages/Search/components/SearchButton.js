@@ -25,6 +25,7 @@ const buttonSizeMediaQueries = MediaQuery.create([
         },
       },
       {
+        heightBased: true,
         property: 'height',
         function: MediaQuery.numberToSize,
         args: {
@@ -43,6 +44,13 @@ const buttonSizeMediaQueries = MediaQuery.create([
 const borderRadius = () => {
   return Constants.Buttons.Search.borderRadus + Constants.Buttons.Search.borderRadiusUnit;
 };
+
+const Div = styled.div`
+  position: relative;
+  display: flex;
+
+  align-items: center;
+`;
 
 const Button = styled.button`
       background-color: ${Constants.Colors.buttonPrimary};
@@ -71,9 +79,11 @@ const Button = styled.button`
 
 function SearchButton(props) {
   return (
-      <Button {...props} onClick={props.onClick}>
-        {props.searchText}
-      </Button>
+      <Div>
+        <Button {...props} onClick={props.onClick}>
+          {props.searchText}
+        </Button>
+      </Div>
   );
 }
 

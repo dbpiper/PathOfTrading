@@ -17,9 +17,9 @@ const textbox = css`
   &:focus {
     outline: none;
     border: none;
-      border-color: none;
-      -webkit-box-shadow: none;
-              box-shadow: none;
+    border-color: transparent;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 
   & {
@@ -28,12 +28,9 @@ const textbox = css`
     ${textboxBackground}
 
     border: none;
-    border-color: none;
+    border-color: transparent;
     -webkit-box-shadow: none;
             box-shadow: none;
-
-    height: ${Constants.Textbox.height}${Constants.Textbox.heightUnit};
-    width: ${Constants.Textbox.width}${Constants.Textbox.widthUnit};
 
     caret-color: #FEFDFF;
 

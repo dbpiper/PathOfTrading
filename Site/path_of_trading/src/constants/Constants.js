@@ -12,17 +12,36 @@ const Constants = Object.freeze({
         paddingLeftUnit: 'px',
         paddingRightUnit: 'px',
 
-        width: 64,
-        height: 53,
-
-        widthUnit: 'px',
-        heightUnit: 'px',
+        width: {
+          sizes: [
+            40, // Portrait Tablet
+            44, // Landscape Tablet
+            48, // Portrait Tablet
+            52, // Landscape Tablet
+            56, // Small Desktop
+            60, // Medium Desktop
+            64, // Large Desktop
+          ],
+          unit: 'px'
+        },
+        height: {
+          sizes: [
+            28, // Portrait Tablet
+            28, // Landscape Tablet
+            28, // Portrait Tablet
+            28, // Landscape Tablet
+            33, // Small Desktop
+            43, // Medium Desktop
+            53, // Large Desktop
+          ],
+          unit: 'px'
+        },
 
         borderRadus: 3, //only on top right and bottom right
         borderRadiusUnit: 'px',
       },
       Search: {
-        paddingTop: 10,
+        paddingTop: 4,
         paddingBottom: 4,
         paddingLeft: 8,
         paddingRight: 8,
@@ -32,29 +51,27 @@ const Constants = Object.freeze({
         paddingLeftUnit: 'px',
         paddingRightUnit: 'px',
 
-        // width: 100,
-
         width: {
             sizes: [
-              100,
-              100,
-              100,
-              100,
-              100,
-              100,
+              63,
+              63,
+              63,
+              70,
+              80,
+              90,
               100,
             ],
             unit: 'px',
         },
         height: {
             sizes: [
-              63,
-              63,
-              63,
-              63,
-              63,
-              63,
-              63,
+              38, // Portrait Tablet
+              38, // Landscape Tablet
+              38, // Portrait Tablet
+              38, // Landscape Tablet
+              43, // Small Desktop
+              53, // Medium Desktop
+              63, // Large Desktop
             ],
             unit: 'px',
         },
@@ -64,16 +81,27 @@ const Constants = Object.freeze({
       },
     },
     Textbox: {
-      height: 53,
+        height: {
+          sizes: [
+              28, // Portrait Phone
+              28, // Landscape Tablet
+              28, // Portrait Tablet
+              28, // Landscape Tablet
+              33, // Small Desktop
+              43, // Medium Desktop
+              53, // Large Desktop
+          ],
+          unit: 'px',
+      },
       width: {
           sizes: [
-            180,
-            180,
-            180,
-            180,
-            180,
-            180,
-            180, //
+            70, // Portrait Phone
+            80, // Landscape Phone
+            100, // Portrait Tablet
+            120, // Landscape Tablet
+            140, // Small Desktop
+            160, // Medium Desktop
+            180, // Large Desktop
           ],
           rangedSizes: [
             360, // Portrait Phone
@@ -101,15 +129,26 @@ const Constants = Object.freeze({
       }
     },
     SearchBox: {
-      height: 63,
+      height: {
+          sizes: [
+            38, // Portrait Tablet
+            38, // Landscape Tablet
+            38, // Portrait Tablet
+            38, // Landscape Tablet
+            43, // Small Desktop
+            53, // Medium Desktop
+            63, // Large Desktop
+          ],
+          unit: 'px',
+      },
       width: {
           sizes: [
-            430, // Portrait Tablet
-            430, // Landscape Tablet
-            430, // Portrait Tablet
-            430, // Landscape Tablet
-            430, // Small Desktop
-            430, // Medium Desktop
+            175, // Portrait Tablet
+            180, // Landscape Tablet
+            190, // Portrait Tablet
+            200, // Landscape Tablet
+            230, // Small Desktop
+            330, // Medium Desktop
             430, // Large Desktop
           ],
           unit: 'px',
@@ -123,6 +162,7 @@ const Constants = Object.freeze({
     },
     Strings: {
       search: "Search",
+      searchPlaceholder: "Enter an Item's Name",
     },
     Colors: {
       buttonPrimary: '#79ADDC',
@@ -200,16 +240,16 @@ const Constants = Object.freeze({
         fontFamily: "'Playfair Display', serif",
         fontWeightStandard: 400,
         fontWeightBold: 700,
-        fontSize: 2.125,
+        fontSize: 2,
         fontSizeUnit: 'rem',
       },
       Standard: {
         fontFamily: "'Open Sans', sans-serif",
         fontWeight: 300,
         fontWeightSemiBold: 600,
-        fontSizeHeading: 1.375,
-        fontSize: 1.125,
-        fontSizeSmall: 0.875,
+        fontSizeHeading: 1.25,
+        fontSize: 1,
+        fontSizeSmall: 0.75,
         fontSizeUnit: 'rem',
       }
     },
@@ -235,19 +275,19 @@ const Constants = Object.freeze({
               gridColumns: {
                 sizes: {
                   gridColumnsPortraitPhone:
-                    [ 400, 150],
+                    [ 235, 30, 100],
                   gridColumnsLandscapePhone:
-                    [ 450, 175],
+                    [ 240, 30, 124],
                   gridColumnsPortraitTablet:
-                    [ 500, 200],
+                    [ 250, 60, 148],
                   gridColumnsLanscapeTablet:
-                    [ 550, 225], //TODO: fix the size of search box at this scale
+                    [ 270, 90, 172],
                   gridColumnsSmallDesktop:
-                    [ 600, 250],
+                    [ 310, 120, 196],
                   gridColumnsMediumDesktop:
-                    [ 650, 275],
+                    [ 420, 150, 220],
                   gridColumnsLargeDesktop:
-                    [ 700, 300],
+                    [ 530, 180, 244],
                 },
                 unit: 'px',
               },
@@ -260,36 +300,49 @@ const Constants = Object.freeze({
           },
           Body: {
             Combat: {
-              gridRows: [
-                  // 9.25925925926,
-                  15,
-                  9.25925925926,
-                  9.25925925926,
-                  9.25925925926,
-                  9.25925925926,
-                  9.25925925926,
-                  9.25925925926,
-              ],
-              gridRowUnit: '%',
-
-              // gridColumns: [ 9, 9, 5, 9, 9, ],
-
+              gridRows: {
+                sizes: [
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
+                ],
+                unit: '%',
+              },
               gridColumns: {
                 sizes: {
                   gridColumnsPortraitPhone:
-                    [ 150, 200, 1, 150, 200, ],
+                    [ 110, 150, 0, 80, 200, ],
                   gridColumnsLandscapePhone:
-                    [ 150, 200, 1, 150, 200, ],
+                    [ 110, 150, 0, 80, 200, ],
                   gridColumnsPortraitTablet:
-                    [ 150, 200, 1, 150, 200, ],
+                    [ 110, 150, 0, 80, 200, ],
                   gridColumnsLanscapeTablet:
-                    [ 150, 200, 10, 150, 200, ], // TODO: fix ui elements <= this level
+                    [ 110, 150, 0, 80, 200, ],
                   gridColumnsSmallDesktop:
-                    [ 150, 200, 20, 150, 200, ],
+                    [ 110, 150, 0, 80, 200, ],
                   gridColumnsMediumDesktop:
-                    [ 150, 200, 50, 150, 200, ],
+                    [ 140, 150, 60, 110, 200, ],
                   gridColumnsLargeDesktop:
-                    [ 150, 200, 80, 150, 200, ],
+                    [ 140, 150, 160, 110, 200, ],
+
+                  // gridColumnsPortraitPhone:
+                  //   [ 150, 200, 1, 150, 200, ],
+                  // gridColumnsLandscapePhone:
+                  //   [ 150, 200, 1, 150, 200, ],
+                  // gridColumnsPortraitTablet:
+                  //   [ 150, 200, 1, 150, 200, ],
+                  // gridColumnsLanscapeTablet:
+                  //   [ 150, 200, 10, 150, 200, ],
+                  // gridColumnsSmallDesktop:
+                  //   [ 150, 200, 20, 150, 200, ],
+                  // gridColumnsMediumDesktop:
+                  //   [ 150, 200, 30, 150, 200, ],
+                  // gridColumnsLargeDesktop:
+                  //   [ 150, 200, 80, 150, 200, ],
                 },
                 unit: 'px',
               },
@@ -300,7 +353,47 @@ const Constants = Object.freeze({
               heightUnit: '%',
               gridLeftMargin: 2,
               gridLeftMarginUnit: '%',
-            }
+            },
+            Trading: {
+              gridRows: {
+                sizes: [
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [80, 80, 80, 80, 80, 80, 80, 80],
+                ],
+                unit: 'px',
+              },
+              gridColumns: {
+                sizes: {
+                  gridColumnsPortraitPhone:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsLandscapePhone:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsPortraitTablet:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsLanscapeTablet:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsSmallDesktop:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsMediumDesktop:
+                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                  gridColumnsLargeDesktop:
+                    [ 70, 160, 250, 40, 150, 65, 90, 200, 200],
+                },
+                unit: 'px',
+              },
+
+              width: 100,
+              height: 70,
+              widthUnit: '%',
+              heightUnit: '%',
+              gridLeftMargin: 2,
+              gridLeftMarginUnit: '%',
+            },
           }
         }
       }

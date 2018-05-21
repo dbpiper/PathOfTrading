@@ -17,14 +17,6 @@ const borderRadius = (props) => {
   }
 };
 
-const height = (props) => {
-  if (!props.search) {
-    return Constants.Textbox.height + Constants.Textbox.heightUnit;
-  } else {
-    return Constants.SearchBox.height + Constants.SearchBox.heightUnit;
-  }
-};
-
 function getBorderCss(props) {
   return css`
      -webkit-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
@@ -39,8 +31,8 @@ const TextboxInput = styled.input.attrs({
    ${textbox}
 
    &&& {
-       ${props => Textbox.makeWidthMediaQueries(props)};
-       height: ${props => height(props)};
+      ${props => Textbox.makeWidthMediaQueries(props)}
+      ${props => Textbox.makeHeightMediaQueries(props)}
 
       ${props => props.hasButton && getBorderCss(props)};
    }
@@ -65,13 +57,52 @@ const TextboxSibling = styled.div`
 
 class Textbox extends React.Component {
 
+  static makeHeightMediaQueries(props) {
+
+    if (!props.search) {
+      return MediaQuery.create([
+        {
+          heightBased: true,
+          property: 'height',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: Constants.Textbox.height.sizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.Textbox.height.unit,
+            };
+          },
+        },
+      ]);
+    } else {
+      return MediaQuery.create([
+        {
+          heightBased: true,
+          property: 'height',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: Constants.SearchBox.height.sizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.SearchBox.height.unit,
+            };
+          },
+        },
+      ]);
+
+    }
+  }
   static makeWidthMediaQueries(props) {
 
     if (!props.search) {
       const textboxSizes = props.canBeRanged ? Constants.Textbox.width.rangedSizes
         : Constants.Textbox.width.sizes;
 
-      const mediaQuery = MediaQuery.create([
+      return MediaQuery.create([
         {
           property: 'width',
           function: MediaQuery.numberToSize,
@@ -86,8 +117,6 @@ class Textbox extends React.Component {
           },
         },
       ]);
-
-      return mediaQuery;
     } else {
       return MediaQuery.create([
         {
