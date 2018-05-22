@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import standardFont from 'shared/styles/standardFont';
-import Constants from 'constants/Constants';
 
+import standardFont from 'shared/styles/standardFont';
+import placeholder from 'shared/styles/placeholder';
+
+import TextCursor from 'media/images/cur/beam_black.cur';
+
+import Constants from 'constants/Constants';
 
 const AbstractNumericFieldContainer = styled.span`
     width: 100%;
@@ -39,6 +43,12 @@ const AbstractNumericInput = styled.input.attrs({
       -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
          -moz-box-sizing: border-box;    /* Firefox, other Gecko */
               box-sizing: border-box;         /* Opera/IE 8+ */
+
+      -moz-appearance:textfield;
+
+      ${placeholder}
+
+      cursor: url(${TextCursor}), text;
     }
 
     &::-webkit-outer-spin-button,
@@ -46,10 +56,13 @@ const AbstractNumericInput = styled.input.attrs({
         /* display: none; <- Crashes Chrome on hover */
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        color: ${Constants.Colors.standardFont};
     }
 
-    & {
-      -moz-appearance:textfield;
+    &:hover {
+
+      transition-duration 250ms;
+      border-bottom-color: ${props => props.hoveredUnderlineColor};
     }
 
     &:focus {
@@ -64,24 +77,20 @@ const AbstractNumericInput = styled.input.attrs({
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
-      ${standardFont}
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 
     &&& {
-
       font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
     }
 `;

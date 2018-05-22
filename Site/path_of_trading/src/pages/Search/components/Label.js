@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import standardFont from 'shared/styles/standardFont';
 
+import TextCursor from 'media/images/cur/beam_black.cur';
+
 import Constants from 'constants/Constants';
 
 const LabelEle = styled.label`
@@ -13,6 +15,7 @@ const LabelEle = styled.label`
     &&& {
 
       font-size: ${props => props.heading ? Constants.Fonts.Standard.fontSizeHeading+Constants.Fonts.Standard.fontSizeUnit : ''};
+      cursor: url(${TextCursor}), text;
     }
 `;
 

@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 
 import textbox from 'shared/styles/textbox';
 
+import MediaQuery from 'shared/helpers/MediaQuery';
+
 import Constants from 'constants/Constants';
 
 import Range from './Range';
@@ -15,21 +17,13 @@ const borderRadius = (props) => {
   }
 };
 
-const width = (props) => {
-  if (!props.search) {
-    return (Constants.Textbox.width * (props.canBeRanged ? 2 : 1)) + Constants.Textbox.widthUnit;
-  } else {
-    return (Constants.SearchBox.width * (props.canBeRanged ? 2 : 1)) + Constants.SearchBox.widthUnit;
-  }
-};
-
-const height = (props) => {
-  if (!props.search) {
-    return Constants.Textbox.height + Constants.Textbox.heightUnit;
-  } else {
-    return Constants.SearchBox.height + Constants.SearchBox.heightUnit;
-  }
-};
+function getBorderCss(props) {
+  return css`
+     -webkit-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+        -moz-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+             border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
+  `;
+}
 
 const TextboxInput = styled.input.attrs({
   type: "text",
@@ -37,14 +31,11 @@ const TextboxInput = styled.input.attrs({
    ${textbox}
 
    &&& {
-     width: ${props => width(props)};
-     height: ${props => height(props)};
+      ${props => Textbox.makeWidthMediaQueries(props)}
+      ${props => Textbox.makeHeightMediaQueries(props)}
 
-    ${props => props.hasButton && css`
-       -webkit-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
-          -moz-border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
-               border-radius: ${borderRadius(props)} 0 0 ${borderRadius(props)};
-    `}
+      ${props => props.hasButton && getBorderCss(props)};
+   }
 `;
 
 
@@ -64,17 +55,100 @@ const TextboxSibling = styled.div`
 `;
 
 
-function Textbox(props) {
+class Textbox extends React.Component {
+
+  static makeHeightMediaQueries(props) {
+
+    if (!props.search) {
+      return MediaQuery.create([
+        {
+          heightBased: true,
+          property: 'height',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: Constants.Textbox.height.sizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.Textbox.height.unit,
+            };
+          },
+        },
+      ]);
+    } else {
+      return MediaQuery.create([
+        {
+          heightBased: true,
+          property: 'height',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: Constants.SearchBox.height.sizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.SearchBox.height.unit,
+            };
+          },
+        },
+      ]);
+
+    }
+  }
+  static makeWidthMediaQueries(props) {
+
+    if (!props.search) {
+      const textboxSizes = props.canBeRanged ? Constants.Textbox.width.rangedSizes
+        : Constants.Textbox.width.sizes;
+
+      return MediaQuery.create([
+        {
+          property: 'width',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: textboxSizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.Textbox.width.unit,
+            };
+          },
+        },
+      ]);
+    } else {
+      return MediaQuery.create([
+        {
+          property: 'width',
+          function: MediaQuery.numberToSize,
+          args: {
+            sizes: Constants.SearchBox.width.sizes,
+          },
+          recipeArgsGetter: (args, index) => {
+            return {
+              size: args.sizes[index],
+              unit: Constants.SearchBox.width.unit,
+            };
+          },
+        },
+      ]);
+    }
+  }
+
+  render() {
     return (
       <TextboxDiv>
         <TextboxInput
-          {...props}
+          {...this.props}
         />
-        <TextboxSibling canBeRanged={props.canBeRanged} isRanged={props.isRanged}>
+        <TextboxSibling canBeRanged={this.props.canBeRanged} isRanged={this.props.isRanged}>
           <Range small={true}/>
         </TextboxSibling>
       </TextboxDiv>
     );
+  }
+
 }
 
 export default Textbox;

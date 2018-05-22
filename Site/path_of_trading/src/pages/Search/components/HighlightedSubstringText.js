@@ -29,7 +29,7 @@ const charCodeSum = (str) => {
   }
 
   if (result <= 0) {
-    result = Math.floor((Math.random()+1)*(1000+(Math.random()+1)));
+    result = Math.floor(Math.random() * (100000 - 1) + 1);
   }
 
   return result;

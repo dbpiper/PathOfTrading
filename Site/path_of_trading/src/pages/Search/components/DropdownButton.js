@@ -4,9 +4,42 @@ import styled, { css } from 'styled-components';
 
 import noselect from 'shared/styles/noselect';
 
-import Arrow from 'public/svg/Arrow_23.198x15.468.svg';
+import Arrow from 'media/images/svg/Arrow_19.884x13.259.svg';
 
 import Constants from 'constants/Constants';
+
+import MediaQuery from 'shared/helpers/MediaQuery';
+
+const buttonSizeMediaQueries = MediaQuery.create([
+      {
+        property: 'width',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: Constants.Buttons.Dropdown.width.sizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.Buttons.Dropdown.width.unit,
+          };
+        },
+      },
+      {
+        heightBased: true,
+        property: 'height',
+        function: MediaQuery.numberToSize,
+        args: {
+          sizes: Constants.Buttons.Dropdown.height.sizes,
+        },
+        recipeArgsGetter: (args, index) => {
+          return {
+            size: args.sizes[index],
+            unit: Constants.Buttons.Dropdown.height.unit,
+          };
+        },
+      },
+
+]);
 
 const borderRadius = () => {
   return Constants.Buttons.Dropdown.borderRadus + Constants.Buttons.Dropdown.borderRadiusUnit;
@@ -24,9 +57,6 @@ const Button = styled.button`
       outline-width: 0;
       cursor: pointer;
 
-      width: ${Constants.Buttons.Dropdown.width}${Constants.Buttons.Dropdown.widthUnit};
-      height: ${Constants.Buttons.Dropdown.height}${Constants.Buttons.Dropdown.heightUnit};
-
       -webkit-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
          -moz-border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
               border-radius: 0 ${borderRadius()} ${borderRadius()} 0;
@@ -34,6 +64,8 @@ const Button = styled.button`
       ${props => props.search && css`
           display: none;
       `}
+
+      ${buttonSizeMediaQueries}
 `;
 
 const Img = styled.img`

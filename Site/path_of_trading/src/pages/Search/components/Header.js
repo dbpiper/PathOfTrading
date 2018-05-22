@@ -15,26 +15,42 @@ const gridRow = (rowNum) => {
       Constants.Layout.Page.Search.Header.gridRowUnit;
 };
 
+const heightMediaQueries = MediaQuery.create([
+  {
+    heightBased: true,
+    property: 'height',
+    function: MediaQuery.numberToSize,
+    args: {
+      sizes: Constants.Layout.Page.Search.Header.height.sizes,
+    },
+    recipeArgsGetter: (args, index) => {
+      return {
+        size: args.sizes[index],
+        unit: Constants.Layout.Page.Search.Header.height.unit,
+      }
+    },
+  },
+]);
+
 const DivTest = styled.div`
     ${headingFont}
 
     display: block;
-    height: ${Constants.Layout.Page.Search.Header.height}${Constants.Layout.Page.Search.Header.heightUnit};
     width: ${Constants.Layout.Page.Search.Header.width}${Constants.Layout.Page.Search.Header.widthUnit};
+    ${heightMediaQueries}
 `;
 
-const gridRowMediaQueries = MediaQuery.create([
+const gridColumnMediaQueries = MediaQuery.create([
   {
     property: 'grid-template-columns',
-    function: MediaQuery.gridColumnArrayToSizes,
+    function: MediaQuery.arrayAndUnitToSizes,
     args: {
       sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
-      unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: args.unit,
+        unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
       };
     },
   },
@@ -54,12 +70,11 @@ const Grid = styled.div`
   ${'' /* grid-template-columns: ${gridColumn(0)} ${gridColumn(1)}; */}
 
   grid-template-areas:
-    "title ."
-    "search league";
+    "title title ."
+    "search search league";
 
 
-  ${gridRowMediaQueries};
-
+  ${gridColumnMediaQueries}
 
 `;
 
@@ -80,7 +95,7 @@ function Header(props) {
           {props.title}
         </GridArea>
         <GridArea area="search">
-          <SearchBox placeholder="Enter an Item's Name or partial Description" />
+          <SearchBox placeholder={Constants.Strings.searchPlaceholder} />
         </GridArea>
         <GridArea area="league">
           <Dropdown placeholder="League"/>
