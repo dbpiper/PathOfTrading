@@ -11,6 +11,8 @@ import Range from './Range';
 const Div = styled.div`
   height: ${Constants.Layout.Page.Search.Body.Combat.height}${Constants.Layout.Page.Search.Body.Combat.heightUnit};
   width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
+
+  display: ${props => !props.selected ? 'none' : 'block'};
 `
 
 
@@ -85,7 +87,7 @@ const HeadingGridArea = GridArea.extend`
 class CombatBody extends Component {
   render() {
     return (
-      <Div>
+      <Div selected={this.props.selected} >
           <Grid>
             <HeadingGridArea area="offenseLabel">
               <Label value="Offense" heading={true} />

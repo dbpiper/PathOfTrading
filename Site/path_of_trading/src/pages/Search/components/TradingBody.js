@@ -31,6 +31,8 @@ const heightMediaQueries = MediaQuery.create([
 const Div = styled.div`
   width: ${Constants.Layout.Page.Search.Body.Trading.width}${Constants.Layout.Page.Search.Body.Trading.widthUnit};
   ${heightMediaQueries};
+
+  display: ${props => !props.selected ? 'none' : 'block'};
 `
 
 
@@ -109,7 +111,7 @@ const GridArea = styled.span`
 class TradingBody extends Component {
   render() {
     return (
-      <Div>
+      <Div selected={this.props.selected} >
           <Grid>
             {/* Column 1 */}
             <GridArea area="sellerOnline">

@@ -1,20 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import standardFont from 'shared/styles/standardFont';
+import headingFont from 'shared/styles/headingFont';
 
 const Div = styled.div`
     & {
-      ${standardFont}
+      ${headingFont}
+
+      cursor: pointer;
+
+      width: 125px;
     }
 `;
 
-function Tab(props) {
-  return (
-    <Div>
-      {props.title}
-    </Div>
-  );
+class Tab extends React.Component {
+  render() {
+    return (
+      <Div onClick={() => this.props.onClick(this.props.title)}>
+        {this.props.title}
+      </Div>
+    );
+  }
 }
 
 export default Tab;
