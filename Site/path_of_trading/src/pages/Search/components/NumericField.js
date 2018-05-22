@@ -10,6 +10,7 @@ function NumericField(props) {
       placeholder={props.placeholder}
       underlineColor={Constants.Colors.underlineColor}
       focusedUnderlineColor={Constants.Colors.underlineColorFocused}
+      hoveredUnderlineColor={Constants.Colors.underlineColorHovered}
       small={props.small}
     />
   );

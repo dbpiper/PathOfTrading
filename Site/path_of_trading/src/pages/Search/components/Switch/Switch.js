@@ -31,6 +31,7 @@ const Frame = styled.div`
   left: 0;
 
   cursor: pointer;
+  ${noselect}
 `;
 
 
@@ -43,9 +44,9 @@ const hide = (hidden) => {
 const Background = styled.img.attrs({
   alt: "",
 })`
-  ${noselect}
   ${switchBackground}
   display: ${props => hide(props.hidden)};
+  ${noselect}
 `;
 
 const buttonPos = (value) => {

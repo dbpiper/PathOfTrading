@@ -2,7 +2,7 @@ const Constants = Object.freeze({
 
     Buttons: {
       Dropdown: {
-        paddingTop: 10,
+        paddingTop: 8,
         paddingBottom: 4,
         paddingLeft: 8,
         paddingRight: 8,
@@ -172,6 +172,7 @@ const Constants = Object.freeze({
       headingFont: '#FEFDFF',
       dropdownSelectedColor: '#304352',
       dropdownSelectedBackground: '#FEFDFF',
+      underlineColorHovered: '#D2CFD2',
       underlineColor: '#0D0106',
       underlineColorFocused: '#FEFDFF',
       accent: '#BCD4DE',
@@ -267,8 +268,8 @@ const Constants = Object.freeze({
         Search: {
           Header: {
               gridRows: [
-                  40,
-                  40,
+                  35,
+                  65,
               ],
               gridRowUnit: '%',
 
@@ -294,9 +295,19 @@ const Constants = Object.freeze({
 
               gridColumnUnit: 'px',
               width: 100,
-              height: 30,
+              height: {
+                sizes: [
+                  120,
+                  120,
+                  120,
+                  120,
+                  130,
+                  160,
+                  225,
+                ],
+                unit: 'px',
+              },
               widthUnit: '%',
-              heightUnit: '%',
           },
           Body: {
             Combat: {
@@ -329,20 +340,6 @@ const Constants = Object.freeze({
                   gridColumnsLargeDesktop:
                     [ 140, 150, 160, 110, 200, ],
 
-                  // gridColumnsPortraitPhone:
-                  //   [ 150, 200, 1, 150, 200, ],
-                  // gridColumnsLandscapePhone:
-                  //   [ 150, 200, 1, 150, 200, ],
-                  // gridColumnsPortraitTablet:
-                  //   [ 150, 200, 1, 150, 200, ],
-                  // gridColumnsLanscapeTablet:
-                  //   [ 150, 200, 10, 150, 200, ],
-                  // gridColumnsSmallDesktop:
-                  //   [ 150, 200, 20, 150, 200, ],
-                  // gridColumnsMediumDesktop:
-                  //   [ 150, 200, 30, 150, 200, ],
-                  // gridColumnsLargeDesktop:
-                  //   [ 150, 200, 80, 150, 200, ],
                 },
                 unit: 'px',
               },
@@ -357,12 +354,12 @@ const Constants = Object.freeze({
             Trading: {
               gridRows: {
                 sizes: [
-                  [10, 10, 10, 10, 10, 10, 10, 10],
-                  [10, 10, 10, 10, 10, 10, 10, 10],
-                  [10, 10, 10, 10, 10, 10, 10, 10],
-                  [10, 10, 10, 10, 10, 10, 10, 10],
-                  [10, 10, 10, 10, 10, 10, 10, 10],
-                  [10, 10, 10, 10, 10, 10, 10, 10],
+                  [55, 55, 55, 55, 55, 55, 55, 55],
+                  [55, 55, 55, 55, 55, 55, 55, 55],
+                  [55, 55, 55, 55, 55, 55, 55, 55],
+                  [55, 55, 55, 55, 55, 55, 55, 55],
+                  [57, 57, 57, 57, 57, 57, 57, 57],
+                  [65, 65, 65, 65, 65, 65, 65, 65],
                   [80, 80, 80, 80, 80, 80, 80, 80],
                 ],
                 unit: 'px',
@@ -370,27 +367,37 @@ const Constants = Object.freeze({
               gridColumns: {
                 sizes: {
                   gridColumnsPortraitPhone:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 120, 140, 0, 95, 65, 15, 140, 200],
                   gridColumnsLandscapePhone:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 120, 140, 0, 95, 65, 15, 140, 200],
                   gridColumnsPortraitTablet:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 120, 140, 0, 95, 65, 15, 140, 200],
                   gridColumnsLanscapeTablet:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 120, 140, 0, 95, 65, 15, 140, 200],
                   gridColumnsSmallDesktop:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 140, 140, 45, 95, 65, 45, 160, 200],
                   gridColumnsMediumDesktop:
-                    [ 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    [ 140, 140, 60, 105, 65, 60, 160, 200],
                   gridColumnsLargeDesktop:
-                    [ 70, 160, 250, 40, 150, 65, 90, 200, 200],
+                    [ 140, 140, 90, 150, 65, 90, 200, 200],
                 },
                 unit: 'px',
               },
 
               width: 100,
-              height: 70,
+              height: {
+                sizes: [
+                  500,
+                  500,
+                  500,
+                  500,
+                  500,
+                  600,
+                  700,
+                ],
+                unit: 'px',
+              },
               widthUnit: '%',
-              heightUnit: '%',
               gridLeftMargin: 2,
               gridLeftMarginUnit: '%',
             },

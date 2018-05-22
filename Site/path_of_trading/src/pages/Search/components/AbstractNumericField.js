@@ -59,6 +59,11 @@ const AbstractNumericInput = styled.input.attrs({
         color: ${Constants.Colors.standardFont};
     }
 
+    &:hover {
+
+      transition-duration 250ms;
+      border-bottom-color: ${props => props.hoveredUnderlineColor};
+    }
 
     &:focus {
       border-bottom-width: ${Constants.AbstractNumericField.borderBottomWidth}${Constants.AbstractNumericField.borderBottomWidthUnit};

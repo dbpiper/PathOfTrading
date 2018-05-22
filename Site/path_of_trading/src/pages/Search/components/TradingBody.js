@@ -11,9 +11,26 @@ import Dropdown from './Dropdown';
 import Label from './Label';
 import Range from './Range';
 
+const heightMediaQueries = MediaQuery.create([
+  {
+    heightBased: true,
+    property: 'height',
+    function: MediaQuery.numberToSize,
+    args: {
+      sizes: Constants.Layout.Page.Search.Body.Trading.height.sizes,
+    },
+    recipeArgsGetter: (args, index) => {
+      return {
+        size: args.sizes[index],
+        unit: Constants.Layout.Page.Search.Body.Trading.height.unit,
+      }
+    },
+  },
+]);
+
 const Div = styled.div`
-  height: ${Constants.Layout.Page.Search.Body.Trading.height}${Constants.Layout.Page.Search.Body.Trading.heightUnit};
   width: ${Constants.Layout.Page.Search.Body.Trading.width}${Constants.Layout.Page.Search.Body.Trading.widthUnit};
+  ${heightMediaQueries};
 `
 
 
@@ -32,6 +49,7 @@ const gridMediaQueries = MediaQuery.create([
     },
   },
   {
+    heightBased: true,
     property: 'grid-template-rows',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
@@ -56,28 +74,18 @@ const Grid = styled.div`
   justify-content: center;
 
 
-  ${'' /* grid-template-columns: 150px 150px 150px 150px 150px 150px 150px 150px 150px; */}
-
-  ${gridMediaQueries};
+  ${gridMediaQueries}:read-write
 
   grid-template-areas:
-    ${'' /* "offenseLabel offenseLabel . defenseLabel defenseLabel"
-    "damage damageRange . armour armourRange"
-    "dps dpsRange . block blockRange"
-    "aps apsRange . evasion evasionRange"
-    "edps edpsRange . shield shieldRange"
-    "criticalStrike criticalStrikeRange . . ."
-    "pdps pdpsRange . . ."; */}
-    ${'' /* "sellerOnline sellerOnline . ." */}
-    "sellerOnline sellerOnline . . craftedLabel craftedSwitch . gemLevelLabel gemLevelRange"
-    "seller seller . . identifiedLabel identifiedSwitch . mapTierLabel mapTierRange"
-    "inLeagueLabel inLeagueLabel inLeagueSwitch . corruptedLabel corruptedSwitch . qualityLabel qualityRange"
-    "stash stash . . enchantedLabel enchantedSwitch . quantityLabel quantityRange"
-    "hasBuyoutLabel hasBuyoutLabel hasBuyoutSwitch . mirroredLabel mirroredSwitch . itemLevelLabel itemLevelRange"
-    "priceLabel priceRange priceCurrencyDropdown . shapedLabel shapedSwitch . normalizeQualityLabel normalizeQualitySwitch"
-    "exactCurrencyLabel exactCurrencyLabel exactCurrencySwitch . elderLabel elderSwitch . . ."
-    ". . . . abyssJewelLabel abyssJewelSwitch . . ."
 
+    "sellerOnline sellerOnline . craftedLabel craftedSwitch . gemLevelLabel gemLevelRange"
+    "seller seller . identifiedLabel identifiedSwitch . mapTierLabel mapTierRange"
+    "inLeagueLabel inLeagueSwitch . corruptedLabel corruptedSwitch . qualityLabel qualityRange"
+    "stash stash . enchantedLabel enchantedSwitch . quantityLabel quantityRange"
+    "hasBuyoutLabel hasBuyoutSwitch . mirroredLabel mirroredSwitch . itemLevelLabel itemLevelRange"
+    "priceLabel priceRange . shapedLabel shapedSwitch . normalizeQualityLabel normalizeQualitySwitch"
+    "priceCurrencyDropdown priceCurrencyDropdown . elderLabel elderSwitch . . ."
+    "exactCurrencyLabel exactCurrencySwitch . abyssJewelLabel abyssJewelSwitch . . ."
 
 `;
 
@@ -130,6 +138,9 @@ class TradingBody extends Component {
             <GridArea area="priceRange">
               <Range />
             </GridArea>
+            <GridArea area="priceCurrencyDropdown">
+              <Dropdown placeholder="Currency" />
+            </GridArea>
 
             {/* Column 3 */}
             <GridArea area="inLeagueSwitch">
@@ -137,9 +148,6 @@ class TradingBody extends Component {
             </GridArea>
             <GridArea area="hasBuyoutSwitch">
               <Switch />
-            </GridArea>
-            <GridArea area="priceCurrencyDropdown">
-              <Dropdown placeholder="Currency" />
             </GridArea>
             <GridArea area="exactCurrencySwitch">
               <Switch />

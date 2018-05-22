@@ -18,8 +18,8 @@ class SearchPage extends Component {
     return (
       <Div>
         <Header title="Path of Trading"/>
-        <CombatBody />
-        {/* <TradingBody /> */}
+        {/* <CombatBody /> */}
+        <TradingBody />
       </Div>
     );
   }

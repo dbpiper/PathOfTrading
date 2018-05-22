@@ -74,7 +74,7 @@ class MediaQuery {
     const unit = argsObject.unit;
 
     if (sizes.length > 0 && !(Array.isArray(sizes) && Number.isFinite(sizes[0]))) {
-        console.log('Error: Invalid Args to gridColumnNumToSizes!'); // only reached upon user (of MediaQuery) error
+        console.log('Error: Invalid Args to arrayAndUnitToSizes!'); // only reached upon user (of MediaQuery) error
         return '';
    } else {
       return sizes.map(size => {
