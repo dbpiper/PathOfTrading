@@ -1,2 +1,5 @@
 Project Directory Structure:
   https://stackoverflow.com/questions/36199769/component-based-react-redux-project-directory-structure
+
+Branching Process:
+  https://stackoverflow.com/questions/8614112/how-to-close-off-a-git-branch
