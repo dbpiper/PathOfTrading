@@ -33,7 +33,7 @@ class SearchPage extends Component {
     return (
       <Div>
         <Header title="Path of Trading"/>
-        <TabBar onClick={(tabTitle) => this.handleTabClick(tabTitle)}/>
+        <TabBar onClick={(tabTitle) => this.handleTabClick(tabTitle)} selectedTab={this.state.selectedTab} />
         <CombatBody selected={this.state.selectedTab === 'Combat'} />
         <TradingBody selected={this.state.selectedTab === 'Trading'} />
       </Div>

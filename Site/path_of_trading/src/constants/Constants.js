@@ -178,6 +178,8 @@ const Constants = Object.freeze({
       accent: '#BCD4DE',
       offBackground: '#93a8ac',
       offBorder: '#dfdfdf',
+      inactiveTab: '#4B5A66',
+      activeTab: '#304352',
     },
     Dropdown: {
       Menu: {

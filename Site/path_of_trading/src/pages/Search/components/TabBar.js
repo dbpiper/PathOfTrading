@@ -10,10 +10,9 @@ const Div = styled.label`
       ${standardFont}
     } */}
 
-    &&& {
-
     width: 250px;
-  }
+
+    position: absolute;
 `;
 
 class TabBar extends React.Component {
@@ -25,9 +24,15 @@ class TabBar extends React.Component {
   render() {
     return (
       <Div>
-        <Tab title="Item" onClick={(title) => this.handleTabClick(title)} />
-        <Tab title="Combat" onClick={(title) => this.handleTabClick(title)} />
-        <Tab title="Trading" onClick={(title) => this.handleTabClick(title)} />
+        <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
+          selectedTab={this.props.selectedTab}
+        />
+        <Tab title="Combat" onClick={(title) => this.handleTabClick(title)}
+          selectedTab={this.props.selectedTab}
+        />
+        <Tab title="Trading" onClick={(title) => this.handleTabClick(title)}
+          selectedTab={this.props.selectedTab}
+        />
       </Div>
     );
   }
