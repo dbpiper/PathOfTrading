@@ -107,7 +107,7 @@ class TabBar extends React.Component {
         enter={{
           // width: (!this.props.finishedMenuOpen ? [TabConstants.width] : [TabConstants.width]),
           width: [TabConstants.width],
-          timing: { duration: 1000, ease: easeExpInOut },
+          timing: { duration: 400, ease: easeExpInOut },
         }}
         // enter={{
         //   width: (!this.props.menuOpen ? [0] : [TabConstants.width]),
@@ -118,7 +118,7 @@ class TabBar extends React.Component {
           // width: (this.props.finishedMenuOpen ? [TabConstants.width] : [TabConstants]),
           width: [0],
           // width: [0],
-          timing: { duration: 1000, ease: easeExpInOut },
+          timing: { duration: 400, ease: easeExpInOut },
         }}
       >
        {({ width }) => {
