@@ -10,7 +10,7 @@ const Div = styled.label`
       ${standardFont}
     } */}
 
-    width: 250px;
+    ${'' /* width: 250px; */}
 
     position: absolute;
 `;

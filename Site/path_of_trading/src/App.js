@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SearchPage from './pages/Search/SearchPage';
+import SearchPage from './pages/Search/search-page-component';
 
 // import logo from './logo.svg';
 import './App.css';

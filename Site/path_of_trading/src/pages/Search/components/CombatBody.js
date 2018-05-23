@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-import MediaQuery from 'shared/helpers/MediaQuery';
+import { connect } from 'react-redux';
 
 import Constants from 'constants/Constants';
-
+import MediaQuery from 'shared/helpers/MediaQuery';
 import Label from './Label';
 import Range from './Range';
+
+const title = 'Combat';
+
+const mapStateToProps = (state, props) => {
+  return {...props, selectedTab: state.searchPage.tab.selectedTab };
+};
 
 const Div = styled.div`
   height: ${Constants.Layout.Page.Search.Body.Combat.height}${Constants.Layout.Page.Search.Body.Combat.heightUnit};
   width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
 
-  display: ${props => !props.selected ? 'none' : 'block'};
-`
+  display: ${props => props.selectedTab !== title ? 'none' : 'block'};
+`;
+
 
 
 const gridMediaQueries = MediaQuery.create([
@@ -83,11 +89,11 @@ const HeadingGridArea = GridArea.extend`
   }
 `;
 
-
+@connect(mapStateToProps)
 class CombatBody extends Component {
   render() {
     return (
-      <Div selected={this.props.selected} >
+      <Div selectedTab={this.props.selectedTab}>
           <Grid>
             <HeadingGridArea area="offenseLabel">
               <Label value="Offense" heading={true} />

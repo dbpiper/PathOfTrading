@@ -158,6 +158,7 @@ module.exports = {
                 ['babel-plugin-module-resolver', {
                   "root": "./src",
                 }],
+                ["babel-plugin-transform-decorators-legacy", {}],
               ],
             },
           },

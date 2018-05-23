@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import styled from 'styled-components';
 
 import Header from './components/Header';
@@ -15,27 +14,13 @@ const Div = styled.div`
 `;
 
 class SearchPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedTab: 'Combat',
-    };
-  }
-
-  handleTabClick(tabTitle) {
-    this.setState({
-      selectedTab: tabTitle,
-    });
-  }
-
   render() {
     return (
       <Div>
         <Header title="Path of Trading"/>
-        <TabBar onClick={(tabTitle) => this.handleTabClick(tabTitle)} selectedTab={this.state.selectedTab} />
-        <CombatBody selected={this.state.selectedTab === 'Combat'} />
-        <TradingBody selected={this.state.selectedTab === 'Trading'} />
+        <TabBar />
+        <CombatBody />
+        <TradingBody />
       </Div>
     );
   }

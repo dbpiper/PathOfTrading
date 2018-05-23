@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-import MediaQuery from 'shared/helpers/MediaQuery';
+import { connect } from 'react-redux';
 
 import Constants from 'constants/Constants';
-
+import MediaQuery from 'shared/helpers/MediaQuery';
 import Switch from './Switch';
 import Textbox from './Textbox';
 import Dropdown from './Dropdown';
 import Label from './Label';
 import Range from './Range';
+
+const title = 'Trading';
+
+const mapStateToProps = (state, props) => {
+  return { ...props, selectedTab: state.searchPage.tab.selectedTab };
+};
 
 const heightMediaQueries = MediaQuery.create([
   {
@@ -32,8 +37,8 @@ const Div = styled.div`
   width: ${Constants.Layout.Page.Search.Body.Trading.width}${Constants.Layout.Page.Search.Body.Trading.widthUnit};
   ${heightMediaQueries};
 
-  display: ${props => !props.selected ? 'none' : 'block'};
-`
+  display: ${props => props.selectedTab !== title ? 'none' : 'block'};
+`;
 
 
 const gridMediaQueries = MediaQuery.create([
@@ -107,11 +112,11 @@ const GridArea = styled.span`
 //   }
 // `;
 
-
+@connect(mapStateToProps)
 class TradingBody extends Component {
   render() {
     return (
-      <Div selected={this.props.selected} >
+      <Div selectedTab={this.props.selectedTab}>
           <Grid>
             {/* Column 1 */}
             <GridArea area="sellerOnline">
