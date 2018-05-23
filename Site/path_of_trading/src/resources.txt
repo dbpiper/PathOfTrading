@@ -4,6 +4,12 @@ Project Directory Structure:
 Branching Process:
   https://stackoverflow.com/questions/8614112/how-to-close-off-a-git-branch
 
+Sub-branching:
+  https://stackoverflow.com/questions/4470523/create-a-branch-in-git-from-another-branch
+
+Git Checkout Branch With Local Changes:
+  https://stackoverflow.com/questions/22082307/git-switch-branch-without-discarding-local-changes/22082669
+
 React, Redux Project Examples:
   https://github.com/erikras/react-redux-universal-hot-example
   https://github.com/davidkpiano/react-redux-form

@@ -18,6 +18,7 @@
     "classnames": "^2.2.5",
     "common-substrings": "^1.0.2",
     "css-loader": "0.28.7",
+    "d3-ease": "^1.0.3",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
     "downshift": "^1.31.14",
