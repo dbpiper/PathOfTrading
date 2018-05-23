@@ -1,13 +1,10 @@
 import React from 'react';
-
 import styled, { css } from 'styled-components';
 
-import noselect from 'shared/styles/noselect';
-
-import Arrow from 'media/images/svg/Arrow_19.884x13.259.svg';
-
+import Colors from 'constants/Colors';
 import Constants from 'constants/Constants';
-
+import Arrow from 'media/images/svg/Arrow_19.884x13.259.svg';
+import noselect from 'shared/styles/noselect';
 import MediaQuery from 'shared/helpers/MediaQuery';
 
 const buttonSizeMediaQueries = MediaQuery.create([
@@ -46,7 +43,7 @@ const borderRadius = () => {
 };
 
 const Button = styled.button`
-      background-color: ${Constants.Colors.buttonPrimary};
+      background-color: ${Colors.buttonPrimary};
       padding-top: ${Constants.Buttons.Dropdown.paddingTop}${Constants.Buttons.Dropdown.paddingTopUnit};
       padding-bottom: ${Constants.Buttons.Dropdown.paddingBottom}${Constants.Buttons.Dropdown.paddingBottomUnit};
       padding-left: ${Constants.Buttons.Dropdown.paddingLeft}${Constants.Buttons.Dropdown.paddingLeftUnit};

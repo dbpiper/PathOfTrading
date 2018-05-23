@@ -1,9 +1,10 @@
 import { css } from 'styled-components';
 
+import Colors from 'constants/Colors';
 import Constants from '../../constants/Constants';
 
 const standardFont = css`
-    color: ${Constants.Colors.standardFont};
+    color: ${Colors.standardFont};
 
     font-family: ${Constants.Fonts.Standard.fontFamily};
     font-weight: ${Constants.Fonts.Standard.fontWeight};

@@ -1,19 +1,18 @@
 import React from 'react'
 import Downshift from 'downshift';
 import styled, { css } from 'styled-components';
+import jaroWinkler from 'jaro-winkler'
+import SuffixTrie  from 'common-substrings';
 
+import Colors from 'constants/Colors';
+import Constants from 'constants/Constants';
 import standardFont from 'shared/styles/standardFont';
 import textboxBackground from 'shared/styles/textboxBackground';
-
 import AutocompleteButton from './AutocompleteButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
 import Textbox from './Textbox';
 
-import Constants from 'constants/Constants';
 
-/* Old-school npm packages */
-const jaroWinkler = require('jaro-winkler');
-const SuffixTrie  = require('common-substrings').trie;
 
 const findLongestSubstring = (items: [string], value: string) => {
       let valueAndItems = items.slice();
@@ -76,27 +75,27 @@ const suggest = (items, value) => {
 };
 
 const activeStyle = css`
-    color: ${Constants.Colors.dropdownSelectedColor};
-    background: ${Constants.Colors.dropdownSelectedBackground};
+    color: ${Colors.dropdownSelectedColor};
+    background: ${Colors.dropdownSelectedBackground};
 `;
 
 const selectedStyle = css`
     border-left: ${Constants.Dropdown.Item.selectedAccent}${Constants.Dropdown.Item.selectedAccentUnit}
-    solid ${Constants.Colors.buttonPrimaryLight};
+    solid ${Colors.buttonPrimaryLight};
     border-top: 0;
     border-bottom: 0;
 `;
 
 const activeStyleInner = css`
-    color: ${Constants.Colors.dropdownSelectedColor};
-    background: ${Constants.Colors.dropdownSelectedBackground};
+    color: ${Colors.dropdownSelectedColor};
+    background: ${Colors.dropdownSelectedBackground};
 `;
 
 const selectedStyleInner = css`
     border-top: ${Constants.Dropdown.Item.selectedBorder}${Constants.Dropdown.Item.selectedBorderUnit}
-     solid ${Constants.Colors.offBorder}
+     solid ${Colors.offBorder}
     border-bottom: ${Constants.Dropdown.Item.selectedBorder}${Constants.Dropdown.Item.selectedBorderUnit}
-     solid ${Constants.Colors.offBorder}
+     solid ${Colors.offBorder}
 `;
 
 const Menu = styled.div`

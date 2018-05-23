@@ -17,8 +17,8 @@ class SearchPage extends Component {
   render() {
     return (
       <Div>
-        <Header title="Path of Trading"/>
         <TabBar />
+        <Header title="Path of Trading"/>
         <CombatBody />
         <TradingBody />
       </Div>

@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Colors from 'constants/Colors';
+import Constants from 'constants/Constants';
+import TextCursor from 'media/images/cur/beam_black.cur';
 import standardFont from 'shared/styles/standardFont';
 import placeholder from 'shared/styles/placeholder';
 
-import TextCursor from 'media/images/cur/beam_black.cur';
 
-import Constants from 'constants/Constants';
 
 const AbstractNumericFieldContainer = styled.span`
     width: 100%;
@@ -28,7 +29,7 @@ const AbstractNumericInput = styled.input.attrs({
 
       padding-bottom: 0;
 
-      caret-color: ${Constants.Colors.standardFont};
+      caret-color: ${Colors.standardFont};
 
       ${standardFont}
 
@@ -56,7 +57,7 @@ const AbstractNumericInput = styled.input.attrs({
         /* display: none; <- Crashes Chrome on hover */
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        color: ${Constants.Colors.standardFont};
+        color: ${Colors.standardFont};
     }
 
     &:hover {

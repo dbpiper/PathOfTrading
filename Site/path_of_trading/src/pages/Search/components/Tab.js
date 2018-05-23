@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import Constants from 'constants/Constants';
+import Colors from 'constants/Colors';
+import TabConstants from '../constants/TabConstants';
 import headingFont from 'shared/styles/headingFont';
 import { selectTab } from '../actions/tab-actions';
 
@@ -22,13 +23,24 @@ const Div = styled.div`
 
       cursor: pointer;
 
-      width: 125px;
+      width: ${TabConstants.width};
 
-      height: 50px;
+      height: ${TabConstants.height};
 
-      background-color: ${props => props.active ? Constants.Colors.activeTab
-        : Constants.Colors.inactiveTab
-      };
+      border-top: ${props => props.title === 'Combat' ? 0 : TabConstants.border + ' solid'};
+      border-bottom: ${props => props.title === 'Combat' ? 0 : TabConstants.border + ' solid'};
+      border-left: 0;
+      border-right: 0;
+      border-color: ${Colors.borderColor};
+
+      display: grid;
+
+      align-items: center;
+
+      padding-left: ${TabConstants.paddingLeft};
+
+      background-color: ${props => props.active ? Colors.activeTab
+        : Colors.inactiveTab};
     }
 `;
 
@@ -43,6 +55,7 @@ class Tab extends React.Component {
       <Div
         onClick={() => this.handleClick(this.props.title)}
         active={this.props.selectedTab === this.props.title}
+        title={this.props.title}
       >
         {this.props.title}
       </Div>
