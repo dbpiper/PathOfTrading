@@ -4,21 +4,48 @@ body {
   font-family: sans-serif;
 }
 
+html {
+  min-height: 100%;
+}
+
+/*
 :root, html, body {
   width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   height: 100%;
-}
+  overflow: scroll;
+  min-height: 100%;
+  max-height: 100%;
+  background-size: auto 100%;
+  margin: 0;
+  padding: 0;
+} */
 
 body {
   display: block;
   width: 100%;
   height: 100%;
+
+  background: #304352;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #304352, #d7d2cc);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #304352, #d7d2cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  background-size: auto 100%;
+
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto;
 }
 
-#id {
+#root {
   display: block;
   width: 100%;
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 html {

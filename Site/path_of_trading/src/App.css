@@ -1,21 +1,4 @@
-:root {
-  background: #304352;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #304352, #d7d2cc);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #304352, #d7d2cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  min-height: 100%;
-
-  background-size: auto 100%;
-
-  height: 100%;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-}
-
-
-.App {
+/* .App {
   text-align: center;
   height: 100%;
   width: 100%;
@@ -44,4 +27,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */

@@ -38,6 +38,9 @@ const Div = styled.div`
   ${heightMediaQueries};
 
   display: ${props => props.selectedTab !== title ? 'none' : 'block'};
+
+  max-width: 95%;
+  max-height: 95%;
 `;
 
 

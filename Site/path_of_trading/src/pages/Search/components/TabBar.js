@@ -17,14 +17,16 @@ const Div = styled.label`
     position: absolute;
     height: ${TabConstants.barHeight};
     background-color: ${Colors.inactiveTab}
+
+    display: grid;
+
+    align-items: center;
+
+    z-index: 1;
 `;
 
-const Header = styled.div`
-  margin-top: 100%;
-`;
+const TabDiv = styled.div`
 
-const Footer = styled.div`
-  margin-bottom: 50%;
 `;
 
 class TabBar extends React.Component {
@@ -36,17 +38,17 @@ class TabBar extends React.Component {
   render() {
     return (
       <Div>
-        <Header />
-        <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
-          selectedTab={this.props.selectedTab}
-        />
-        <Tab title="Combat" onClick={(title) => this.handleTabClick(title)}
-          selectedTab={this.props.selectedTab}
-        />
-        <Tab title="Trading" onClick={(title) => this.handleTabClick(title)}
-          selectedTab={this.props.selectedTab}
-        />
-        <Footer />
+        <TabDiv>
+          <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
+            selectedTab={this.props.selectedTab}
+          />
+          <Tab title="Combat" onClick={(title) => this.handleTabClick(title)}
+            selectedTab={this.props.selectedTab}
+          />
+          <Tab title="Trading" onClick={(title) => this.handleTabClick(title)}
+            selectedTab={this.props.selectedTab}
+          />
+        </TabDiv>
       </Div>
     );
   }

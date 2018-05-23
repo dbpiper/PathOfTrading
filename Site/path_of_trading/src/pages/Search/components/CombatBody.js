@@ -18,6 +18,9 @@ const Div = styled.div`
   width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
 
   display: ${props => props.selectedTab !== title ? 'none' : 'block'};
+
+  max-width: 95%;
+  max-height: 95%;
 `;
 
 

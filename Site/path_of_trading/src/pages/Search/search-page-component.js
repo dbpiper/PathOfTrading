@@ -11,6 +11,8 @@ const Div = styled.div`
     width: 100%;
     height: 100%;
     position: absolute;
+    margin: 0;
+    padding: 0;
 `;
 
 class SearchPage extends Component {
