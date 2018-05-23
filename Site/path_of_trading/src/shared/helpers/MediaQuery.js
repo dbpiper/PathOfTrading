@@ -46,8 +46,8 @@ MediaQuery shall be used in the following manner:
       property: 'grid-template-columns',
       function: MediaQuery.gridColumnArrayToSizes,
       args: {
-        sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
-        unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
+        sizes: Object.values(Header.gridColumns.sizes),
+        unit: Header.gridColumnUnit,
       },
       recipeArgsGetter: (args, index) => {
         return {
@@ -212,37 +212,37 @@ class MediaQuery {
 // const gridColumn = (colNum, screenSize) => {
 //   switch(screenSize) {
 //     case Constants.Layout.MediaQuery.PortraitPhone:
-//       return Constants.Layout.Page.Search.Header.gridColumnsPortraitPhone[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsPortraitPhone[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.LandscapePhone:
-//       return Constants.Layout.Page.Search.Header.gridColumnsLandscapePhone[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsLandscapePhone[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.PortraitTablet:
-//       return Constants.Layout.Page.Search.Header.gridColumnsPortraitTablet[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsPortraitTablet[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.LandscapeTablet:
-//       return Constants.Layout.Page.Search.Header.gridColumnsLanscapeTablet[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsLanscapeTablet[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.SmallDesktop:
-//       return Constants.Layout.Page.Search.Header.gridColumnsSmallDesktop[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsSmallDesktop[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.MediumDesktop:
-//       return Constants.Layout.Page.Search.Header.gridColumnsMediumDesktop[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsMediumDesktop[colNum] +
+//         Header.gridColumnUnit;
 //
 //     case Constants.Layout.MediaQuery.LargeDesktop:
-//       return Constants.Layout.Page.Search.Header.gridColumnsLargeDesktop[colNum] +
-//         Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       return Header.gridColumnsLargeDesktop[colNum] +
+//         Header.gridColumnUnit;
 //
 //     default:
 //     return '10000px';
-//       // return Constants.Layout.Page.Search.Header.gridColumns[colNum] +
-//       //   Constants.Layout.Page.Search.Header.gridColumnUnit;
+//       // return Header.gridColumns[colNum] +
+//       //   Header.gridColumnUnit;
 //   }
 // };
 //

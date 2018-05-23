@@ -1,14 +1,14 @@
 import { css } from 'styled-components';
 
 import Colors from 'constants/Colors';
-import Constants from '../../constants/Constants';
+import Fonts from 'constants/Fonts';
 
 const headingFont = css`
     color: ${Colors.headingFont};
 
-    font-family: ${Constants.Fonts.Heading.fontFamily};
-    font-weight: ${Constants.Fonts.Heading.fontWeightStandard};
-    font-size: ${Constants.Fonts.Heading.fontSize}${Constants.Fonts.Heading.fontSizeUnit};
+    font-family: ${Fonts.Heading.fontFamily};
+    font-weight: ${Fonts.Heading.fontWeightStandard};
+    font-size: ${Fonts.Heading.fontSize}${Fonts.Heading.fontSizeUnit};
 `;
 
 export default headingFont;

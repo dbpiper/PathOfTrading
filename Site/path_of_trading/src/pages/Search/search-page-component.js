@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import TradingBody from './components/TradingBody';
 import CombatBody from './components/CombatBody';
 import TabBar from './components/TabBar';
+
+const mapStateToProps = state => {
+  return { menuOpen: state.searchPage.menu.menuOpen };
+};
 
 const Div = styled.div`
     display: block;
@@ -15,6 +20,7 @@ const Div = styled.div`
     padding: 0;
 `;
 
+@connect(mapStateToProps)
 class SearchPage extends Component {
   render() {
     return (

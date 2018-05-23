@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import headingFont from 'shared/styles/headingFont';
-
-import MediaQuery from 'shared/helpers/MediaQuery';
-
+import HeaderConstants from '../constants/HeaderConstants';
 import Constants from 'constants/Constants';
-
+import headingFont from 'shared/styles/headingFont';
+import MediaQuery from 'shared/helpers/MediaQuery';
 import Dropdown from './Dropdown';
 import SearchBox from './SearchBox';
+import MenuIcon from './MenuIcon';
+
+const mapStateToProps = state => {
+  return { menuOpen: state.searchPage.menu.menuOpen };
+};
 
 const gridRow = (rowNum) => {
-    return Constants.Layout.Page.Search.Header.gridRows[rowNum] +
-      Constants.Layout.Page.Search.Header.gridRowUnit;
+    return HeaderConstants.gridRows[rowNum].size +
+      HeaderConstants.gridRows[rowNum].unit;
 };
 
 const heightMediaQueries = MediaQuery.create([
@@ -21,12 +25,12 @@ const heightMediaQueries = MediaQuery.create([
     property: 'height',
     function: MediaQuery.numberToSize,
     args: {
-      sizes: Constants.Layout.Page.Search.Header.height.sizes,
+      sizes: HeaderConstants.height.sizes,
     },
     recipeArgsGetter: (args, index) => {
       return {
         size: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Header.height.unit,
+        unit: HeaderConstants.height.unit,
       }
     },
   },
@@ -36,7 +40,7 @@ const DivTest = styled.div`
     ${headingFont}
 
     display: block;
-    width: ${Constants.Layout.Page.Search.Header.width}${Constants.Layout.Page.Search.Header.widthUnit};
+    width: ${HeaderConstants.width}${HeaderConstants.widthUnit};
     ${heightMediaQueries}
 `;
 
@@ -45,12 +49,12 @@ const gridColumnMediaQueries = MediaQuery.create([
     property: 'grid-template-columns',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
-      sizes: Object.values(Constants.Layout.Page.Search.Header.gridColumns.sizes),
+      sizes: Object.values(HeaderConstants.gridColumns.sizes),
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Header.gridColumnUnit,
+        unit: HeaderConstants.gridColumnUnit,
       };
     },
   },
@@ -70,8 +74,8 @@ const Grid = styled.div`
   ${'' /* grid-template-columns: ${gridColumn(0)} ${gridColumn(1)}; */}
 
   grid-template-areas:
-    "title title ."
-    "search search league";
+    "menuIcon title title ."
+    ". search search league";
 
 
   ${gridColumnMediaQueries}
@@ -87,10 +91,19 @@ const GridArea = styled.span`
   justify-content: center;
 `;
 
+const OpenMenuDiv = styled.div`
+  display: ${props => !props.menuOpen ? 'grid' : 'none'};
+`
+
 function Header(props) {
   return (
     <DivTest>
       <Grid>
+        <GridArea area="menuIcon">
+          <OpenMenuDiv menuOpen={props.menuOpen}>
+            <MenuIcon />
+          </OpenMenuDiv>
+        </GridArea>
         <GridArea area="title">
           {props.title}
         </GridArea>
@@ -105,4 +118,4 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default connect(mapStateToProps)(Header);

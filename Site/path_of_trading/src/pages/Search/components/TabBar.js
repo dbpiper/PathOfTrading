@@ -1,9 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import Colors from 'constants/Colors';
 import TabConstants from '../constants/TabConstants';
 import Tab from './Tab';
+import MenuIcon from './MenuIcon';
+
+const mapStateToProps = state => {
+  return { menuOpen: state.searchPage.menu.menuOpen };
+};
 
 const Div = styled.label`
     ${'' /* & {
@@ -18,17 +24,22 @@ const Div = styled.label`
     height: ${TabConstants.barHeight};
     background-color: ${Colors.inactiveTab}
 
-    display: grid;
 
     align-items: center;
 
     z-index: 1;
+
+    display: ${props => props.menuOpen ? 'grid' : 'none'};
 `;
 
 const TabDiv = styled.div`
-
 `;
 
+const CloseMenuDiv = styled.div`
+  display: ${props => props.menuOpen ? 'grid' : 'none'};
+`
+
+@connect(mapStateToProps)
 class TabBar extends React.Component {
 
   handleTabClick(title) {
@@ -37,7 +48,10 @@ class TabBar extends React.Component {
 
   render() {
     return (
-      <Div>
+      <Div menuOpen={this.props.menuOpen}>
+        <CloseMenuDiv menuOpen={this.props.menuOpen}>
+          <MenuIcon />
+        </CloseMenuDiv>
         <TabDiv>
           <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
             selectedTab={this.props.selectedTab}

@@ -221,24 +221,6 @@ const Constants = Object.freeze({
       borderBottomWidth: 1,
       borderBottomWidthUnit: 'px',
     },
-    Fonts: {
-      Heading: {
-        fontFamily: "'Playfair Display', serif",
-        fontWeightStandard: 400,
-        fontWeightBold: 700,
-        fontSize: 2,
-        fontSizeUnit: 'rem',
-      },
-      Standard: {
-        fontFamily: "'Open Sans', sans-serif",
-        fontWeight: 300,
-        fontWeightSemiBold: 600,
-        fontSizeHeading: 1.25,
-        fontSize: 1,
-        fontSizeSmall: 0.75,
-        fontSizeUnit: 'rem',
-      }
-    },
     Layout: {
       MediaQuery: {
         PortraitPhone: 0,
@@ -251,49 +233,49 @@ const Constants = Object.freeze({
       },
       Page: {
         Search: {
-          Header: {
-              gridRows: [
-                  35,
-                  65,
-              ],
-              gridRowUnit: '%',
-
-              gridColumns: {
-                sizes: {
-                  gridColumnsPortraitPhone:
-                    [ 235, 30, 100],
-                  gridColumnsLandscapePhone:
-                    [ 240, 30, 124],
-                  gridColumnsPortraitTablet:
-                    [ 250, 60, 148],
-                  gridColumnsLanscapeTablet:
-                    [ 270, 90, 172],
-                  gridColumnsSmallDesktop:
-                    [ 310, 120, 196],
-                  gridColumnsMediumDesktop:
-                    [ 420, 150, 220],
-                  gridColumnsLargeDesktop:
-                    [ 530, 180, 244],
-                },
-                unit: 'px',
-              },
-
-              gridColumnUnit: 'px',
-              width: 100,
-              height: {
-                sizes: [
-                  120,
-                  120,
-                  120,
-                  120,
-                  130,
-                  160,
-                  225,
-                ],
-                unit: 'px',
-              },
-              widthUnit: '%',
-          },
+          // Header: {
+          //     gridRows: [
+          //         35,
+          //         65,
+          //     ],
+          //     gridRowUnit: '%',
+          //
+          //     gridColumns: {
+          //       sizes: {
+          //         gridColumnsPortraitPhone:
+          //           [ 235, 30, 100],
+          //         gridColumnsLandscapePhone:
+          //           [ 240, 30, 124],
+          //         gridColumnsPortraitTablet:
+          //           [ 250, 60, 148],
+          //         gridColumnsLanscapeTablet:
+          //           [ 270, 90, 172],
+          //         gridColumnsSmallDesktop:
+          //           [ 310, 120, 196],
+          //         gridColumnsMediumDesktop:
+          //           [ 420, 150, 220],
+          //         gridColumnsLargeDesktop:
+          //           [ 530, 180, 244],
+          //       },
+          //       unit: 'px',
+          //     },
+          //
+          //     gridColumnUnit: 'px',
+          //     width: 100,
+          //     height: {
+          //       sizes: [
+          //         120,
+          //         120,
+          //         120,
+          //         120,
+          //         130,
+          //         160,
+          //         225,
+          //       ],
+          //       unit: 'px',
+          //     },
+          //     widthUnit: '%',
+          // },
           Body: {
             Combat: {
               gridRows: {
