@@ -40,7 +40,7 @@ const Div = styled.label`
     height: 100%;
 
     position: absolute;
-    height: ${TabConstants.barHeight};
+    ${'' /* height: ${TabConstants.barHeight}; */}
     background-color: ${Colors.inactiveTab}
 
 
@@ -52,21 +52,34 @@ const Div = styled.label`
     display: grid;
 
     width: ${props => props.width + 'px'};
+
+    grid-template-rows: 100px calc(100% - 100px);
+    grid-template-columns: 100%;
+
 `;
 
 const TabDiv = styled.div`
     width: ${props => props.width + 'px'};
+
+    grid-area: "tabs";
+
+    grid-row: 2;
 `;
 
 const CloseMenuDiv = styled.div`
   display: ${props => props.menuOpen ? 'grid' : 'none'};
+
+  grid-area: "menuIcon";
+
+  grid-row: 1;
 `
 
 function veryClose(a, b) {
-  return Math.abs(a - b) < Number.EPSILON;
+  return Math.abs(a - b) < 150; //TODO: find less hacky way to do this
 }
 
 function hasFinished(startedMenuOpen, startedMenuClose, width) {
+  console.log('width: ' + width);
   if (startedMenuOpen && veryClose(width, TabConstants.width)) {
     return true;
   } else if (startedMenuClose && veryClose(width, 0)) {
@@ -124,7 +137,6 @@ class TabBar extends React.Component {
        {({ width }) => {
           return (
            <Div width={width}>
-             {console.log('startedMenuOpen: ' + this.props.startedMenuOpen + ' finishedMenuOpen: '  + this.props.finishedMenuOpen)}
              {hasFinished(this.props.startedMenuOpen,
                this.props.startedMenuClose,
                width

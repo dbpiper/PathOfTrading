@@ -68,6 +68,15 @@ const ShrinkGrowDiv = styled.div`
 
 @connect(mapStateToProps, mapDispatchToProps)
 class MenuIcon extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuText: 'Close',
+    };
+  }
+
   handleClick() {
     if (this.props.finishedMenuClose && !this.startedMenuOpen) {
       this.props.startMenuOpen(!this.props.startedMenuOpen);
@@ -77,9 +86,16 @@ class MenuIcon extends React.Component {
     }
   }
 
-  getText() {
-
-    return !this.props.finishedMenuOpen ? 'Menu' : 'Close';
+  setText() {
+    if (this.state.menuText === 'Menu' && this.props.finishedMenuOpen) {
+      this.setState({
+        menuText: 'Close',
+      });
+    } else if (this.state.menuText === 'Close' && this.props.finishedMenuClose) {
+      this.setState({
+        menuText: 'Menu',
+      });
+    }
   }
 
   render() {
@@ -91,7 +107,8 @@ class MenuIcon extends React.Component {
           <ContentDiv onClick={() => this.handleClick()}
             menuOpen={this.props.finishedMenuOpen}
           >
-            {this.getText()}
+            {this.setText()}
+            {this.state.menuText}
           </ContentDiv>
         </ShrinkGrowDiv>
       </Div>
