@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Animate } from 'react-move';
 import { connect } from 'react-redux';
 
-import Fonts from 'constants/Fonts';
 import Colors from 'constants/Colors';
 import noselect from 'shared/styles/noselect';
 import menuIconFont from 'shared/styles/menuIconFont';
