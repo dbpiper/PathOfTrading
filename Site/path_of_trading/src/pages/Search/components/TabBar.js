@@ -139,7 +139,7 @@ class TabBar extends React.Component {
         onRest={() => this.handleFinish()}
       >
         {value =>
-           <Div x={value.x}
+           <Div x={Math.min(value.x, 0)}
              >
               <CloseMenuDiv menuOpen={this.props.finishedMenuOpen}>
                 <MenuIcon menuText="Close" />
