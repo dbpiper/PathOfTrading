@@ -23,7 +23,9 @@ const Div = styled.div`
 
       cursor: pointer;
 
-      width: ${TabConstants.width};
+    transform: ${props => 'translateX(' + props.x + 'px)'};
+
+      width: ${TabConstants.width + TabConstants.width};
 
       height: ${TabConstants.height};
 
@@ -50,9 +52,11 @@ const Div = styled.div`
 
 const ShrinkDiv = styled.div`
   display: block;
-  width: ${props => props.width + TabConstants.widthUnit};
+  width: ${TabConstants.width + TabConstants.width}
   padding-left: ${TabConstants.paddingLeft};
-  overflow: hidden;
+  ${'' /* overflow: hidden; */}
+
+    transform: ${props => 'translateX(' + props.x + 'px)'};
 `
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -67,9 +71,9 @@ class Tab extends React.Component {
         onClick={() => this.handleClick(this.props.title)}
         active={this.props.selectedTab === this.props.title}
         title={this.props.title}
-        width={this.props.width}
+        x={this.props.x}
       >
-        <ShrinkDiv width={this.props.width}>
+        <ShrinkDiv x={this.props.x}>
           {this.props.title}
         </ShrinkDiv>
       </Div>

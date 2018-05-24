@@ -98,7 +98,7 @@ const GridArea = styled.span`
 `;
 
 const OpenMenuDiv = styled.div`
-  display: ${props => props.showMenuIcon ? 'grid' : 'none'};
+  display: 'grid';
 `
 @connect(mapStateToProps)
 class Header extends React.Component{
@@ -113,7 +113,7 @@ class Header extends React.Component{
         <Grid>
           <GridArea area="menuIcon">
             <OpenMenuDiv showMenuIcon={this.showMenuIcon()}>
-              <MenuIcon />
+              <MenuIcon menuText="Menu" />
             </OpenMenuDiv>
           </GridArea>
           <GridArea area="title">

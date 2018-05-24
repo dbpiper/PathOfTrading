@@ -102,13 +102,12 @@ class MenuIcon extends React.Component {
     return (
       <Div className={this.props.className}>
         <ShrinkGrowDiv
-          width={this.props.width}
         >
           <ContentDiv onClick={() => this.handleClick()}
             menuOpen={this.props.finishedMenuOpen}
           >
-            {this.setText()}
-            {this.state.menuText}
+            {/* {this.setText()} */}
+            {this.props.menuText}
           </ContentDiv>
         </ShrinkGrowDiv>
       </Div>

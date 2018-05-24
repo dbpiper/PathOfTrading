@@ -7,8 +7,8 @@ import {
 from 'constants/ActionTypes';
 
 const inititalState = {
-  startedMenuOpen: true,
-  finishedMenuOpen: false,
+  startedMenuOpen: false,
+  finishedMenuOpen: true,
   startedMenuClose: false,
   finishedMenuClose: false,
 };

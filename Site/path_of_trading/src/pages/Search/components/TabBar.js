@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Animate } from 'react-move';
-import { easeExpInOut, easeExpOut, easeLinear } from 'd3-ease';
+import { Motion, spring, presets } from 'react-motion';
 
 import Colors from 'constants/Colors';
 import TabConstants from '../constants/TabConstants';
@@ -51,7 +50,11 @@ const Div = styled.label`
     ${'' /* display: ${props => props.menuOpen ? 'grid' : 'none'}; */}
     display: grid;
 
-    width: ${props => props.width + 'px'};
+    ${'' /* width: ${props => props.width + 'px'}; */}
+
+    width: ${TabConstants.width + TabConstants.widthUnit}
+
+    transform: ${props => 'translateX(' + props.x + 'px)'};
 
     grid-template-rows: 100px calc(100% - 100px);
     grid-template-columns: 100%;
@@ -59,7 +62,10 @@ const Div = styled.label`
 `;
 
 const TabDiv = styled.div`
-    width: ${props => props.width + 'px'};
+
+    width: ${TabConstants.width + TabConstants.width}
+
+    transform: ${props => 'translateX(' + props.x + 'px)'};
 
     grid-area: "tabs";
 
@@ -67,7 +73,7 @@ const TabDiv = styled.div`
 `;
 
 const CloseMenuDiv = styled.div`
-  display: ${props => props.menuOpen ? 'grid' : 'none'};
+  display: grid;
 
   grid-area: "menuIcon";
 
@@ -75,6 +81,7 @@ const CloseMenuDiv = styled.div`
 `
 
 function veryClose(a, b) {
+  console.log('width: ' + a + ' ln(width): ' + Math.log(a));
   return Math.abs(a - b) < 150; //TODO: find less hacky way to do this
 }
 
@@ -92,7 +99,22 @@ function hasFinished(startedMenuOpen, startedMenuClose, width) {
 @connect(mapStateToProps, mapDispatchToProps)
 class TabBar extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      startEnd: {
+        // start: -Number.parseFloat(TabConstants.width),
+        start: 0,
+        end: 0,
+      },
+    };
+  }
+
   handleFinish() {
+    this.setState({
+      startEnd: this.getStartEnd(),
+    });
     if (this.props.startedMenuOpen) {
       this.props.finishMenuOpen(!this.props.finishedMenuOpen);
     }
@@ -101,69 +123,57 @@ class TabBar extends React.Component {
     }
   }
 
+  getStartEnd() {
+    if (this.props.startedMenuOpen) {
+      return {
+        start: -Number.parseFloat(TabConstants.width),
+        end: 0,
+      };
+    } else if (this.props.startedMenuClose) {
+      return {
+        start: 0,
+        end: -Number.parseFloat(TabConstants.width),
+      };
+    } else {
+        return this.state.startEnd;
+      }
+  }
+
   handleTabClick(title) {
     this.props.onClick(title);
   }
 
+  componentWillMount() {
+
+  }
+
   render() {
     return (
-      <Animate
-        // state={{
-        //   width: 260,
-        // }}
-        start={{
-          width: (!this.props.finishedMenuOpen ? 0 : TabConstants.width),
-          // width: 0,
-          // timing: { duration: 10000, ease: easeExpInOut },
-        }}
-        show={this.props.startedMenuOpen || this.props.finishedMenuOpen}
-        enter={{
-          // width: (!this.props.finishedMenuOpen ? [TabConstants.width] : [TabConstants.width]),
-          width: [TabConstants.width],
-          timing: { duration: 400, ease: easeExpInOut },
-        }}
-        // enter={{
-        //   width: (!this.props.menuOpen ? [0] : [TabConstants.width]),
-        //   // width: [0],
-        //   timing: { duration: 1000, ease: easeExpInOut },
-        // }}
-        leave={{
-          // width: (this.props.finishedMenuOpen ? [TabConstants.width] : [TabConstants]),
-          width: [0],
-          // width: [0],
-          timing: { duration: 400, ease: easeExpInOut },
-        }}
+      <Motion
+        defaultStyle={{x: this.getStartEnd().start}}
+        style={{x: spring(this.getStartEnd().end, {...presets.stiff})}}
+        onRest={() => this.handleFinish()}
       >
-       {({ width }) => {
-          return (
-           <Div width={width}>
-             {hasFinished(this.props.startedMenuOpen,
-               this.props.startedMenuClose,
-               width
-             )
-             ? this.handleFinish() : ''}
-
+        {value =>
+           <Div x={value.x}
+             >
               <CloseMenuDiv menuOpen={this.props.finishedMenuOpen}>
-                <MenuIcon width={width} />
+                <MenuIcon menuText="Close" />
               </CloseMenuDiv>
-              <TabDiv width={width}>
+              <TabDiv>
                 <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
                   selectedTab={this.props.selectedTab}
-                  width={width}
                 />
                 <Tab title="Combat" onClick={(title) => this.handleTabClick(title)}
                   selectedTab={this.props.selectedTab}
-                  width={width}
                 />
                 <Tab title="Trading" onClick={(title) => this.handleTabClick(title)}
                   selectedTab={this.props.selectedTab}
-                  width={width}
                 />
               </TabDiv>
             </Div>
-          );
-        }}
-      </Animate>
+        }
+      </Motion>
     );
   }
 }
