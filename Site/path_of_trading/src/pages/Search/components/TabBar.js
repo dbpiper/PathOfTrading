@@ -80,22 +80,6 @@ const CloseMenuDiv = styled.div`
   grid-row: 1;
 `
 
-function veryClose(a, b) {
-  console.log('width: ' + a + ' ln(width): ' + Math.log(a));
-  return Math.abs(a - b) < 150; //TODO: find less hacky way to do this
-}
-
-function hasFinished(startedMenuOpen, startedMenuClose, width) {
-  console.log('width: ' + width);
-  if (startedMenuOpen && veryClose(width, TabConstants.width)) {
-    return true;
-  } else if (startedMenuClose && veryClose(width, 0)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 @connect(mapStateToProps, mapDispatchToProps)
 class TabBar extends React.Component {
 
