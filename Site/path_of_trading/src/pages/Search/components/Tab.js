@@ -23,7 +23,9 @@ const Div = styled.div`
 
       cursor: pointer;
 
-      width: ${TabConstants.width};
+    transform: ${props => 'translateX(' + props.x + 'px)'};
+
+      width: ${TabConstants.width + TabConstants.width};
 
       height: ${TabConstants.height};
 
@@ -37,12 +39,25 @@ const Div = styled.div`
 
       align-items: center;
 
-      padding-left: ${TabConstants.paddingLeft};
 
       background-color: ${props => props.active ? Colors.activeTab
         : Colors.inactiveTab};
+
+
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+         -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+              box-sizing: border-box;         /* Opera/IE 8+ */
     }
 `;
+
+const ShrinkDiv = styled.div`
+  display: block;
+  width: ${TabConstants.width + TabConstants.width}
+  padding-left: ${TabConstants.paddingLeft};
+  ${'' /* overflow: hidden; */}
+
+    transform: ${props => 'translateX(' + props.x + 'px)'};
+`
 
 @connect(mapStateToProps, mapDispatchToProps)
 class Tab extends React.Component {
@@ -56,8 +71,11 @@ class Tab extends React.Component {
         onClick={() => this.handleClick(this.props.title)}
         active={this.props.selectedTab === this.props.title}
         title={this.props.title}
+        x={this.props.x}
       >
-        {this.props.title}
+        <ShrinkDiv x={this.props.x}>
+          {this.props.title}
+        </ShrinkDiv>
       </Div>
     );
   }

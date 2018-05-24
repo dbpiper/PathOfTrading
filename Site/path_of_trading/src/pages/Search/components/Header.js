@@ -11,7 +11,13 @@ import SearchBox from './SearchBox';
 import MenuIcon from './MenuIcon';
 
 const mapStateToProps = state => {
-  return { menuOpen: state.searchPage.menu.menuOpen };
+  console.log(state);
+  return {
+    startedMenuOpen: state.searchPage.menu.startedMenuOpen,
+    finishedMenuOpen: state.searchPage.menu.finishedMenuOpen,
+    startedMenuClose: state.searchPage.menu.startedMenuClose,
+    finishedMenuClose: state.searchPage.menu.finishedMenuClose,
+  };
 };
 
 const gridRow = (rowNum) => {
@@ -67,15 +73,15 @@ const Grid = styled.div`
   width: 100%;
 
   align-items: center;
-  justify-content: center;
+  ${'' /* justify-content: center; */}
 
   grid-template-rows: ${gridRow(0)} ${gridRow(1)};
 
   ${'' /* grid-template-columns: ${gridColumn(0)} ${gridColumn(1)}; */}
 
   grid-template-areas:
-    "menuIcon title title ."
-    ". search search league";
+    "menuIcon . title title ."
+    ". . search search league";
 
 
   ${gridColumnMediaQueries}
@@ -92,30 +98,37 @@ const GridArea = styled.span`
 `;
 
 const OpenMenuDiv = styled.div`
-  display: ${props => !props.menuOpen ? 'grid' : 'none'};
+  display: 'grid';
 `
+@connect(mapStateToProps)
+class Header extends React.Component{
 
-function Header(props) {
-  return (
-    <DivTest>
-      <Grid>
-        <GridArea area="menuIcon">
-          <OpenMenuDiv menuOpen={props.menuOpen}>
-            <MenuIcon />
-          </OpenMenuDiv>
-        </GridArea>
-        <GridArea area="title">
-          {props.title}
-        </GridArea>
-        <GridArea area="search">
-          <SearchBox placeholder={Constants.Strings.searchPlaceholder} />
-        </GridArea>
-        <GridArea area="league">
-          <Dropdown placeholder="League"/>
-        </GridArea>
-      </Grid>
-    </DivTest>
-  );
+  showMenuIcon() {
+    return this.props.finishedMenuClose;
+  }
+
+  render() {
+    return (
+      <DivTest>
+        <Grid>
+          <GridArea area="menuIcon">
+            <OpenMenuDiv showMenuIcon={this.showMenuIcon()}>
+              <MenuIcon menuText="Menu" />
+            </OpenMenuDiv>
+          </GridArea>
+          <GridArea area="title">
+            {this.props.title}
+          </GridArea>
+          <GridArea area="search">
+            <SearchBox placeholder={Constants.Strings.searchPlaceholder} />
+          </GridArea>
+          <GridArea area="league">
+            <Dropdown placeholder="League"/>
+          </GridArea>
+        </Grid>
+      </DivTest>
+    );
+  }
 }
 
-export default connect(mapStateToProps)(Header);
+export default Header;

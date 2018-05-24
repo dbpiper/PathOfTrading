@@ -14,19 +14,19 @@ const HeaderConstants = Object.freeze({
   gridColumns: {
     sizes: {
       gridColumnsPortraitPhone:
-        [ 100, 235, 30, 100],
+        [ 100, 100, 235, 30, 100],
       gridColumnsLandscapePhone:
-        [ 100, 240, 30, 124],
+        [ 100, 100, 240, 30, 124],
       gridColumnsPortraitTablet:
-        [ 100, 250, 60, 148],
+        [ 100, 100, 250, 60, 148],
       gridColumnsLanscapeTablet:
-        [ 100, 270, 90, 172],
+        [ 100, 100, 270, 90, 172],
       gridColumnsSmallDesktop:
-        [ 100, 310, 120, 196],
+        [ 100, 150, 310, 120, 196],
       gridColumnsMediumDesktop:
-        [ 100, 420, 150, 220],
+        [ 100, 150, 420, 150, 220],
       gridColumnsLargeDesktop:
-        [ 100, 530, 180, 244],
+        [ 300, 150, 530, 180, 244],
     },
     unit: 'px',
   },
