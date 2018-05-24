@@ -16,3 +16,6 @@ React, Redux Project Examples:
 
 React, Redux Term Explanations:
   https://medium.com/@holtkam2/react-redux-understanding-components-containers-actions-and-reducers-a2f9287bfb92
+
+Color Blender:
+  https://meyerweb.com/eric/tools/color-blend/

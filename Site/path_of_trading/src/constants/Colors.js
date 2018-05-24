@@ -15,6 +15,7 @@ const Colors = Object.freeze({
   offBorder: '#dfdfdf',
   inactiveTab: '#4B5A66',
   activeTab: '#304352',
+  highlightTab: '#3C4D5B',
   tabBorderColor: '#EEEEFF',
   menuIconBorder: '#FEFDFF',
 });
