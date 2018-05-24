@@ -94,6 +94,7 @@ const AbstractNumericInput = styled.input.attrs({
 
     &&& {
       font-size: ${(props) => props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
+      border-radius: 0;
     }
 `;
 
