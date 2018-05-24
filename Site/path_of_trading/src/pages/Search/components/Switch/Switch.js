@@ -1,12 +1,14 @@
-import classNames from 'classnames';
-
 import React from 'react';
-import styles from './Switch.css';
-
+import classNames from 'classnames';
 import styled, { css } from 'styled-components';
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
 
+import Colors from 'constants/Colors';
+import Fonts from 'constants/Fonts';
+import tooltipFont from 'shared/styles/tooltipFont';
+import styles from './Switch.css';
 import noselect from 'shared/styles/noselect';
-
 import SwitchMiddle from 'media/images/svg/Switch_Middle_59.06x30.81.svg';
 import SwitchOn from 'media/images/svg/Switch_On_59.06x30.81.svg';
 import SwitchOff from 'media/images/svg/Switch_Off_59.06x30.81.svg';
@@ -76,6 +78,9 @@ const buttonPos = (value) => {
 //   }
 // `;
 
+const TooltipDiv = styled.div`
+  ${tooltipFont}
+`;
 
 const Button = styled.img.attrs({
   alt: "",
@@ -97,11 +102,24 @@ class Switch extends React.Component {
 
     this.state = {
       value: 2,
+      showTooltip: false,
     }
 
     this.transition = this.transition.bind(this);
   }
 
+  getValueText() {
+    switch (this.state.value) {
+      case 2:
+        return 'Either';
+      case 1:
+        return 'Yes';
+      case 0:
+        return 'No';
+      default:
+        return '';
+    }
+  }
 
   transition(animationClassName, finishFunc, animationTime) {
     const oldClassName = this.buttonEle.className;
@@ -153,16 +171,37 @@ class Switch extends React.Component {
 
   render() {
       return (
-        <Frame onClick={() => this.handleClick()}>
-          <Background src={SwitchMiddle} hidden={this.state.value !== 2}/>
-          <Background src={SwitchOn} hidden={this.state.value !== 1}/>
-          <Background src={SwitchOff} hidden={this.state.value !== 0}/>
-          <Button
-            value={this.state.value}
-            src={SwitchButton}
-            innerRef={(buttonEle) => this.buttonEle = buttonEle}
-          />
-        </Frame>
+        <Tooltip
+          title={this.getValueText()}
+          open={this.state.showTooltip}
+          useContext
+          html={(
+            <div style={{
+              color: Colors.tooltipFont,
+
+              "font-family": Fonts.Tooltip.fontFamily,
+              "font-weight": Fonts.Tooltip.fontWeight,
+              "font-size": Fonts.Tooltip.fontSize + Fonts.Tooltip.fontSizeUnit,
+            }}>
+
+            </div>
+          )}
+        >
+          <Frame onClick={() => this.handleClick()}
+            onFocus={() => this.setState({showTooltip: true})}
+            onMouseEnter={() => this.setState({showTooltip: true})}
+            onMouseLeave={() => this.setState({showTooltip: false})}
+          >
+            <Background src={SwitchMiddle} hidden={this.state.value !== 2}/>
+            <Background src={SwitchOn} hidden={this.state.value !== 1}/>
+            <Background src={SwitchOff} hidden={this.state.value !== 0}/>
+            <Button
+              value={this.state.value}
+              src={SwitchButton}
+              innerRef={(buttonEle) => this.buttonEle = buttonEle}
+            />
+          </Frame>
+        </Tooltip>
       );
   }
 }
