@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import styled, { css } from 'styled-components';
 
-import tooltipFont from 'shared/styles/tooltipFont';
 import styles from './Switch.css';
 import noselect from 'shared/styles/noselect';
 import SwitchMiddle from 'media/images/svg/Switch_Middle_59.06x30.81.svg';
