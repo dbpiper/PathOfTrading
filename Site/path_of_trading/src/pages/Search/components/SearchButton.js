@@ -72,6 +72,10 @@ const Button = styled.button`
       ${props => !props.search && css`
           display: none;
       `}
+
+      &:hover {
+        background-color: ${Colors.buttonPrimaryLight};
+      }
 `;
 
 

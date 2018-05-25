@@ -63,6 +63,10 @@ const Button = styled.button`
       `}
 
       ${buttonSizeMediaQueries}
+
+      &:hover {
+        background-color: ${Colors.buttonPrimaryLight};
+      }
 `;
 
 const Img = styled.img`

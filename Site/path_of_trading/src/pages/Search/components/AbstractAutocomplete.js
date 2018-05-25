@@ -2,7 +2,6 @@ import React from 'react'
 import Downshift from 'downshift';
 import styled, { css } from 'styled-components';
 import jaroWinkler from 'jaro-winkler'
-import SuffixTrie  from 'common-substrings';
 
 import Colors from 'constants/Colors';
 import Constants from 'constants/Constants';
@@ -11,40 +10,6 @@ import textboxBackground from 'shared/styles/textboxBackground';
 import AutocompleteButton from './AutocompleteButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
 import Textbox from './Textbox';
-
-
-
-const findLongestSubstring = (items: [string], value: string) => {
-      let valueAndItems = items.slice();
-      valueAndItems.push({name: value});
-      const valueIndex = valueAndItems.length - 1;
-
-      const valueAndItemsLower = valueAndItems.map(item => {
-        return item.name.toLowerCase();
-      });
-
-      let trie = new SuffixTrie({
-        minLength: 2,
-        minOccurrence: 2,
-        debug: false,
-        limit: 100,
-        byLength: true,
-      });
-
-      trie.build(valueAndItemsLower);
-
-      const substrings = trie.weighByAverage();
-
-      const valueSubstrings = substrings.filter(substringObj => {
-        return substringObj.source.includes(valueIndex);
-      });
-
-      if (valueSubstrings.length > 0 && valueSubstrings[0].name === value) {
-          return valueSubstrings[0].name;
-      } else {
-        return '';
-      }
-};
 
 const suggest = (items, value) => {
   const inputValue = value.trim().toLowerCase();
@@ -57,13 +22,12 @@ const suggest = (items, value) => {
 
       const dist = jaroWinkler(item.name, inputValue, { caseSensitive: false });
 
-      const longestSubstring = findLongestSubstring([item], inputValue);
-
+      const substring = item.name.toLowerCase().includes(inputValue.toLowerCase()) ? inputValue : '';
 
       return {
         name: item.name,
         distance: dist,
-        substring: longestSubstring,
+        substring,
       };
     });
 
@@ -81,7 +45,7 @@ const activeStyle = css`
 
 const selectedStyle = css`
     border-left: ${Constants.Dropdown.Item.selectedAccent}${Constants.Dropdown.Item.selectedAccentUnit}
-    solid ${Colors.buttonPrimaryLight};
+    solid ${Colors.selectedHighlightColor};
     border-top: 0;
     border-bottom: 0;
 `;
@@ -273,6 +237,7 @@ class AbstractAutocomplete extends React.Component {
                 isRanged={(!selectedItem ? false : selectedItem.ranged)}
                 hasButton
                 search={this.props.search}
+                width={this.props.width}
               >
               </Textbox>
                 <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))} />
@@ -281,6 +246,7 @@ class AbstractAutocomplete extends React.Component {
                 <Menu
                   canBeRanged={this.props.canBeRanged}
                   search={this.props.search}
+                  width={this.props.width}
                 >
                   {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
                     (item, index) => (

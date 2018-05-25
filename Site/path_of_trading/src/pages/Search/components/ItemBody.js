@@ -7,12 +7,17 @@ import MediaQuery from 'shared/helpers/MediaQuery';
 import Label from './Label';
 import Range from './Range';
 import ColorsField from './ColorsField';
-
+import Autocomplete from './Autocomplete';
+import AddButton from './AddButton';
 
 const title = 'Item';
 
 const mapStateToProps = (state, props) => {
-  return {...props, selectedTab: state.searchPage.tab.selectedTab };
+  return {
+    ...props,
+    selectedTab: state.searchPage.tab.selectedTab,
+    needToAddMod: state.searchPage.item.needToAddMod,
+  };
 };
 
 const socketsLinksGridMediaQueries = MediaQuery.create([
@@ -64,7 +69,7 @@ const ModsFlexDiv = styled.div`
 
   flex-direction: column;
 
-  width: 633px;
+  width: 464px;
 
   padding-right: 50px;
 `
@@ -105,15 +110,81 @@ const HeadingGridArea = GridArea.extend`
   }
 `;
 
+const ModsHeader = styled.span`
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-bottom: 20px;
+`;
+
+const ModDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const AddButtonDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 20px;
+`;
+
 @connect(mapStateToProps)
 class ItemBody extends Component {
+  constructor(props) {
+     super(props);
+
+     this.state = {
+       needToAddMod: this.props.needToAddMod,
+       // needToRemoveMod: this.props.needToRemoveMod,
+     }
+   }
+
+   // use new static method to derive state from props
+   static getDerivedStateFromProps(nextProps, prevState) {
+     if(nextProps.needToAddMod !== prevState.needToAddMod) { // check id was updated
+       return {
+         needToAddMod: nextProps.needToAddMod,
+       };
+     }
+   }
+   addMod() {
+     alert('adding mod');
+
+     this.setState({
+       needToAddMod: false,
+     });
+   }
+
+   componentDidMount() {
+     if (this.state.needToAddMod) {
+       this.addMod();
+     }
+   }
+
+   componentDidUpdate(_, prevState) {
+     if (prevState.needToAddMod === false && this.state.needToAddMod === true) {
+       this.addMod();
+     }
+   }
+
+
   render() {
     return (
       <Div selectedTab={this.props.selectedTab}>
           <ModsFlexDiv>
-            <HeadingGridArea>
+            <ModsHeader>
               <Label value="Mods" heading={true} />
-            </HeadingGridArea>
+            </ModsHeader>
+
+            <ModDiv>
+              <Autocomplete placeholder="Mod" width="400px" canBeRanged />
+            </ModDiv>
+
+            <AddButtonDiv>
+              <AddButton />
+            </AddButtonDiv>
           </ModsFlexDiv>
           <SocketsLinksGrid>
 
