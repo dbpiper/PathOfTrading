@@ -51,7 +51,7 @@ const Div = styled.div`
         ${
           props => {
             if (!props.active) {
-              return 'background-color: ' + Colors.highlightTab;
+              return 'background-color: ' + Colors.hoverTab;
             }
           }
         }
