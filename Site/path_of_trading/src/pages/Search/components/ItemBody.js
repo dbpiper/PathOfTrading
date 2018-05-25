@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import ItemBodyConstants from '../constants/ItemBodyConstants';
 import MediaQuery from 'shared/helpers/MediaQuery';
@@ -9,6 +10,7 @@ import Range from './Range';
 import ColorsField from './ColorsField';
 import Autocomplete from './Autocomplete';
 import AddButton from './AddButton';
+import { addMod } from '../actions/item-actions';
 
 const title = 'Item';
 
@@ -17,6 +19,12 @@ const mapStateToProps = (state, props) => {
     ...props,
     selectedTab: state.searchPage.tab.selectedTab,
     needToAddMod: state.searchPage.item.needToAddMod,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addMod: needToAddMod => dispatch(addMod(needToAddMod))
   };
 };
 
@@ -115,12 +123,14 @@ const ModsHeader = styled.span`
     align-items: flex-start;
     justify-content: center;
 
-    margin-bottom: 20px;
+    margin-bottom: 75px;
 `;
 
 const ModDiv = styled.div`
   display: flex;
   justify-content: center;
+
+  margin-bottom: 20px;
 `;
 
 const AddButtonDiv = styled.div`
@@ -130,13 +140,14 @@ const AddButtonDiv = styled.div`
   margin-top: 20px;
 `;
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 class ItemBody extends Component {
   constructor(props) {
      super(props);
 
      this.state = {
        needToAddMod: this.props.needToAddMod,
+       mods: 1,
        // needToRemoveMod: this.props.needToRemoveMod,
      }
    }
@@ -149,12 +160,26 @@ class ItemBody extends Component {
        };
      }
    }
-   addMod() {
-     alert('adding mod');
 
+   getMod(num) {
+     return (
+       <ModDiv>
+         <Autocomplete placeholder="Mod" width="400px" key={num} canBeRanged />
+       </ModDiv>
+     );
+   }
+
+   getMods() {
+     return _.range(this.state.mods).map(this.getMod);
+   }
+
+   addMod() {
      this.setState({
        needToAddMod: false,
+       mods: this.state.mods + 1,
      });
+
+    this.props.addMod(false);
    }
 
    componentDidMount() {
@@ -178,9 +203,7 @@ class ItemBody extends Component {
               <Label value="Mods" heading={true} />
             </ModsHeader>
 
-            <ModDiv>
-              <Autocomplete placeholder="Mod" width="400px" canBeRanged />
-            </ModDiv>
+            {this.getMods()}
 
             <AddButtonDiv>
               <AddButton />
