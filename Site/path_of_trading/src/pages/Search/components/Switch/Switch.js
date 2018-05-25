@@ -1,11 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import styled, { css } from 'styled-components';
-import { Tooltip } from 'react-tippy';
-import 'react-tippy/dist/tippy.css';
 
-import Colors from 'constants/Colors';
-import Fonts from 'constants/Fonts';
 import tooltipFont from 'shared/styles/tooltipFont';
 import styles from './Switch.css';
 import noselect from 'shared/styles/noselect';
@@ -78,9 +74,6 @@ const buttonPos = (value) => {
 //   }
 // `;
 
-const TooltipDiv = styled.div`
-  ${tooltipFont}
-`;
 
 const Button = styled.img.attrs({
   alt: "",
@@ -171,41 +164,27 @@ class Switch extends React.Component {
 
   render() {
       return (
-        <Tooltip
-          title={this.getValueText()}
-          open={this.state.showTooltip}
-          useContext
-          html={(
-            <div style={{
-              color: Colors.tooltipFont,
-
-              "font-family": Fonts.Tooltip.fontFamily,
-              "font-weight": Fonts.Tooltip.fontWeight,
-              "font-size": Fonts.Tooltip.fontSize + Fonts.Tooltip.fontSizeUnit,
-            }}>
-
-            </div>
-          )}
-        >
-          <Frame onClick={() => this.handleClick()}
-            onFocus={() => this.setState({showTooltip: true})}
-            onMouseEnter={() => this.setState({showTooltip: true})}
-            onMouseLeave={() => this.setState({showTooltip: false})}
-          >
-            <Background src={SwitchMiddle} hidden={this.state.value !== 2}/>
-            <Background src={SwitchOn} hidden={this.state.value !== 1}/>
-            <Background src={SwitchOff} hidden={this.state.value !== 0}/>
-            <Button
-              value={this.state.value}
-              src={SwitchButton}
-              innerRef={(buttonEle) => this.buttonEle = buttonEle}
-            />
-          </Frame>
-        </Tooltip>
+            <Frame onClick={() => this.handleClick()}
+              onFocus={() => this.setState({showTooltip: true})}
+              onMouseEnter={() => this.setState({showTooltip: true})}
+              onMouseLeave={() => this.setState({showTooltip: false})}
+              title={this.getValueText()}
+            >
+              <Background src={SwitchMiddle} hidden={this.state.value !== 2}
+              />
+              <Background src={SwitchOn} hidden={this.state.value !== 1}
+              />
+              <Background src={SwitchOff} hidden={this.state.value !== 0}
+              />
+              <Button
+                value={this.state.value}
+                src={SwitchButton}
+                innerRef={(buttonEle) => this.buttonEle = buttonEle}
+              />
+            </Frame>
       );
   }
 }
-
 
 function newValue(value) {
   if (value >= 0 && value <= 2) {
