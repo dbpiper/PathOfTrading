@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import Constants from 'constants/Constants';
+import CombatBodyConstants from '../constants/CombatBodyConstants';
 import MediaQuery from 'shared/helpers/MediaQuery';
 import Label from './Label';
 import Range from './Range';
@@ -14,8 +14,8 @@ const mapStateToProps = (state, props) => {
 };
 
 const Div = styled.div`
-  height: ${Constants.Layout.Page.Search.Body.Combat.height}${Constants.Layout.Page.Search.Body.Combat.heightUnit};
-  width: ${Constants.Layout.Page.Search.Body.Combat.width}${Constants.Layout.Page.Search.Body.Combat.widthUnit};
+  height: ${CombatBodyConstants.height}${CombatBodyConstants.heightUnit};
+  width: ${CombatBodyConstants.width}${CombatBodyConstants.widthUnit};
 
   display: ${props => props.selectedTab !== title ? 'none' : 'block'};
 
@@ -30,12 +30,12 @@ const gridMediaQueries = MediaQuery.create([
     property: 'grid-template-columns',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
-      sizes: Object.values(Constants.Layout.Page.Search.Body.Combat.gridColumns.sizes),
+      sizes: Object.values(CombatBodyConstants.gridColumns.sizes),
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Body.Combat.gridColumns.unit,
+        unit: CombatBodyConstants.gridColumns.unit,
       };
     },
   },
@@ -43,12 +43,12 @@ const gridMediaQueries = MediaQuery.create([
     property: 'grid-template-rows',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
-      sizes: Constants.Layout.Page.Search.Body.Combat.gridRows.sizes,
+      sizes: CombatBodyConstants.gridRows.sizes,
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Body.Combat.gridRows.unit,
+        unit: CombatBodyConstants.gridRows.unit,
       };
     },
   }
@@ -57,11 +57,13 @@ const gridMediaQueries = MediaQuery.create([
 const Grid = styled.div`
   display: grid;
 
-  margin-left: ${Constants.Layout.Page.Search.Body.Combat.gridLeftMargin}${Constants.Layout.Page.Search.Body.Combat.gridLeftMarginUnit};
+  margin-left: ${CombatBodyConstants.gridLeftMargin}${CombatBodyConstants.gridLeftMarginUnit};
   height: 100%;
   width: 100%;
 
   justify-content: center;
+
+  ${gridMediaQueries};
 
   grid-template-areas:
     "offenseLabel offenseLabel . defenseLabel defenseLabel"
@@ -71,9 +73,6 @@ const Grid = styled.div`
     "edps edpsRange . shield shieldRange"
     "criticalStrike criticalStrikeRange . . ."
     "pdps pdpsRange . . .";
-
-    ${gridMediaQueries};
-
 `;
 
 const GridArea = styled.span`

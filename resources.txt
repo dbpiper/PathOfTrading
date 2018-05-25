@@ -35,3 +35,6 @@ Android vs iOS Market Share in US:
 
 Mobile Market Share:
   http://gs.statcounter.com/os-market-share/mobile/worldwide
+
+True Object Freezing for Constants:
+  https://github.com/keithamus/proposal-object-freeze-seal-syntax

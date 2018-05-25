@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import Header from './components/Header';
-import TradingBody from './components/TradingBody';
+import ItemBody from './components/ItemBody';
 import CombatBody from './components/CombatBody';
+import TradingBody from './components/TradingBody';
 import TabBar from './components/TabBar';
 
 const mapStateToProps = state => {
@@ -27,6 +28,7 @@ class SearchPage extends Component {
       <Div>
         <TabBar />
         <Header title="Path of Trading"/>
+        <ItemBody />
         <CombatBody />
         <TradingBody />
       </Div>
