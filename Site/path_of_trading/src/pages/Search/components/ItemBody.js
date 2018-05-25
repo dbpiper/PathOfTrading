@@ -15,18 +15,6 @@ const mapStateToProps = (state, props) => {
   return {...props, selectedTab: state.searchPage.tab.selectedTab };
 };
 
-const Div = styled.div`
-  height: ${ItemBodyConstants.height}${ItemBodyConstants.heightUnit};
-  width: ${ItemBodyConstants.width}${ItemBodyConstants.widthUnit};
-
-  display: ${props => props.selectedTab !== title ? 'none' : 'block'};
-
-  max-width: 95%;
-  max-height: 95%;
-`;
-
-
-
 const socketsLinksGridMediaQueries = MediaQuery.create([
   {
     property: 'grid-template-columns',
@@ -56,14 +44,37 @@ const socketsLinksGridMediaQueries = MediaQuery.create([
   }
 ]);
 
+const Div = styled.div`
+  height: ${ItemBodyConstants.height}${ItemBodyConstants.heightUnit};
+  width: ${ItemBodyConstants.width}${ItemBodyConstants.widthUnit};
+
+  display: ${props => props.selectedTab !== title ? 'none' : 'flex'};
+
+  max-width: 95%;
+  max-height: 95%;
+
+  flex-direction: row;
+
+
+  justify-content: center;
+`;
+
+const ModsFlexDiv = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  width: 633px;
+
+  padding-right: 50px;
+`
+
 const SocketsLinksGrid = styled.div`
   display: grid;
 
-  margin-left: ${ItemBodyConstants.gridLeftMargin}${ItemBodyConstants.gridLeftMarginUnit};
-  height: 100%;
-  width: 100%;
+  ${'' /* margin-left: ${ItemBodyConstants.gridLeftMargin}${ItemBodyConstants.gridLeftMarginUnit}; */}
 
-  justify-content: center;
+  ${'' /* justify-content: center; */}
 
   ${socketsLinksGridMediaQueries};
 
@@ -95,10 +106,15 @@ const HeadingGridArea = GridArea.extend`
 `;
 
 @connect(mapStateToProps)
-class CombatBody extends Component {
+class ItemBody extends Component {
   render() {
     return (
       <Div selectedTab={this.props.selectedTab}>
+          <ModsFlexDiv>
+            <HeadingGridArea>
+              <Label value="Mods" heading={true} />
+            </HeadingGridArea>
+          </ModsFlexDiv>
           <SocketsLinksGrid>
 
             {/* Column 1 */}
@@ -146,4 +162,4 @@ class CombatBody extends Component {
   }
 }
 
-export default CombatBody;
+export default ItemBody;
