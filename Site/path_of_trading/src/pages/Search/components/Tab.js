@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const Div = styled.div`
-    & {
       ${headingFont}
 
       cursor: pointer;
@@ -29,8 +28,8 @@ const Div = styled.div`
 
       height: ${TabConstants.height};
 
-      border-top: ${props => props.title === 'Combat' ? 0 : TabConstants.border + ' solid'};
-      border-bottom: ${props => props.title === 'Combat' ? 0 : TabConstants.border + ' solid'};
+      border-top: ${props => props.tabTitle === 'Combat' ? 0 : TabConstants.border + ' solid'};
+      border-bottom: ${props => props.tabTitle === 'Combat' ? 0 : TabConstants.border + ' solid'};
       border-left: 0;
       border-right: 0;
       border-color: ${Colors.borderColor};
@@ -52,12 +51,11 @@ const Div = styled.div`
         ${
           props => {
             if (!props.active) {
-              return 'background-color: ' + Colors.highlightTab;
+              return 'background-color: ' + Colors.hoverTab;
             }
           }
         }
 
-        title: '';
       }
 `;
 
@@ -79,13 +77,13 @@ class Tab extends React.Component {
   render() {
     return (
       <Div
-        onClick={() => this.handleClick(this.props.title)}
-        active={this.props.selectedTab === this.props.title}
-        title={this.props.title}
+        onClick={() => this.handleClick(this.props.tabTitle)}
+        active={this.props.selectedTab === this.props.tabTitle}
+        tabTitle={this.props.tabTitle}
         x={this.props.x}
       >
         <ShrinkDiv x={this.props.x}>
-          {this.props.title}
+          {this.props.tabTitle}
         </ShrinkDiv>
       </Div>
     );

@@ -19,3 +19,19 @@ React, Redux Term Explanations:
 
 Color Blender:
   https://meyerweb.com/eric/tools/color-blend/
+
+Dependencies vs Dev Dependencies:
+  https://blog.silvenon.com/dependencies-or-devdependencies-7715b24b6abf
+
+Browser and OS Market Share:
+  https://www.netmarketshare.com
+  https://www.w3counter.com
+
+Browser Feature Support:
+  https://caniuse.com
+
+Android vs iOS Market Share in US:
+  https://www.statista.com/statistics/266572/market-share-held-by-smartphone-platforms-in-the-united-states/
+
+Mobile Market Share:
+  http://gs.statcounter.com/os-market-share/mobile/worldwide

@@ -123,10 +123,6 @@ class TabBar extends React.Component {
       }
   }
 
-  handleTabClick(title) {
-    this.props.onClick(title);
-  }
-
   componentWillMount() {
 
   }
@@ -145,13 +141,13 @@ class TabBar extends React.Component {
                 <MenuIcon menuText="Close" />
               </CloseMenuDiv>
               <TabDiv>
-                <Tab title="Item" onClick={(title) => this.handleTabClick(title)}
+                <Tab tabTitle="Item"
                   selectedTab={this.props.selectedTab}
                 />
-                <Tab title="Combat" onClick={(title) => this.handleTabClick(title)}
+                <Tab tabTitle="Combat"
                   selectedTab={this.props.selectedTab}
                 />
-                <Tab title="Trading" onClick={(title) => this.handleTabClick(title)}
+                <Tab tabTitle="Trading"
                   selectedTab={this.props.selectedTab}
                 />
               </TabDiv>
