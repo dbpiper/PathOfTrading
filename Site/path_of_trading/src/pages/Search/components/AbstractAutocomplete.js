@@ -62,19 +62,22 @@ const selectedStyleInner = css`
      solid ${Colors.offBorder}
 `;
 
+const MenuContainer = styled.div`
+  ${'' /* position: relative;
+  display: inline-block; */}
+`;
+
 const Menu = styled.div`
   display: none;
   position: absolute;
   z-index: 1;
-  max-height: 20rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   border-top-width: 0;
   outline: 0;
   transition: opacity .1s ease;
   box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
   max-height: 200px; //TODO: make into constant
-
 
   ${(props) => Textbox.makeWidthMediaQueries(props)}
 
@@ -85,9 +88,16 @@ const Menu = styled.div`
 
   margin-top: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
 
-  ${(props) => props.isOpen} {
+  ${props => props.dropup ? css`
+    margin-top: 0px;
+    bottom: 110px;
+
+    transform: rotateX(180deg);
+  ` : ''};
+
+  ${props => props.isOpen ? css`
     display: block;
-  }
+  ` : ''};
 `;
 
 const Item = styled.div`
@@ -95,6 +105,10 @@ const Item = styled.div`
     ${(props) => props.isSelected === true ? selectedStyle : ''}
 
     cursor: pointer;
+
+    ${props => props.dropup ? css`
+      transform: rotateX(180deg);
+    ` : ''};
 `;
 
 const InnerItem = styled.div`
@@ -134,7 +148,8 @@ class AbstractAutocomplete extends React.Component {
   constructor(props) {
     super(props);
 
-    const items = [
+    let defaultIndex = 0;
+    let items = [
         Object.freeze({
           name: 'Red',
           substring: '',
@@ -173,6 +188,7 @@ class AbstractAutocomplete extends React.Component {
     this.state = {
       items,
       selectedItem: null,
+      defaultIndex,
     };
 
   }
@@ -210,7 +226,7 @@ class AbstractAutocomplete extends React.Component {
           onChange={this.handleChange}
           itemToString={this.itemToString}
           selectedItem={selectedItem}
-          defaultHighlightedIndex={0}
+          defaultHighlightedIndex={this.state.defaultIndex}
           items={items}
         >
           {({
@@ -240,45 +256,55 @@ class AbstractAutocomplete extends React.Component {
                 width={this.props.width}
               >
               </Textbox>
-                <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))} />
+                <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))}
+                  dropup={!!this.props.dropup}
+                />
               </BoxButtonWrapper>
-              {isOpen && (
-                <Menu
-                  canBeRanged={this.props.canBeRanged}
-                  search={this.props.search}
-                  width={this.props.width}
-                >
-                  {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
-                    (item, index) => (
-                      <Item
-                        key={index}
-                        {
-                          ...getItemProps({
-                            item,
-                            index,
-                            isActive: highlightedIndex === index,
-                            isSelected: (!selectedItem ? false : selectedItem.name === item.name),
-                          })
-                        }
-                      >
-                        <InnerItem
-                          key={index}
-                          {
-                            ...getItemProps({
-                              item,
-                              index,
-                              isActive: highlightedIndex === index,
-                              isSelected: (!selectedItem ? false : selectedItem.name === item.name),
-                            })
-                          }
-                        >
-                          <HighlighedSubstringText item={item} cursor='pointer' />
-                        </InnerItem>
-                      </Item>
-                    ),
-                  )}
+              {
+                isOpen
+                &&
+                (
+                <MenuContainer>
+                  <Menu
+                    canBeRanged={this.props.canBeRanged}
+                    search={this.props.search}
+                    width={this.props.width}
+                    dropup={!!this.props.dropup}
+                    isOpen={!!isOpen}
+                    >
+                      {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
+                        (item, index) => (
+                          <Item
+                            key={index}
+                            {
+                              ...getItemProps({
+                                item,
+                                index,
+                                isActive: highlightedIndex === index,
+                                isSelected: (!selectedItem ? false : selectedItem.name === item.name),
+                              })
+                            }
+                            dropup={!!this.props.dropup}
+                            >
+                              <InnerItem
+                                key={index}
+                                {
+                                  ...getItemProps({
+                                    item,
+                                    index,
+                                    isActive: highlightedIndex === index,
+                                    isSelected: (!selectedItem ? false : selectedItem.name === item.name),
+                                  })
+                                }
+                                >
+                                  <HighlighedSubstringText item={item} cursor='pointer' />
+                                </InnerItem>
+                              </Item>
+                            ),
+                          )}
 
-                </Menu>
+                    </Menu>
+                  </MenuContainer>
               )}
             </span>
           )}

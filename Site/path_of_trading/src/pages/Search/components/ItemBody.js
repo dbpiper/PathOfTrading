@@ -362,13 +362,13 @@ class ItemBody extends Component {
         </Div>
         <BottomDiv selectedTab={this.props.selectedTab} >
           <DropdownDiv>
-            <Dropdown placeholder="Type"/>
+            <Dropdown placeholder="Type" dropup />
           </DropdownDiv>
           <DropdownDiv>
-            <Dropdown placeholder="Base"/>
+            <Dropdown placeholder="Base" dropup />
           </DropdownDiv>
           <DropdownDiv>
-            <Dropdown placeholder="Rarity"/>
+            <Dropdown placeholder="Rarity" dropup />
           </DropdownDiv>
         </BottomDiv>
       </React.Fragment>
