@@ -48,6 +48,7 @@ const Div = styled.div`
               box-sizing: border-box;         /* Opera/IE 8+ */
 
       &:hover {
+        transition-duration 250ms;
         ${
           props => {
             if (!props.active) {

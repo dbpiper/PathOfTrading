@@ -32,6 +32,7 @@ const Button = styled.button`
   transform: scale(0.9) rotate(45deg);
 
   &:hover {
+    transition-duration 250ms;
     background-color: ${Colors.buttonPrimaryLight};
   }
 `;

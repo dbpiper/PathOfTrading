@@ -65,6 +65,7 @@ const Button = styled.button`
       ${buttonSizeMediaQueries}
 
       &:hover {
+        transition-duration 250ms;
         background-color: ${Colors.buttonPrimaryLight};
       }
 `;

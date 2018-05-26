@@ -70,6 +70,8 @@ const CloseMenuDiv = styled.div`
 
   grid-area: "menuIcon";
 
+  margin-top: 20px;
+
   grid-row: 1;
 `
 
@@ -114,10 +116,6 @@ class TabBar extends React.Component {
     } else {
         return this.state.startEnd;
       }
-  }
-
-  componentWillMount() {
-
   }
 
   render() {

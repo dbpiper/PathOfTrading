@@ -74,6 +74,7 @@ const Button = styled.button`
       `}
 
       &:hover {
+        transition-duration 250ms;
         background-color: ${Colors.buttonPrimaryLight};
       }
 `;
