@@ -4,7 +4,7 @@ import AbstractAutocomplete from './AbstractAutocomplete';
 
 function SearchBox(props) {
   return (
-    <AbstractAutocomplete {...props} search={true} canBeRanged={false}/>
+    <AbstractAutocomplete {...props} search={true} editable canBeRanged={false}/>
   );
 }
 
