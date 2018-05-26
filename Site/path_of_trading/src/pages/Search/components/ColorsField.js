@@ -1,38 +1,37 @@
 import React from 'react';
 
+import ColorsFieldConstants from '../constants/ColorsFieldConstants';
 import ColorField from './ColorField';
-
-import styled from 'styled-components';
-
-import Constants from 'constants/Constants';
-
-const ColorsContainer = styled.span``;
 
 function ColorsField(props) {
   return (
-    <ColorsContainer>
+    <React.Fragment>
           <ColorField
-            placeholder={Constants.ColorComponents.Red.placeholder}
-            underlineColor={Constants.ColorComponents.Red.underlineColor}
-            focusedUnderlineColor={Constants.ColorComponents.Red.focusedUnderlineColor}
+            placeholder={ColorsFieldConstants.Red.placeholder}
+            underlineColor={ColorsFieldConstants.Red.underlineColor}
+            focusedUnderlineColor={ColorsFieldConstants.Red.focusedUnderlineColor}
+            hoveredUnderlineColor={ColorsFieldConstants.Red.hoveredUnderlineColor}
           />
           <ColorField
-            placeholder={Constants.ColorComponents.Green.placeholder}
-            underlineColor={Constants.ColorComponents.Green.underlineColor}
-            focusedUnderlineColor={Constants.ColorComponents.Green.focusedUnderlineColor}
+            placeholder={ColorsFieldConstants.Green.placeholder}
+            underlineColor={ColorsFieldConstants.Green.underlineColor}
+            focusedUnderlineColor={ColorsFieldConstants.Green.focusedUnderlineColor}
+            hoveredUnderlineColor={ColorsFieldConstants.Green.hoveredUnderlineColor}
           />
           <ColorField
-            placeholder={Constants.ColorComponents.Blue.placeholder}
-            underlineColor={Constants.ColorComponents.Blue.underlineColor}
-            focusedUnderlineColor={Constants.ColorComponents.Blue.focusedUnderlineColor}
+            placeholder={ColorsFieldConstants.Blue.placeholder}
+            underlineColor={ColorsFieldConstants.Blue.underlineColor}
+            focusedUnderlineColor={ColorsFieldConstants.Blue.focusedUnderlineColor}
+            hoveredUnderlineColor={ColorsFieldConstants.Blue.hoveredUnderlineColor}
           />
           <ColorField
-            placeholder={Constants.ColorComponents.White.placeholder}
-            underlineColor={Constants.ColorComponents.White.underlineColor}
-            focusedUnderlineColor={Constants.ColorComponents.White.focusedUnderlineColor}
+            placeholder={ColorsFieldConstants.White.placeholder}
+            underlineColor={ColorsFieldConstants.White.underlineColor}
+            focusedUnderlineColor={ColorsFieldConstants.White.focusedUnderlineColor}
+            hoveredUnderlineColor={ColorsFieldConstants.White.hoveredUnderlineColor}
           />
 
-    </ColorsContainer>
+    </React.Fragment>
   );
 }
 

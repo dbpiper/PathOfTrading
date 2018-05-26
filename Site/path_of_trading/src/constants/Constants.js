@@ -178,32 +178,6 @@ const Constants = Object.freeze({
 
       },
     },
-    ColorComponents: {
-      Shared: {
-        min: 0,
-        max: 6,
-      },
-      Red: {
-        placeholder: 'Red',
-        underlineColor: '#831929',
-        focusedUnderlineColor: '#ea8f9d',
-      },
-      Green: {
-        placeholder: 'Green',
-        underlineColor: '#5d9e0e',
-        focusedUnderlineColor: '#82dd13',
-      },
-      Blue: {
-        placeholder: 'Blue',
-        underlineColor: '#1031A7',
-        focusedUnderlineColor: '#8fa5f4',
-      },
-      White: {
-        placeholder: 'White',
-        underlineColor: '#dad3c1',
-        focusedUnderlineColor: '#ffffff',
-      },
-    },
     AbstractNumericField: {
       marginRight: 20,
       smallMarginRight: 10,

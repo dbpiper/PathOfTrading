@@ -1,15 +1,16 @@
 import React from 'react';
 import AbstractNumericField from './AbstractNumericField';
-import Constants from 'constants/Constants';
+import ColorsFieldConstants from '../constants/ColorsFieldConstants';
 
 function ColorField(props) {
   return (
     <AbstractNumericField
       underlineColor={props.underlineColor}
       focusedUnderlineColor={props.focusedUnderlineColor}
+      hoveredUnderlineColor={props.hoveredUnderlineColor}
       placeholder={props.placeholder}
-      min={Constants.ColorComponents.Shared.min}
-      max={Constants.ColorComponents.Shared.max}
+      min={ColorsFieldConstants.min}
+      max={ColorsFieldConstants.max}
     />
   );
 }
