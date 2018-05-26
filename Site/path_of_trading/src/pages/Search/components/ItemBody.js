@@ -85,10 +85,13 @@ const BottomDiv = styled.div`
 
   justify-content: center;
 
-  height: 50px;
+  height: 60px;
 
   margin-top: 250px;
 
+  align-content: flex-end;
+
+  margin-bottom: 50px;
 `
 
 const ModsFlexDiv = styled.div`

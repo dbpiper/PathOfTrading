@@ -63,8 +63,8 @@ const selectedStyleInner = css`
 `;
 
 const MenuContainer = styled.div`
-  ${'' /* position: relative;
-  display: inline-block; */}
+  position: relative;
+  display: inline;
 `;
 
 const Menu = styled.div`
@@ -89,8 +89,11 @@ const Menu = styled.div`
   margin-top: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
 
   ${props => props.dropup ? css`
-    margin-top: 0px;
-    bottom: 107px;
+    margin-top: 0;
+
+    margin-bottom: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
+    
+    ${Textbox.makeHeightMediaQueries(props, 'bottom')}
 
     flex-direction: column-reverse;
   ` : css`

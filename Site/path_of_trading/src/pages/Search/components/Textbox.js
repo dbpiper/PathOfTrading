@@ -32,7 +32,7 @@ const TextboxInput = styled.input.attrs({
 
    &&& {
       ${props => Textbox.makeWidthMediaQueries(props)}
-      ${props => Textbox.makeHeightMediaQueries(props)}
+      ${props => Textbox.makeHeightMediaQueries(props, 'height')}
 
       ${props => props.hasButton && getBorderCss(props)};
    }
@@ -57,13 +57,13 @@ const TextboxSibling = styled.div`
 
 class Textbox extends React.Component {
 
-  static makeHeightMediaQueries(props) {
+  static makeHeightMediaQueries(props, property) {
 
     if (!props.search) {
       return MediaQuery.create([
         {
           heightBased: true,
-          property: 'height',
+          property: property,
           function: MediaQuery.numberToSize,
           args: {
             sizes: Constants.Textbox.height.sizes,
@@ -80,7 +80,7 @@ class Textbox extends React.Component {
       return MediaQuery.create([
         {
           heightBased: true,
-          property: 'height',
+          property: property,
           function: MediaQuery.numberToSize,
           args: {
             sizes: Constants.SearchBox.height.sizes,
@@ -96,6 +96,7 @@ class Textbox extends React.Component {
 
     }
   }
+
   static makeWidthMediaQueries(props) {
     if (props.width) {
       if (Array.isArray(props.width)) {
