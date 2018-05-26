@@ -88,11 +88,13 @@ const Menu = styled.div`
 
   margin-top: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
 
+  transition: 250ms ease-in-out;
+
   ${props => props.dropup ? css`
     margin-top: 0;
 
     margin-bottom: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
-    
+
     ${Textbox.makeHeightMediaQueries(props, 'bottom')}
 
     flex-direction: column-reverse;
