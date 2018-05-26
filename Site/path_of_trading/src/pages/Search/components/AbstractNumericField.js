@@ -63,7 +63,7 @@ const AbstractNumericInput = styled.input.attrs({
 
     &:hover {
 
-      transition-duration 250ms;
+      transition: 150ms ease-in-out;
       border-bottom-color: ${props => props.hoveredUnderlineColor};
     }
 
@@ -72,7 +72,7 @@ const AbstractNumericInput = styled.input.attrs({
       background-color: transparent
       outline: none;
       border-bottom-color: ${props => props.focusedUnderlineColor};
-      transition-duration 250ms;
+      transition: 150ms ease-in-out;
       ${'' /* transition: all 0.3s ease-in-out 0s;
       transform: scaleX(1); */}
     }
