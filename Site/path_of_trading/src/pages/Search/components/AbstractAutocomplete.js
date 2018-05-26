@@ -92,11 +92,14 @@ const Menu = styled.div`
     margin-top: 0px;
     bottom: 107px;
 
-    transform: rotateX(180deg);
-  ` : ''};
+    flex-direction: column-reverse;
+  ` : css`
+    flex-direction: column;
+  `
+  };
 
   ${props => props.isOpen ? css`
-    display: block;
+    display: flex;
   ` : ''};
 `;
 
@@ -105,10 +108,6 @@ const Item = styled.div`
     ${(props) => props.isSelected === true ? selectedStyle : ''}
 
     cursor: pointer;
-
-    ${props => props.dropup ? css`
-      transform: rotateX(180deg);
-    ` : ''};
 `;
 
 const InnerItem = styled.div`
