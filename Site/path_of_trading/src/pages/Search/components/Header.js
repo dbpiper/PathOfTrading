@@ -11,7 +11,6 @@ import SearchBox from './SearchBox';
 import MenuIcon from './MenuIcon';
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     startedMenuOpen: state.searchPage.menu.startedMenuOpen,
     finishedMenuOpen: state.searchPage.menu.finishedMenuOpen,

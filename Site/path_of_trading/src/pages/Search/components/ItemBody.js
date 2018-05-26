@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import uuidv4 from 'uuid/v4';
+import { List } from 'immutable';
+
 
 import ItemBodyConstants from '../constants/ItemBodyConstants';
 import MediaQuery from 'shared/helpers/MediaQuery';
@@ -10,7 +12,8 @@ import Range from './Range';
 import ColorsField from './ColorsField';
 import Autocomplete from './Autocomplete';
 import AddButton from './AddButton';
-import { addMod } from '../actions/item-actions';
+import RemoveButton from './RemoveButton';
+import { addMod, removeMod } from '../actions/item-actions';
 
 const title = 'Item';
 
@@ -19,12 +22,14 @@ const mapStateToProps = (state, props) => {
     ...props,
     selectedTab: state.searchPage.tab.selectedTab,
     needToAddMod: state.searchPage.item.needToAddMod,
+    removedMod: state.searchPage.item.removedMod,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addMod: needToAddMod => dispatch(addMod(needToAddMod))
+    addMod: needToAddMod => dispatch(addMod(needToAddMod)),
+    removeMod: removedMod => dispatch(removeMod(removedMod)),
   };
 };
 
@@ -79,7 +84,20 @@ const ModsFlexDiv = styled.div`
 
   width: 464px;
 
-  padding-right: 50px;
+  padding-right: 15px;
+`
+
+const RemoveButtonsFlexDiv = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  width: 80px;
+
+  padding-left: 0px;
+  padding-right: 60px;
+
+  margin-bottom: 8px;
 `
 
 const SocketsLinksGrid = styled.div`
@@ -140,57 +158,122 @@ const AddButtonDiv = styled.div`
   margin-top: 20px;
 `;
 
+const EmptyRemoveButtonHeader = styled.div`
+  margin-bottom: 96px;
+`;
+
 @connect(mapStateToProps, mapDispatchToProps)
 class ItemBody extends Component {
   constructor(props) {
      super(props);
 
+     const firstMod = this.createMod();
+     const mods = List().push(firstMod);
      this.state = {
        needToAddMod: this.props.needToAddMod,
-       mods: 1,
-       // needToRemoveMod: this.props.needToRemoveMod,
+       mods,
+       removeMod: 0,
      }
    }
 
-   // use new static method to derive state from props
    static getDerivedStateFromProps(nextProps, prevState) {
-     if(nextProps.needToAddMod !== prevState.needToAddMod) { // check id was updated
-       return {
+     let needToAddModObj = {};
+     let removedModObj = {};
+     if(nextProps.needToAddMod !== prevState.needToAddMod) {
+       needToAddModObj = {
          needToAddMod: nextProps.needToAddMod,
        };
      }
+     if (nextProps.removedMod !== prevState.removedMod) {
+       removedModObj = {
+          removedMod: nextProps.removedMod,
+       };
+     }
+
+     return {...needToAddModObj, ...removedModObj};
    }
 
-   getMod(num) {
+   static createModElment(id) {
+     const divId = uuidv4();
      return (
-       <ModDiv>
-         <Autocomplete placeholder="Mod" width="400px" key={num} canBeRanged />
+       <ModDiv key={divId}>
+         <Autocomplete placeholder="Mod" width="400px" key={id} canBeRanged />
        </ModDiv>
      );
    }
 
+   static createRemoveButtonElment(modId, id) {
+     const divId = uuidv4();
+     return (
+        <RemoveButtonsFlexDiv key={divId}>
+          <RemoveButton modId={modId} key={id} />
+        </RemoveButtonsFlexDiv>
+     );
+   }
+
+   createMod() {
+     const id = uuidv4();
+     const removeId = uuidv4();
+     return {
+       mod: {
+         element: ItemBody.createModElment(id),
+         id,
+       },
+       removeButton: {
+         element: ItemBody.createRemoveButtonElment(id, removeId),
+         id: removeId,
+       },
+     };
+   }
+
    getMods() {
-     return _.range(this.state.mods).map(this.getMod);
+     return this.state.mods.asImmutable().map(mod => mod.mod.element);
+   }
+
+   getRemoveButtons() {
+     return this.state.mods.asImmutable().map(mod => mod ? mod.removeButton.element : '');
    }
 
    addMod() {
+     const mod = this.createMod();
+
      this.setState({
        needToAddMod: false,
-       mods: this.state.mods + 1,
+       mods: this.state.mods.push(mod),
      });
 
     this.props.addMod(false);
+   }
+
+   removeMod(id) {
+     this.setState({
+       mods: this.state.mods.asImmutable().filter(mod => mod.mod.id !== id),
+     });
+
+     if (this.state.mods.size === 0) {
+       this.setState({
+         mods: List().push(this.createMod()),
+       });
+     }
+
+    this.props.removeMod(0);
    }
 
    componentDidMount() {
      if (this.state.needToAddMod) {
        this.addMod();
      }
+     if (this.state.removedMod !== 0) {
+       this.removeMod(this.state.removedMod);
+     }
    }
 
    componentDidUpdate(_, prevState) {
      if (prevState.needToAddMod === false && this.state.needToAddMod === true) {
        this.addMod();
+     }
+     if (prevState.removedMod !== this.state.removedMod) {
+       this.removeMod(this.state.removedMod);
      }
    }
 
@@ -209,6 +292,12 @@ class ItemBody extends Component {
               <AddButton />
             </AddButtonDiv>
           </ModsFlexDiv>
+
+          <RemoveButtonsFlexDiv>
+            <EmptyRemoveButtonHeader />
+            {this.getRemoveButtons()}
+          </RemoveButtonsFlexDiv>
+
           <SocketsLinksGrid>
 
             {/* Column 1 */}

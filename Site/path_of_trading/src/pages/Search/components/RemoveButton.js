@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import Colors from 'constants/Colors';
 import PlusButtonCenter from 'media/images/svg/Plus_Button_Center_38.898x38.9.svg';
 import noselect from 'shared/styles/noselect';
-import { addMod } from '../actions/item-actions';
+import { removeMod } from '../actions/item-actions';
 
 const mapDispatchToProps = dispatch => {
   return {
-    addMod: needToAddMod => dispatch(addMod(needToAddMod))
+    removeMod: removedMod => dispatch(removeMod(removedMod))
   };
 };
 
@@ -29,12 +29,11 @@ const Button = styled.button`
 
   border-radius: 1000px;
 
-  ${'' /* box-shadow: inset 2px -7px 11px rgba(80, 92, 51, 0.17); */}
+  transform: scale(0.9) rotate(45deg);
 
   &:hover {
     background-color: ${Colors.buttonPrimaryLight};
   }
-
 `;
 
 const Img = styled.img`
@@ -43,7 +42,7 @@ const Img = styled.img`
 
 
 @connect(null, mapDispatchToProps)
-class AddButton extends React.Component {
+class RemoveButton extends React.Component {
   constructor(props) {
       super(props);
 
@@ -51,7 +50,7 @@ class AddButton extends React.Component {
   }
 
   handleClick() {
-    this.props.addMod(true);
+    this.props.removeMod(this.props.modId);
   }
 
   render() {
@@ -63,4 +62,4 @@ class AddButton extends React.Component {
   }
 }
 
-export default AddButton;
+export default RemoveButton;
