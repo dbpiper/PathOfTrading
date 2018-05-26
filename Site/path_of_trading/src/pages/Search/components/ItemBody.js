@@ -14,6 +14,7 @@ import Autocomplete from './Autocomplete';
 import AddButton from './AddButton';
 import RemoveButton from './RemoveButton';
 import Dropdown from './Dropdown';
+import Drawer from './Drawer';
 import { addMod, removeMod } from '../actions/item-actions';
 
 const title = 'Item';
@@ -84,11 +85,11 @@ const BottomDiv = styled.div`
 
   height: 60px;
 
-  margin-top: 250px;
+  margin-top: 190px;
 
   align-content: flex-end;
 
-  margin-bottom: 40px;
+  margin-bottom: 100px;
 `
 
 const ModsFlexDiv = styled.div`
@@ -179,6 +180,26 @@ const EmptyRemoveButtonHeader = styled.div`
 const DropdownDiv = styled.div`
   padding-right: 50px;
 `;
+
+const DrawerDiv = styled.div`
+  position: fixed;
+
+  bottom: 0;
+
+  display: ${props => props.selectedTab !== title ? 'none' : 'block'};
+
+  margin-left: 30%;
+  align-items: center;
+  justify-content: center;
+
+  ${'' /* height: 60px;
+
+  margin-top: 250px; */}
+
+  ${'' /* align-content: flex-end; */}
+
+  ${'' /* margin-bottom: 100px; */}
+`
 
 @connect(mapStateToProps, mapDispatchToProps)
 class ItemBody extends Component {
@@ -371,6 +392,11 @@ class ItemBody extends Component {
             <Dropdown placeholder="Rarity" dropup />
           </DropdownDiv>
         </BottomDiv>
+
+        <DrawerDiv selectedTab={this.props.selectedTab} >
+          <Drawer />
+        </DrawerDiv>
+
       </React.Fragment>
     );
   }

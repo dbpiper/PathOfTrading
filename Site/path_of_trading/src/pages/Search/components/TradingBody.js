@@ -103,15 +103,6 @@ const GridArea = styled.span`
   align-items: center;
 `;
 
-// const HeadingGridArea = GridArea.extend`
-//
-//   &&& {
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: center;
-//   }
-// `;
-
 @connect(mapStateToProps)
 class TradingBody extends Component {
   render() {

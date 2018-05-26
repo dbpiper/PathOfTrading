@@ -7,13 +7,12 @@ import standardFont from 'shared/styles/standardFont';
 
 
 const LabelEle = styled.label`
-    & {
-      ${standardFont}
-    }
+    ${standardFont}
 
     &&& {
 
       font-size: ${props => props.heading ? Fonts.Standard.fontSizeHeading+Fonts.Standard.fontSizeUnit : ''};
+      font-size: ${props => props.subHeading ? Fonts.Standard.fontSizeSubHeading+Fonts.Standard.fontSizeUnit : ''};
       cursor: url(${TextCursor}), text;
     }
 `;
