@@ -90,7 +90,7 @@ const Menu = styled.div`
 
   ${props => props.dropup ? css`
     margin-top: 0px;
-    bottom: 110px;
+    bottom: 107px;
 
     transform: rotateX(180deg);
   ` : ''};
