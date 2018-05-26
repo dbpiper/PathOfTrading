@@ -13,6 +13,7 @@ import ColorsField from './ColorsField';
 import Autocomplete from './Autocomplete';
 import AddButton from './AddButton';
 import RemoveButton from './RemoveButton';
+import Dropdown from './Dropdown';
 import { addMod, removeMod } from '../actions/item-actions';
 
 const title = 'Item';
@@ -63,7 +64,7 @@ const socketsLinksGridMediaQueries = MediaQuery.create([
 ]);
 
 const Div = styled.div`
-  height: ${ItemBodyConstants.height}${ItemBodyConstants.heightUnit};
+  ${'' /* height: ${ItemBodyConstants.height}${ItemBodyConstants.heightUnit}; */}
   width: ${ItemBodyConstants.width}${ItemBodyConstants.widthUnit};
 
   display: ${props => props.selectedTab !== title ? 'none' : 'flex'};
@@ -76,6 +77,19 @@ const Div = styled.div`
 
   justify-content: center;
 `;
+
+const BottomDiv = styled.div`
+  flex-direction: row;
+
+  display: ${props => props.selectedTab !== title ? 'none' : 'flex'};
+
+  justify-content: center;
+
+  height: 50px;
+
+  margin-top: 250px;
+
+`
 
 const ModsFlexDiv = styled.div`
   display: flex;
@@ -160,6 +174,10 @@ const AddButtonDiv = styled.div`
 
 const EmptyRemoveButtonHeader = styled.div`
   margin-bottom: 96px;
+`;
+
+const DropdownDiv = styled.div`
+  padding-right: 50px;
 `;
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -280,67 +298,80 @@ class ItemBody extends Component {
 
   render() {
     return (
-      <Div selectedTab={this.props.selectedTab}>
-          <ModsFlexDiv>
-            <ModsHeader>
-              <Label value="Mods" heading={true} />
-            </ModsHeader>
+      <React.Fragment>
+        <Div selectedTab={this.props.selectedTab}>
+            <ModsFlexDiv>
+              <ModsHeader>
+                <Label value="Mods" heading={true} />
+              </ModsHeader>
 
-            {this.getMods()}
+              {this.getMods()}
 
-            <AddButtonDiv>
-              <AddButton />
-            </AddButtonDiv>
-          </ModsFlexDiv>
+              <AddButtonDiv>
+                <AddButton />
+              </AddButtonDiv>
+            </ModsFlexDiv>
 
-          <RemoveButtonsFlexDiv>
-            <EmptyRemoveButtonHeader />
-            {this.getRemoveButtons()}
-          </RemoveButtonsFlexDiv>
+            <RemoveButtonsFlexDiv>
+              <EmptyRemoveButtonHeader />
+              {this.getRemoveButtons()}
+            </RemoveButtonsFlexDiv>
 
-          <SocketsLinksGrid>
+            <SocketsLinksGrid>
 
-            {/* Column 1 */}
-            <HeadingGridArea area="socketsLinksLabel">
-              <Label value="Sockets and Links" heading={true} />
-            </HeadingGridArea>
+              {/* Column 1 */}
+              <HeadingGridArea area="socketsLinksLabel">
+                <Label value="Sockets and Links" heading={true} />
+              </HeadingGridArea>
 
 
-            <GridArea area="socketsLabel">
-              <Label value="Sockets" />
-            </GridArea>
+              <GridArea area="socketsLabel">
+                <Label value="Sockets" />
+              </GridArea>
 
-            <GridArea area="colorsLabel">
-              <Label value="Colors" />
-            </GridArea>
-            {/* Space between rows */}
-            <GridArea area="linksLabel">
-              <Label value="Links" />
-            </GridArea>
-            <GridArea area="linkedColorsLabel">
-              <Label value="Linked Colors" />
-            </GridArea>
+              <GridArea area="colorsLabel">
+                <Label value="Colors" />
+              </GridArea>
+              {/* Space between rows */}
+              <GridArea area="linksLabel">
+                <Label value="Links" />
+              </GridArea>
+              <GridArea area="linkedColorsLabel">
+                <Label value="Linked Colors" />
+              </GridArea>
 
-            {/* Column 2 */}
-            {/* The blank space between 1 and 3 */}
+              {/* Column 2 */}
+              {/* The blank space between 1 and 3 */}
 
-            {/* Column 3 */}
-            <GridArea area="socketsRange">
-              <Range />
-            </GridArea>
-            <GridArea area="colorsField">
-              <ColorsField />
-            </GridArea>
-            {/* Space between rows */}
-            <GridArea area="linksRange">
-              <Range />
-            </GridArea>
-            <GridArea area="linkedColorsField">
-              <ColorsField />
-            </GridArea>
+              {/* Column 3 */}
+              <GridArea area="socketsRange">
+                <Range />
+              </GridArea>
+              <GridArea area="colorsField">
+                <ColorsField />
+              </GridArea>
+              {/* Space between rows */}
+              <GridArea area="linksRange">
+                <Range />
+              </GridArea>
+              <GridArea area="linkedColorsField">
+                <ColorsField />
+              </GridArea>
 
-          </SocketsLinksGrid>
-      </Div>
+            </SocketsLinksGrid>
+        </Div>
+        <BottomDiv selectedTab={this.props.selectedTab} >
+          <DropdownDiv>
+            <Dropdown placeholder="Type"/>
+          </DropdownDiv>
+          <DropdownDiv>
+            <Dropdown placeholder="Base"/>
+          </DropdownDiv>
+          <DropdownDiv>
+            <Dropdown placeholder="Rarity"/>
+          </DropdownDiv>
+        </BottomDiv>
+      </React.Fragment>
     );
   }
 }
