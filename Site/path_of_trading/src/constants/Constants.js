@@ -164,21 +164,6 @@ const Constants = Object.freeze({
       search: "Search",
       searchPlaceholder: "Enter an Item's Name",
     },
-    Colors: {
-      buttonPrimary: '#79ADDC',
-      buttonPrimaryLight: '#94bde3',
-      textboxBackground: '#95A2A8', //'rgba(188, 212, 222, 0.42)',
-      standardFont: '#FEFDFF',
-      headingFont: '#FEFDFF',
-      dropdownSelectedColor: '#304352',
-      dropdownSelectedBackground: '#FEFDFF',
-      underlineColorHovered: '#D2CFD2',
-      underlineColor: '#0D0106',
-      underlineColorFocused: '#FEFDFF',
-      accent: '#BCD4DE',
-      offBackground: '#93a8ac',
-      offBorder: '#dfdfdf',
-    },
     Dropdown: {
       Menu: {
         gap: 3,
@@ -191,32 +176,6 @@ const Constants = Object.freeze({
         selectedAccent: 5,
         selectedAccentUnit: 'px',
 
-      },
-    },
-    ColorComponents: {
-      Shared: {
-        min: 0,
-        max: 6,
-      },
-      Red: {
-        placeholder: 'Red',
-        underlineColor: '#831929',
-        focusedUnderlineColor: '#ea8f9d',
-      },
-      Green: {
-        placeholder: 'Green',
-        underlineColor: '#5d9e0e',
-        focusedUnderlineColor: '#82dd13',
-      },
-      Blue: {
-        placeholder: 'Blue',
-        underlineColor: '#1031A7',
-        focusedUnderlineColor: '#8fa5f4',
-      },
-      White: {
-        placeholder: 'White',
-        underlineColor: '#dad3c1',
-        focusedUnderlineColor: '#ffffff',
       },
     },
     AbstractNumericField: {
@@ -236,24 +195,6 @@ const Constants = Object.freeze({
       borderBottomWidth: 1,
       borderBottomWidthUnit: 'px',
     },
-    Fonts: {
-      Heading: {
-        fontFamily: "'Playfair Display', serif",
-        fontWeightStandard: 400,
-        fontWeightBold: 700,
-        fontSize: 2,
-        fontSizeUnit: 'rem',
-      },
-      Standard: {
-        fontFamily: "'Open Sans', sans-serif",
-        fontWeight: 300,
-        fontWeightSemiBold: 600,
-        fontSizeHeading: 1.25,
-        fontSize: 1,
-        fontSizeSmall: 0.75,
-        fontSizeUnit: 'rem',
-      }
-    },
     Layout: {
       MediaQuery: {
         PortraitPhone: 0,
@@ -264,146 +205,6 @@ const Constants = Object.freeze({
         MediumDesktop: 5,
         LargeDesktop: 6,
       },
-      Page: {
-        Search: {
-          Header: {
-              gridRows: [
-                  35,
-                  65,
-              ],
-              gridRowUnit: '%',
-
-              gridColumns: {
-                sizes: {
-                  gridColumnsPortraitPhone:
-                    [ 235, 30, 100],
-                  gridColumnsLandscapePhone:
-                    [ 240, 30, 124],
-                  gridColumnsPortraitTablet:
-                    [ 250, 60, 148],
-                  gridColumnsLanscapeTablet:
-                    [ 270, 90, 172],
-                  gridColumnsSmallDesktop:
-                    [ 310, 120, 196],
-                  gridColumnsMediumDesktop:
-                    [ 420, 150, 220],
-                  gridColumnsLargeDesktop:
-                    [ 530, 180, 244],
-                },
-                unit: 'px',
-              },
-
-              gridColumnUnit: 'px',
-              width: 100,
-              height: {
-                sizes: [
-                  120,
-                  120,
-                  120,
-                  120,
-                  130,
-                  160,
-                  225,
-                ],
-                unit: 'px',
-              },
-              widthUnit: '%',
-          },
-          Body: {
-            Combat: {
-              gridRows: {
-                sizes: [
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                  [15, 9.259, 9.259, 9.259, 9.259, 9.259, 9.259],
-                ],
-                unit: '%',
-              },
-              gridColumns: {
-                sizes: {
-                  gridColumnsPortraitPhone:
-                    [ 110, 150, 0, 80, 200, ],
-                  gridColumnsLandscapePhone:
-                    [ 110, 150, 0, 80, 200, ],
-                  gridColumnsPortraitTablet:
-                    [ 110, 150, 0, 80, 200, ],
-                  gridColumnsLanscapeTablet:
-                    [ 110, 150, 0, 80, 200, ],
-                  gridColumnsSmallDesktop:
-                    [ 110, 150, 0, 80, 200, ],
-                  gridColumnsMediumDesktop:
-                    [ 140, 150, 60, 110, 200, ],
-                  gridColumnsLargeDesktop:
-                    [ 140, 150, 160, 110, 200, ],
-
-                },
-                unit: 'px',
-              },
-
-              width: 100,
-              height: 70,
-              widthUnit: '%',
-              heightUnit: '%',
-              gridLeftMargin: 2,
-              gridLeftMarginUnit: '%',
-            },
-            Trading: {
-              gridRows: {
-                sizes: [
-                  [55, 55, 55, 55, 55, 55, 55, 55],
-                  [55, 55, 55, 55, 55, 55, 55, 55],
-                  [55, 55, 55, 55, 55, 55, 55, 55],
-                  [55, 55, 55, 55, 55, 55, 55, 55],
-                  [57, 57, 57, 57, 57, 57, 57, 57],
-                  [65, 65, 65, 65, 65, 65, 65, 65],
-                  [80, 80, 80, 80, 80, 80, 80, 80],
-                ],
-                unit: 'px',
-              },
-              gridColumns: {
-                sizes: {
-                  gridColumnsPortraitPhone:
-                    [ 120, 140, 0, 95, 65, 15, 140, 200],
-                  gridColumnsLandscapePhone:
-                    [ 120, 140, 0, 95, 65, 15, 140, 200],
-                  gridColumnsPortraitTablet:
-                    [ 120, 140, 0, 95, 65, 15, 140, 200],
-                  gridColumnsLanscapeTablet:
-                    [ 120, 140, 0, 95, 65, 15, 140, 200],
-                  gridColumnsSmallDesktop:
-                    [ 140, 140, 45, 95, 65, 45, 160, 200],
-                  gridColumnsMediumDesktop:
-                    [ 140, 140, 60, 105, 65, 60, 160, 200],
-                  gridColumnsLargeDesktop:
-                    [ 140, 140, 90, 150, 65, 90, 200, 200],
-                },
-                unit: 'px',
-              },
-
-              width: 100,
-              height: {
-                sizes: [
-                  500,
-                  500,
-                  500,
-                  500,
-                  500,
-                  600,
-                  700,
-                ],
-                unit: 'px',
-              },
-              widthUnit: '%',
-              gridLeftMargin: 2,
-              gridLeftMarginUnit: '%',
-            },
-          }
-        }
-      }
     }
 });
 

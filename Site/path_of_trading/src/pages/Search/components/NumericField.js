@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Constants from 'constants/Constants';
+import Colors from 'constants/Colors';
 
 import AbstractNumericField from './AbstractNumericField';
 
@@ -8,9 +8,9 @@ function NumericField(props) {
   return (
     <AbstractNumericField
       placeholder={props.placeholder}
-      underlineColor={Constants.Colors.underlineColor}
-      focusedUnderlineColor={Constants.Colors.underlineColorFocused}
-      hoveredUnderlineColor={Constants.Colors.underlineColorHovered}
+      underlineColor={Colors.underlineColor}
+      focusedUnderlineColor={Colors.underlineColorFocused}
+      hoveredUnderlineColor={Colors.underlineColorHovered}
       small={props.small}
     />
   );

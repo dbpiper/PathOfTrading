@@ -1,13 +1,14 @@
 import { css } from 'styled-components';
 
-import Constants from '../../constants/Constants';
+import Colors from 'constants/Colors';
+import Fonts from 'constants/Fonts';
 
 const standardFont = css`
-    color: ${Constants.Colors.standardFont};
+    color: ${Colors.standardFont};
 
-    font-family: ${Constants.Fonts.Standard.fontFamily};
-    font-weight: ${Constants.Fonts.Standard.fontWeight};
-    font-size: ${Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+    font-family: ${Fonts.Standard.fontFamily};
+    font-weight: ${Fonts.Standard.fontWeight};
+    font-size: ${Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
 `;
 
 export default standardFont;

@@ -1,13 +1,11 @@
 import React from 'react';
-
 import styled, { css } from 'styled-components';
 
-import MediaQuery from 'shared/helpers/MediaQuery';
-
+import Colors from 'constants/Colors';
 import Constants from 'constants/Constants';
-
 import standardFont from 'shared/styles/standardFont';
 import noselect from 'shared/styles/noselect';
+import MediaQuery from 'shared/helpers/MediaQuery';
 
 
 const buttonSizeMediaQueries = MediaQuery.create([
@@ -53,7 +51,7 @@ const Div = styled.div`
 `;
 
 const Button = styled.button`
-      background-color: ${Constants.Colors.buttonPrimary};
+      background-color: ${Colors.buttonPrimary};
       padding-top: ${Constants.Buttons.Search.paddingTop}${Constants.Buttons.Search.paddingTopUnit};
       padding-bottom: ${Constants.Buttons.Search.paddingBottom}${Constants.Buttons.Search.paddingBottomUnit};
       padding-left: ${Constants.Buttons.Search.paddingLeft}${Constants.Buttons.Search.paddingLeftUnit};
@@ -74,6 +72,11 @@ const Button = styled.button`
       ${props => !props.search && css`
           display: none;
       `}
+
+      &:hover {
+        transition-duration 250ms;
+        background-color: ${Colors.buttonPrimaryLight};
+      }
 `;
 
 

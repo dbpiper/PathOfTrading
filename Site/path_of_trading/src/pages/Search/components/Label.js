@@ -1,20 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Fonts from 'constants/Fonts';
+import TextCursor from 'media/images/cur/beam_black.cur';
 import standardFont from 'shared/styles/standardFont';
 
-import TextCursor from 'media/images/cur/beam_black.cur';
-
-import Constants from 'constants/Constants';
 
 const LabelEle = styled.label`
-    & {
-      ${standardFont}
-    }
+    ${standardFont}
 
     &&& {
 
-      font-size: ${props => props.heading ? Constants.Fonts.Standard.fontSizeHeading+Constants.Fonts.Standard.fontSizeUnit : ''};
+      font-size: ${props => props.heading ? Fonts.Standard.fontSizeHeading+Fonts.Standard.fontSizeUnit : ''};
+      font-size: ${props => props.subHeading ? Fonts.Standard.fontSizeSubHeading+Fonts.Standard.fontSizeUnit : ''};
       cursor: url(${TextCursor}), text;
     }
 `;

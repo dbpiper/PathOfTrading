@@ -32,7 +32,7 @@ const TextboxInput = styled.input.attrs({
 
    &&& {
       ${props => Textbox.makeWidthMediaQueries(props)}
-      ${props => Textbox.makeHeightMediaQueries(props)}
+      ${props => Textbox.makeHeightMediaQueries(props, 'height')}
 
       ${props => props.hasButton && getBorderCss(props)};
    }
@@ -57,13 +57,13 @@ const TextboxSibling = styled.div`
 
 class Textbox extends React.Component {
 
-  static makeHeightMediaQueries(props) {
+  static makeHeightMediaQueries(props, property) {
 
     if (!props.search) {
       return MediaQuery.create([
         {
           heightBased: true,
-          property: 'height',
+          property: property,
           function: MediaQuery.numberToSize,
           args: {
             sizes: Constants.Textbox.height.sizes,
@@ -80,7 +80,7 @@ class Textbox extends React.Component {
       return MediaQuery.create([
         {
           heightBased: true,
-          property: 'height',
+          property: property,
           function: MediaQuery.numberToSize,
           args: {
             sizes: Constants.SearchBox.height.sizes,
@@ -96,43 +96,67 @@ class Textbox extends React.Component {
 
     }
   }
+
   static makeWidthMediaQueries(props) {
+    if (props.width) {
+      if (Array.isArray(props.width)) {
+        return MediaQuery.create([
+          {
+            property: 'width',
+            function: MediaQuery.numberToSize,
+            args: {
+              sizes: props.width,
+            },
+            recipeArgsGetter: (args, index) => {
+              return {
+                size: args.sizes[index],
+                unit: Constants.Textbox.width.unit,
+              };
+            },
+          },
+        ]);
+      }
+      else {
+        return 'width: ' + props.width;
+      }
+    }
+    else {
+      if (!props.search) {
+        const textboxSizes = props.canBeRanged ? Constants.Textbox.width.rangedSizes
+          : Constants.Textbox.width.sizes;
 
-    if (!props.search) {
-      const textboxSizes = props.canBeRanged ? Constants.Textbox.width.rangedSizes
-        : Constants.Textbox.width.sizes;
-
-      return MediaQuery.create([
-        {
-          property: 'width',
-          function: MediaQuery.numberToSize,
-          args: {
-            sizes: textboxSizes,
+        return MediaQuery.create([
+          {
+            property: 'width',
+            function: MediaQuery.numberToSize,
+            args: {
+              sizes: textboxSizes,
+            },
+            recipeArgsGetter: (args, index) => {
+              return {
+                size: args.sizes[index],
+                unit: Constants.Textbox.width.unit,
+              };
+            },
           },
-          recipeArgsGetter: (args, index) => {
-            return {
-              size: args.sizes[index],
-              unit: Constants.Textbox.width.unit,
-            };
+        ]);
+      } else {
+        return MediaQuery.create([
+          {
+            property: 'width',
+            function: MediaQuery.numberToSize,
+            args: {
+              sizes: Constants.SearchBox.width.sizes,
+            },
+            recipeArgsGetter: (args, index) => {
+              return {
+                size: args.sizes[index],
+                unit: Constants.SearchBox.width.unit,
+              };
+            },
           },
-        },
-      ]);
-    } else {
-      return MediaQuery.create([
-        {
-          property: 'width',
-          function: MediaQuery.numberToSize,
-          args: {
-            sizes: Constants.SearchBox.width.sizes,
-          },
-          recipeArgsGetter: (args, index) => {
-            return {
-              size: args.sizes[index],
-              unit: Constants.SearchBox.width.unit,
-            };
-          },
-        },
-      ]);
+        ]);
+      }
     }
   }
 

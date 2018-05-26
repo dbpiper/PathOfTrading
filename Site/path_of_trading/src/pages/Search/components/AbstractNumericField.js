@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Colors from 'constants/Colors';
+import Fonts from 'constants/Fonts';
+import Constants from 'constants/Constants';
+import TextCursor from 'media/images/cur/beam_black.cur';
 import standardFont from 'shared/styles/standardFont';
 import placeholder from 'shared/styles/placeholder';
 
-import TextCursor from 'media/images/cur/beam_black.cur';
 
-import Constants from 'constants/Constants';
 
 const AbstractNumericFieldContainer = styled.span`
     width: 100%;
@@ -15,7 +17,7 @@ const AbstractNumericFieldContainer = styled.span`
 
 const boxWidth = (props) => {
   return props.placeholder.length *
-  (props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize);
+  (props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize);
 };
 
 const AbstractNumericInput = styled.input.attrs({
@@ -28,7 +30,7 @@ const AbstractNumericInput = styled.input.attrs({
 
       padding-bottom: 0;
 
-      caret-color: ${Constants.Colors.standardFont};
+      caret-color: ${Colors.standardFont};
 
       ${standardFont}
 
@@ -56,7 +58,7 @@ const AbstractNumericInput = styled.input.attrs({
         /* display: none; <- Crashes Chrome on hover */
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-        color: ${Constants.Colors.standardFont};
+        color: ${Colors.standardFont};
     }
 
     &:hover {
@@ -77,21 +79,22 @@ const AbstractNumericInput = styled.input.attrs({
 
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     &::placeholder {
-      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+      font-size: ${(props) => props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
     }
 
     /* Microsoft Edge */
     &::-ms-input-placeholder {
-      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+      font-size: ${(props) => props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
     }
 
     /* Internet Explorer 10-11 */
     &:-ms-input-placeholder {
-      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+      font-size: ${(props) => props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
     }
 
     &&& {
-      font-size: ${(props) => props.small ? Constants.Fonts.Standard.fontSizeSmall : Constants.Fonts.Standard.fontSize}${Constants.Fonts.Standard.fontSizeUnit};
+      font-size: ${(props) => props.small ? Fonts.Standard.fontSizeSmall : Fonts.Standard.fontSize}${Fonts.Standard.fontSizeUnit};
+      border-radius: 0;
     }
 `;
 

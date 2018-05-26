@@ -1,0 +1,112 @@
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+
+import Colors from 'constants/Colors';
+import noselect from 'shared/styles/noselect';
+import menuIconFont from 'shared/styles/menuIconFont';
+import {
+  startMenuOpen,
+  startMenuClose,
+}
+from '../actions/menu-actions';
+
+const mapStateToProps = state => {
+  return {
+    startedMenuOpen: state.searchPage.menu.startedMenuOpen,
+    finishedMenuOpen: state.searchPage.menu.finishedMenuOpen,
+    startedMenuClose: state.searchPage.menu.startedMenuClose,
+    finishedMenuClose: state.searchPage.menu.finishedMenuClose,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    startMenuOpen: startedMenuOpen => dispatch(startMenuOpen(startedMenuOpen)),
+    startMenuClose: startedMenuClose => dispatch(startMenuClose(startedMenuClose)),
+  };
+};
+
+const Div = styled.div`
+  ${menuIconFont}
+
+  display: grid;
+
+  justify-content: center;
+
+  width: ${props => props.width + 'px'};
+  overflow: hidden;
+
+
+`;
+
+const ContentDiv = styled.div`
+  display: grid;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+
+  border: 2px solid ${Colors.menuIconBorder};
+
+  width: 100px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  ${noselect};
+
+  &:hover {
+    transition: 250ms;
+    background-color: ${props => props.menuOpen ? Colors.hoverTab : Colors.inactiveTab};
+  }
+`;
+
+@connect(mapStateToProps, mapDispatchToProps)
+class MenuIcon extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuText: 'Close',
+    };
+  }
+
+  handleClick() {
+    if (this.props.finishedMenuClose && !this.startedMenuOpen) {
+      this.props.startMenuOpen(!this.props.startedMenuOpen);
+    }
+    if (this.props.finishedMenuOpen && !this.startedMenuClose) {
+      this.props.startMenuClose(!this.props.startedMenuClose);
+    }
+  }
+
+  setText() {
+    if (this.state.menuText === 'Menu' && this.props.finishedMenuOpen) {
+      this.setState({
+        menuText: 'Close',
+      });
+    } else if (this.state.menuText === 'Close' && this.props.finishedMenuClose) {
+      this.setState({
+        menuText: 'Menu',
+      });
+    }
+  }
+
+  render() {
+    return (
+      <Div className={this.props.className}>
+        <ContentDiv onClick={() => this.handleClick()}
+          menuOpen={this.props.finishedMenuOpen}
+        >
+          {this.props.menuText}
+        </ContentDiv>
+      </Div>
+    );
+  }
+}
+
+export default MenuIcon;
