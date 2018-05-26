@@ -81,7 +81,7 @@ const GridAreaIcon = styled.span`
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
   transition: 250ms ease-in-out;
 
   ${props => props.up ? css`
