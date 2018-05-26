@@ -2,7 +2,6 @@ import React from 'react'
 import Downshift from 'downshift';
 import styled, { css } from 'styled-components';
 import jaroWinkler from 'jaro-winkler'
-import SuffixTrie  from 'common-substrings';
 
 import Colors from 'constants/Colors';
 import Constants from 'constants/Constants';
@@ -11,40 +10,6 @@ import textboxBackground from 'shared/styles/textboxBackground';
 import AutocompleteButton from './AutocompleteButton';
 import HighlighedSubstringText from './HighlightedSubstringText';
 import Textbox from './Textbox';
-
-
-
-const findLongestSubstring = (items: [string], value: string) => {
-      let valueAndItems = items.slice();
-      valueAndItems.push({name: value});
-      const valueIndex = valueAndItems.length - 1;
-
-      const valueAndItemsLower = valueAndItems.map(item => {
-        return item.name.toLowerCase();
-      });
-
-      let trie = new SuffixTrie({
-        minLength: 2,
-        minOccurrence: 2,
-        debug: false,
-        limit: 100,
-        byLength: true,
-      });
-
-      trie.build(valueAndItemsLower);
-
-      const substrings = trie.weighByAverage();
-
-      const valueSubstrings = substrings.filter(substringObj => {
-        return substringObj.source.includes(valueIndex);
-      });
-
-      if (valueSubstrings.length > 0 && valueSubstrings[0].name === value) {
-          return valueSubstrings[0].name;
-      } else {
-        return '';
-      }
-};
 
 const suggest = (items, value) => {
   const inputValue = value.trim().toLowerCase();
@@ -57,13 +22,12 @@ const suggest = (items, value) => {
 
       const dist = jaroWinkler(item.name, inputValue, { caseSensitive: false });
 
-      const longestSubstring = findLongestSubstring([item], inputValue);
-
+      const substring = item.name.toLowerCase().includes(inputValue.toLowerCase()) ? inputValue : '';
 
       return {
         name: item.name,
         distance: dist,
-        substring: longestSubstring,
+        substring,
       };
     });
 
@@ -81,7 +45,7 @@ const activeStyle = css`
 
 const selectedStyle = css`
     border-left: ${Constants.Dropdown.Item.selectedAccent}${Constants.Dropdown.Item.selectedAccentUnit}
-    solid ${Colors.buttonPrimaryLight};
+    solid ${Colors.selectedHighlightColor};
     border-top: 0;
     border-bottom: 0;
 `;
@@ -98,19 +62,22 @@ const selectedStyleInner = css`
      solid ${Colors.offBorder}
 `;
 
+const MenuContainer = styled.div`
+  position: relative;
+  display: inline;
+`;
+
 const Menu = styled.div`
   display: none;
   position: absolute;
   z-index: 1;
-  max-height: 20rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   border-top-width: 0;
   outline: 0;
   transition: opacity .1s ease;
   box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
   max-height: 200px; //TODO: make into constant
-
 
   ${(props) => Textbox.makeWidthMediaQueries(props)}
 
@@ -121,9 +88,22 @@ const Menu = styled.div`
 
   margin-top: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
 
-  ${(props) => props.isOpen} {
-    display: block;
-  }
+  ${props => props.dropup ? css`
+    margin-top: 0;
+
+    margin-bottom: ${Constants.Dropdown.Menu.gap}${Constants.Dropdown.Menu.gapUnit};
+    
+    ${Textbox.makeHeightMediaQueries(props, 'bottom')}
+
+    flex-direction: column-reverse;
+  ` : css`
+    flex-direction: column;
+  `
+  };
+
+  ${props => props.isOpen ? css`
+    display: flex;
+  ` : ''};
 `;
 
 const Item = styled.div`
@@ -170,7 +150,8 @@ class AbstractAutocomplete extends React.Component {
   constructor(props) {
     super(props);
 
-    const items = [
+    let defaultIndex = 0;
+    let items = [
         Object.freeze({
           name: 'Red',
           substring: '',
@@ -209,6 +190,7 @@ class AbstractAutocomplete extends React.Component {
     this.state = {
       items,
       selectedItem: null,
+      defaultIndex,
     };
 
   }
@@ -246,7 +228,7 @@ class AbstractAutocomplete extends React.Component {
           onChange={this.handleChange}
           itemToString={this.itemToString}
           selectedItem={selectedItem}
-          defaultHighlightedIndex={0}
+          defaultHighlightedIndex={this.state.defaultIndex}
           items={items}
         >
           {({
@@ -273,46 +255,58 @@ class AbstractAutocomplete extends React.Component {
                 isRanged={(!selectedItem ? false : selectedItem.ranged)}
                 hasButton
                 search={this.props.search}
+                width={this.props.width}
               >
               </Textbox>
-                <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))} />
+                <AutocompleteButton {...(makeAutocompleteProps(getButtonProps))}
+                  dropup={!!this.props.dropup}
+                />
               </BoxButtonWrapper>
-              {isOpen && (
-                <Menu
-                  canBeRanged={this.props.canBeRanged}
-                  search={this.props.search}
-                >
-                  {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
-                    (item, index) => (
-                      <Item
-                        key={index}
-                        {
-                          ...getItemProps({
-                            item,
-                            index,
-                            isActive: highlightedIndex === index,
-                            isSelected: (!selectedItem ? false : selectedItem.name === item.name),
-                          })
-                        }
-                      >
-                        <InnerItem
-                          key={index}
-                          {
-                            ...getItemProps({
-                              item,
-                              index,
-                              isActive: highlightedIndex === index,
-                              isSelected: (!selectedItem ? false : selectedItem.name === item.name),
-                            })
-                          }
-                        >
-                          <HighlighedSubstringText item={item} cursor='pointer' />
-                        </InnerItem>
-                      </Item>
-                    ),
-                  )}
+              {
+                isOpen
+                &&
+                (
+                <MenuContainer>
+                  <Menu
+                    canBeRanged={this.props.canBeRanged}
+                    search={this.props.search}
+                    width={this.props.width}
+                    dropup={!!this.props.dropup}
+                    isOpen={!!isOpen}
+                    >
+                      {(inputValue && !this.props.dropdown ? suggest(items, inputValue) : items).map(
+                        (item, index) => (
+                          <Item
+                            key={index}
+                            {
+                              ...getItemProps({
+                                item,
+                                index,
+                                isActive: highlightedIndex === index,
+                                isSelected: (!selectedItem ? false : selectedItem.name === item.name),
+                              })
+                            }
+                            dropup={!!this.props.dropup}
+                            >
+                              <InnerItem
+                                key={index}
+                                {
+                                  ...getItemProps({
+                                    item,
+                                    index,
+                                    isActive: highlightedIndex === index,
+                                    isSelected: (!selectedItem ? false : selectedItem.name === item.name),
+                                  })
+                                }
+                                >
+                                  <HighlighedSubstringText item={item} cursor='pointer' />
+                                </InnerItem>
+                              </Item>
+                            ),
+                          )}
 
-                </Menu>
+                    </Menu>
+                  </MenuContainer>
               )}
             </span>
           )}

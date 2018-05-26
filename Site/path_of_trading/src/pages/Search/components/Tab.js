@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Colors from 'constants/Colors';
 import TabConstants from '../constants/TabConstants';
 import headingFont from 'shared/styles/headingFont';
+import noselect from 'shared/styles/noselect';
 import { selectTab } from '../actions/tab-actions';
 
 const mapStateToProps = (state, props) => {
@@ -38,6 +39,7 @@ const Div = styled.div`
 
       align-items: center;
 
+      ${noselect};
 
       background-color: ${props => props.active ? Colors.activeTab
         : Colors.inactiveTab};
@@ -48,6 +50,7 @@ const Div = styled.div`
               box-sizing: border-box;         /* Opera/IE 8+ */
 
       &:hover {
+        transition-duration 250ms;
         ${
           props => {
             if (!props.active) {

@@ -18,6 +18,7 @@ const Fonts = Object.freeze({
         fontWeight: 300,
         fontWeightSemiBold: 600,
         fontSizeHeading: 1.25,
+        fontSizeSubHeading: 1.125,
         fontSize: 1,
         fontSizeSmall: 0.75,
         fontSizeUnit: 'rem',

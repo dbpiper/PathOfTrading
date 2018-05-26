@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import Constants from 'constants/Constants';
+import TradingBodyConstants from '../constants/TradingBodyConstants';
 import MediaQuery from 'shared/helpers/MediaQuery';
 import Switch from './Switch';
 import Textbox from './Textbox';
@@ -22,25 +22,22 @@ const heightMediaQueries = MediaQuery.create([
     property: 'height',
     function: MediaQuery.numberToSize,
     args: {
-      sizes: Constants.Layout.Page.Search.Body.Trading.height.sizes,
+      sizes: TradingBodyConstants.height.sizes,
     },
     recipeArgsGetter: (args, index) => {
       return {
         size: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Body.Trading.height.unit,
+        unit: TradingBodyConstants.height.unit,
       }
     },
   },
 ]);
 
 const Div = styled.div`
-  width: ${Constants.Layout.Page.Search.Body.Trading.width}${Constants.Layout.Page.Search.Body.Trading.widthUnit};
+  width: ${TradingBodyConstants.width}${TradingBodyConstants.widthUnit};
   ${heightMediaQueries};
 
   display: ${props => props.selectedTab !== title ? 'none' : 'block'};
-
-  max-width: 95%;
-  max-height: 95%;
 `;
 
 
@@ -49,12 +46,12 @@ const gridMediaQueries = MediaQuery.create([
     property: 'grid-template-columns',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
-      sizes: Object.values(Constants.Layout.Page.Search.Body.Trading.gridColumns.sizes),
+      sizes: Object.values(TradingBodyConstants.gridColumns.sizes),
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Body.Trading.gridColumns.unit,
+        unit: TradingBodyConstants.gridColumns.unit,
       };
     },
   },
@@ -63,12 +60,12 @@ const gridMediaQueries = MediaQuery.create([
     property: 'grid-template-rows',
     function: MediaQuery.arrayAndUnitToSizes,
     args: {
-      sizes: Constants.Layout.Page.Search.Body.Trading.gridRows.sizes,
+      sizes: TradingBodyConstants.gridRows.sizes,
     },
     recipeArgsGetter: (args, index) => {
       return {
         sizes: args.sizes[index],
-        unit: Constants.Layout.Page.Search.Body.Trading.gridRows.unit,
+        unit: TradingBodyConstants.gridRows.unit,
       };
     },
   }
@@ -77,14 +74,14 @@ const gridMediaQueries = MediaQuery.create([
 const Grid = styled.div`
   display: grid;
 
-  margin-left: ${Constants.Layout.Page.Search.Body.Trading.gridLeftMargin}${Constants.Layout.Page.Search.Body.Trading.gridLeftMarginUnit};
+  margin-left: ${TradingBodyConstants.gridLeftMargin}${TradingBodyConstants.gridLeftMarginUnit};
   height: 100%;
   width: 100%;
 
   justify-content: center;
 
 
-  ${gridMediaQueries}:read-write
+  ${gridMediaQueries};
 
   grid-template-areas:
 
@@ -105,15 +102,6 @@ const GridArea = styled.span`
 
   align-items: center;
 `;
-
-// const HeadingGridArea = GridArea.extend`
-//
-//   &&& {
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: center;
-//   }
-// `;
 
 @connect(mapStateToProps)
 class TradingBody extends Component {

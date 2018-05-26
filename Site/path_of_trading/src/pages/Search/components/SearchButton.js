@@ -72,6 +72,11 @@ const Button = styled.button`
       ${props => !props.search && css`
           display: none;
       `}
+
+      &:hover {
+        transition-duration 250ms;
+        background-color: ${Colors.buttonPrimaryLight};
+      }
 `;
 
 

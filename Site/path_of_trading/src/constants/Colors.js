@@ -1,6 +1,7 @@
 const Colors = Object.freeze({
   buttonPrimary: '#79ADDC',
-  buttonPrimaryLight: '#94bde3',
+  buttonPrimaryLight: '#86b5e0',
+  selectedHighlightColor: '#94bde3',
   textboxBackground: '#95A2A8', //'rgba(188, 212, 222, 0.42)',
   standardFont: '#FEFDFF',
   tooltipFont: '#FEFDFF',
@@ -16,8 +17,6 @@ const Colors = Object.freeze({
   offBorder: '#dfdfdf',
   inactiveTab: '#4B5A66',
   activeTab: '#304352',
-  // hoverTab: '#3C4D5B',
-  // hoverTab: '#3F505D',
   hoverTab: '#3D4E5B',
   tabBorderColor: '#EEEEFF',
   menuIconBorder: '#FEFDFF',

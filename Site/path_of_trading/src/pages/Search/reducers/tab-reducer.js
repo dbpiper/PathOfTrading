@@ -1,7 +1,7 @@
 import { SELECT_TAB } from 'constants/ActionTypes';
 
 const inititalState = {
-  selectedTab: 'Combat',
+  selectedTab: 'Item',
 };
 
 const tabReducer = (state = inititalState, action) => {

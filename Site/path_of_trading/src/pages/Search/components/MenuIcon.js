@@ -37,6 +37,7 @@ const Div = styled.div`
   width: ${props => props.width + 'px'};
   overflow: hidden;
 
+
 `;
 
 const ContentDiv = styled.div`
@@ -56,13 +57,12 @@ const ContentDiv = styled.div`
   cursor: pointer;
 
   ${noselect};
-`;
 
-const ShrinkGrowDiv = styled.div`
-  ${'' /* display: block;
-  width: ${props => props.width + 'px'};
-  overflow: hidden; */}
-`
+  &:hover {
+    transition: 250ms;
+    background-color: ${props => props.menuOpen ? Colors.hoverTab : Colors.inactiveTab};
+  }
+`;
 
 @connect(mapStateToProps, mapDispatchToProps)
 class MenuIcon extends React.Component {
@@ -99,15 +99,11 @@ class MenuIcon extends React.Component {
   render() {
     return (
       <Div className={this.props.className}>
-        <ShrinkGrowDiv
+        <ContentDiv onClick={() => this.handleClick()}
+          menuOpen={this.props.finishedMenuOpen}
         >
-          <ContentDiv onClick={() => this.handleClick()}
-            menuOpen={this.props.finishedMenuOpen}
-          >
-            {/* {this.setText()} */}
-            {this.props.menuText}
-          </ContentDiv>
-        </ShrinkGrowDiv>
+          {this.props.menuText}
+        </ContentDiv>
       </Div>
     );
   }
