@@ -41,12 +41,19 @@ const heightMediaQueries = MediaQuery.create([
   },
 ]);
 
-const DivTest = styled.div`
+const Div = styled.div`
     ${headingFont}
 
+    height: 100%;
     display: block;
     width: ${HeaderConstants.width}${HeaderConstants.widthUnit};
     ${heightMediaQueries}
+
+    position: fixed;
+    background:inherit;
+    z-index: 1;
+
+    background-size: auto 100%;
 `;
 
 const gridColumnMediaQueries = MediaQuery.create([
@@ -108,7 +115,7 @@ class Header extends React.Component{
 
   render() {
     return (
-      <DivTest>
+      <Div>
         <Grid>
           <GridArea area="menuIcon">
             <OpenMenuDiv showMenuIcon={this.showMenuIcon()}>
@@ -125,7 +132,7 @@ class Header extends React.Component{
             <Dropdown placeholder="League"/>
           </GridArea>
         </Grid>
-      </DivTest>
+      </Div>
     );
   }
 }

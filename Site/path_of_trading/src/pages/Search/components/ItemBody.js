@@ -69,9 +69,6 @@ const Div = styled.div`
 
   display: ${props => props.selectedTab !== title ? 'none' : 'flex'};
 
-  max-width: 95%;
-  max-height: 95%;
-
   flex-direction: row;
 
 
@@ -91,7 +88,7 @@ const BottomDiv = styled.div`
 
   align-content: flex-end;
 
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 `
 
 const ModsFlexDiv = styled.div`

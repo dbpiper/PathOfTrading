@@ -30,27 +30,20 @@ const mapDispatchToProps = dispatch => {
 };
 
 const Div = styled.label`
-    ${'' /* & {
-      ${standardFont}
-    } */}
-
-    ${'' /* width: 250px; */}
 
     height: 100%;
+    resize: both
 
-    position: absolute;
-    ${'' /* height: ${TabConstants.barHeight}; */}
+    position: fixed;
     background-color: ${Colors.inactiveTab}
 
 
     align-items: center;
 
-    z-index: 1;
+    z-index: 2;
 
-    ${'' /* display: ${props => props.menuOpen ? 'grid' : 'none'}; */}
     display: grid;
 
-    ${'' /* width: ${props => props.width + 'px'}; */}
 
     width: ${TabConstants.width + TabConstants.widthUnit}
 
