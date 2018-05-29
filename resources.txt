@@ -39,7 +39,6 @@ Mobile Market Share:
 True Object Freezing for Constants:
   https://github.com/keithamus/proposal-object-freeze-seal-syntax
 
-
 Darker or Lighter Colors:
   http://www.0to255.com
 
@@ -48,3 +47,12 @@ JS Style Guide:
 
 Path of Exile API Resources:
   https://www.pathofexile.com/developer/docs/api-resources
+
+
+Branch Naming Conventions:
+  https://github.com/agis/git-style-guide
+  https://nvie.com/posts/a-successful-git-branching-model/
+  http://www.guyroutledge.co.uk/blog/git-branch-naming-conventions/
+  https://community.atlassian.com/t5/Git-questions/What-branch-name-conventions-do-you-use/qaq-p/510537
+  https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+  https://github.com/nvie/gitflow/issues/24
