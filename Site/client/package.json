@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://dbpiper.github.io/PathOfTrading",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "ajv": "^6.5.0",
     "autoprefixer": "7.1.6",

@@ -3,8 +3,8 @@ import axios from 'axios';
 import TradeAPIConstants from '../constants/TradeAPIConstants';
 
 class TradeAPI {
-  static getAllTabData() {
-      return axios.get(TradeAPIConstants.corsProxy + TradeAPIConstants.endpoint);
+  static getStashes() {
+      return axios.get(TradeAPIConstants.endpoint);
   }
 }
 

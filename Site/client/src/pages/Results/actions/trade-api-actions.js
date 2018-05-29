@@ -15,6 +15,7 @@ export const loadTradeData = () => {
       dispatch(loadTradeDataSuccess(cleanedTradeData));
     })
     .catch(error => {
+      console.log(error);
       throw(error);
     });
   }
