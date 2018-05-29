@@ -56,3 +56,4 @@ Branch Naming Conventions:
   https://community.atlassian.com/t5/Git-questions/What-branch-name-conventions-do-you-use/qaq-p/510537
   https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
   https://github.com/nvie/gitflow/issues/24
+  https://github.com/petervanderdoes/gitflow-avh/issues/45

@@ -33,3 +33,14 @@ Branch Naming Convention:
     * Each member of the team working on the feature would then
       have their own branches like so:
         - "feature/search-page/david"
+
+  A developer may choose to make a "sub-feature" branch.
+  This should be done in the following manner (based on: https://github.com/petervanderdoes/gitflow-avh/issues/45)
+
+  Use the normal naming conventions, but there will be another section of the branch called "subfeature",
+  or potentially "subrelease", or "subhotfix". Each of these can be named per the following example:
+    * "feature/search-page/subfeature/dropdown-component"
+
+  If using the team naming conventions, then the example would be the same, simply replacing
+  "feature/search-page" with "feature/search-page/david". That is,
+    * "feature/search-page/david/subfeature/dropdown-component"
