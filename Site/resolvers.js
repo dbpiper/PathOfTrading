@@ -9,9 +9,7 @@ const resolvers = {
   Query: {
     stashes: () => {
       return tradeAPI.getStashes().then(tradeData => {
-        console.log('loadTradeData');
         const cleanedTradeData = cleanUpData(tradeData.data.stashes);
-        console.log(cleanedTradeData);
         return cleanedTradeData;
       })
       .catch(error => {
