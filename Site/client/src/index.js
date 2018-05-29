@@ -4,15 +4,22 @@ import { Provider } from 'react-redux';
 import store from 'store';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
-import { ReduxCache } from 'apollo-cache-redux';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
+import { Hermes } from 'apollo-cache-hermes';
+import { persistCache } from 'apollo-cache-persist';
 
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import getRoutes from './routes';
 
-const cache = new ReduxCache({ store });
+const cache = new Hermes({});
+
+persistCache({
+  cache,
+  storage: window.localStorage,
+});
+
 const apolloClient = new ApolloClient({
   link: new HttpLink(),
   cache

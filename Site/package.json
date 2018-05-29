@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-cache-hermes": "^0.5.28-alpha",
+    "apollo-cache-persist": "^0.1.1",
     "apollo-server-express": "^1.3.6",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
