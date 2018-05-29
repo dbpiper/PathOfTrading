@@ -1,7 +1,6 @@
-
 import React from 'react';
 import {Switch, Route} from 'react-router';
-import App from './App';
+
 import Search from './pages/Search/search-page-component';
 import Results from './pages/Results/results-page-component';
 
