@@ -42,3 +42,9 @@ True Object Freezing for Constants:
 
 Darker or Lighter Colors:
   http://www.0to255.com
+
+JS Style Guide:
+  https://github.com/airbnb/javascript
+
+Path of Exile API Resources:
+  https://www.pathofexile.com/developer/docs/api-resources
