@@ -4,7 +4,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import resolvers from './resolvers';
 
 const typeDefs = [gql`
-  type Stash {
+  type Stash @cacheControl(maxAge: 50) {
     id: ID!
     public: Boolean!
     accountName: String!
@@ -14,7 +14,7 @@ const typeDefs = [gql`
   }
 
   type Query {
-    stashes: [Stash]
+    stashes: [Stash] @cacheControl(maxAge: 50)
     # course(id: Int!): Course
   }
 `];

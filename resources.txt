@@ -60,3 +60,31 @@ Branch Naming Conventions:
 
 Combine Relay and Redux:
   https://beautifulcode.1stdibs.com/2016/09/07/reconcile-relay-redux/
+
+Securely Storing API Keys:
+  https://medium.freecodecamp.org/how-to-securely-store-api-keys-4ff3ea19ebda
+
+
+------------------------------------------------------
+
+
+API Information:
+
+  Item Data:
+    Item Data -- API:
+      https://pathofexile.gamepedia.com/Path_of_Exile_Wiki:Data_query_API
+
+    Official Item Data (no API):
+      -- can be scrapped periodically to check that the data from the Wiki
+         is accurate, however this will be slow and potentially buggy so should
+         not be relied upon for production.
+      https://www.pathofexile.com/item-data
+
+  Stash Tab/Trading Data -- API:
+    https://www.pathofexile.com/developer/docs/api-resource-public-stash-tabs
+
+    A bit of description about this API:
+      https://pathofexile.gamepedia.com/Public_stash_tab_API
+
+  List of Leagues -- API:
+    https://www.pathofexile.com/developer/docs/api-resource-leagues

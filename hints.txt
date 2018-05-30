@@ -2,3 +2,17 @@ Indent Multiple Times:
   Tab (Shift-Tab goes backwards)
 
 A Grid's Rows and Columns need to be defined before the areas.
+
+
+
+
+API
+-------------------------
+
+Item Data:
+
+  * The "group" number on the sockets indicates linked sockets.
+    So if there are 6 sockets with group = 0. Then the item is 6-linked.
+
+  * This group number starts from the top left and can range between
+    0 and 6. 

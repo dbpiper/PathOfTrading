@@ -7,9 +7,11 @@ const cleanUpData = tradeData => {
 
 const resolvers = {
   Query: {
-    stashes: () => {
+    stashes: (a, b, c, { cacheControl }) => {
+      console.log("we're fetching again...");
       return tradeAPI.getStashes().then(tradeData => {
         const cleanedTradeData = cleanUpData(tradeData.data.stashes);
+        cacheControl.setCacheHint({ maxAge: 50 });
         return cleanedTradeData;
       })
       .catch(error => {

@@ -6,3 +6,7 @@ node_modules
 # Generated files
 .psci
 output
+.gitsecret/keys/random_seed
+
+# Encrypted Config files
+*Config.js
