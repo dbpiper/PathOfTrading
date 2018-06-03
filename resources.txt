@@ -88,3 +88,19 @@ API Information:
 
   List of Leagues -- API:
     https://www.pathofexile.com/developer/docs/api-resource-leagues
+
+  Character Inventory -- API:
+    https://pathofexile.com/character-window/get-items?character={CharacterName}&accountName={AccountName}
+
+  Get Characters -- API:
+    https://www.pathofexile.com/character-window/get-characters?accountName={AccountName}
+
+  Get Passive Skill Tree -- API
+    https://www.pathofexile.com/character-window/get-passive-skills?accountName={AccountName}&character={CharacterName}
+
+  Scraping Item Data (use PyPoE) see: https://pathofexile.gamepedia.com/Path_of_Exile_Wiki:To-do_list/3.3.0
+
+  Get Passive Tree Data (needed to figure out what nodes correspond to which hashes from get-passive-skills) -- API/HTML with JSON
+    https://www.pathofexile.com/passive-skill-tree
+
+    Then parse the html, looking for the JavaScript variable "passiveSkillTreeData".
